@@ -14,15 +14,9 @@ const parse = (jsonPath, { ast = new JSONPathQueryCST(), evaluator = translateEv
 
   try {
     const parser = new Parser();
-
     parser.ast = ast;
 
     const result = parser.parse(grammar, 'jsonpath-query', jsonPath);
-
-    if (!result.success) {
-      return { result, ast, computed: null };
-    }
-
     const computed = evaluator(ast, { result });
 
     return { result, ast, computed };

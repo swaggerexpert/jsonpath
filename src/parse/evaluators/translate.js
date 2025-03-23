@@ -1,4 +1,6 @@
-const translateEvaluator = (ast) => {
+const translateEvaluator = (ast, { result }) => {
+  if (!result.success) return null;
+
   const parts = {};
 
   ast.translate(parts);
