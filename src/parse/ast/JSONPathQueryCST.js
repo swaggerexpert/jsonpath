@@ -20,7 +20,7 @@ class JSONPathQueryCST extends AST {
 
     // https://www.rfc-editor.org/rfc/rfc9535#section-2.3.1.1
     this.callbacks['name-selector'] = cstCallback('name-selector');
-    this.callbacks['string-literal'] = cstCallback('strict-literal');
+    this.callbacks['string-literal'] = cstCallback('string-literal');
     this.callbacks['double-quoted'] = cstCallback('double-quoted');
     this.callbacks['single-quoted'] = cstCallback('single-quoted');
 

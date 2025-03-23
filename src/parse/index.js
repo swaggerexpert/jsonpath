@@ -7,14 +7,13 @@ import JSONPathParseError from '../errors/JSONPathParseError.js';
 
 const grammar = new Grammar();
 
-const parse = (jsonPath, { evaluator = translateEvaluator } = {}) => {
+const parse = (jsonPath, { ast = new JSONPathQueryCST(), evaluator = translateEvaluator } = {}) => {
   if (typeof jsonPath !== 'string') {
     throw new TypeError('JSONPath must be a string');
   }
 
   try {
     const parser = new Parser();
-    const ast = new JSONPathQueryCST();
 
     parser.ast = ast;
 
@@ -34,7 +33,5 @@ const parse = (jsonPath, { evaluator = translateEvaluator } = {}) => {
     });
   }
 };
-
-console.dir(parse('$.store.books[?(@.price < 10)].title'), { depth: null });
 
 export default parse;

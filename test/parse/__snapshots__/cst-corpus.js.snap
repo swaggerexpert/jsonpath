@@ -1,0 +1,1427 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`parse cst-corpus $..author 1`] = `
+"{
+  "stack": [],
+  "root": {
+    "type": "jsonpath-query",
+    "text": "$..author",
+    "start": 0,
+    "length": 9,
+    "children": [
+      {
+        "type": "root-identifier",
+        "text": "$",
+        "start": 0,
+        "length": 1,
+        "children": []
+      },
+      {
+        "type": "segments",
+        "text": "..author",
+        "start": 1,
+        "length": 8,
+        "children": [
+          {
+            "type": "segment",
+            "text": "..author",
+            "start": 1,
+            "length": 8,
+            "children": [
+              {
+                "type": "descendant-segment",
+                "text": "..author",
+                "start": 1,
+                "length": 8,
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "..",
+                    "start": 1,
+                    "length": 2,
+                    "children": []
+                  },
+                  {
+                    "type": "member-name-shorthand",
+                    "text": "author",
+                    "start": 3,
+                    "length": 6,
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}"
+`;
+
+exports[`parse cst-corpus $..book[2] 1`] = `
+"{
+  "stack": [],
+  "root": {
+    "type": "jsonpath-query",
+    "text": "$..book[2]",
+    "start": 0,
+    "length": 10,
+    "children": [
+      {
+        "type": "root-identifier",
+        "text": "$",
+        "start": 0,
+        "length": 1,
+        "children": []
+      },
+      {
+        "type": "segments",
+        "text": "..book[2]",
+        "start": 1,
+        "length": 9,
+        "children": [
+          {
+            "type": "segment",
+            "text": "..book",
+            "start": 1,
+            "length": 6,
+            "children": [
+              {
+                "type": "descendant-segment",
+                "text": "..book",
+                "start": 1,
+                "length": 6,
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "..",
+                    "start": 1,
+                    "length": 2,
+                    "children": []
+                  },
+                  {
+                    "type": "member-name-shorthand",
+                    "text": "book",
+                    "start": 3,
+                    "length": 4,
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "segment",
+            "text": "[2]",
+            "start": 7,
+            "length": 3,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": "[2]",
+                "start": 7,
+                "length": 3,
+                "children": [
+                  {
+                    "type": "bracketed-selection",
+                    "text": "[2]",
+                    "start": 7,
+                    "length": 3,
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "[",
+                        "start": 7,
+                        "length": 1,
+                        "children": []
+                      },
+                      {
+                        "type": "selector",
+                        "text": "2",
+                        "start": 8,
+                        "length": 1,
+                        "children": [
+                          {
+                            "type": "index-selector",
+                            "text": "2",
+                            "start": 8,
+                            "length": 1,
+                            "children": []
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": "]",
+                        "start": 9,
+                        "length": 1,
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}"
+`;
+
+exports[`parse cst-corpus $.store.* 1`] = `
+"{
+  "stack": [],
+  "root": {
+    "type": "jsonpath-query",
+    "text": "$.store.*",
+    "start": 0,
+    "length": 9,
+    "children": [
+      {
+        "type": "root-identifier",
+        "text": "$",
+        "start": 0,
+        "length": 1,
+        "children": []
+      },
+      {
+        "type": "segments",
+        "text": ".store.*",
+        "start": 1,
+        "length": 8,
+        "children": [
+          {
+            "type": "segment",
+            "text": ".store",
+            "start": 1,
+            "length": 6,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": ".store",
+                "start": 1,
+                "length": 6,
+                "children": [
+                  {
+                    "type": "text",
+                    "text": ".",
+                    "start": 1,
+                    "length": 1,
+                    "children": []
+                  },
+                  {
+                    "type": "member-name-shorthand",
+                    "text": "store",
+                    "start": 2,
+                    "length": 5,
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "segment",
+            "text": ".*",
+            "start": 7,
+            "length": 2,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": ".*",
+                "start": 7,
+                "length": 2,
+                "children": [
+                  {
+                    "type": "text",
+                    "text": ".",
+                    "start": 7,
+                    "length": 1,
+                    "children": []
+                  },
+                  {
+                    "type": "wildcard-selector",
+                    "text": "*",
+                    "start": 8,
+                    "length": 1,
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}"
+`;
+
+exports[`parse cst-corpus $.store..price 1`] = `
+"{
+  "stack": [],
+  "root": {
+    "type": "jsonpath-query",
+    "text": "$.store..price",
+    "start": 0,
+    "length": 14,
+    "children": [
+      {
+        "type": "root-identifier",
+        "text": "$",
+        "start": 0,
+        "length": 1,
+        "children": []
+      },
+      {
+        "type": "segments",
+        "text": ".store..price",
+        "start": 1,
+        "length": 13,
+        "children": [
+          {
+            "type": "segment",
+            "text": ".store",
+            "start": 1,
+            "length": 6,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": ".store",
+                "start": 1,
+                "length": 6,
+                "children": [
+                  {
+                    "type": "text",
+                    "text": ".",
+                    "start": 1,
+                    "length": 1,
+                    "children": []
+                  },
+                  {
+                    "type": "member-name-shorthand",
+                    "text": "store",
+                    "start": 2,
+                    "length": 5,
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "segment",
+            "text": "..price",
+            "start": 7,
+            "length": 7,
+            "children": [
+              {
+                "type": "descendant-segment",
+                "text": "..price",
+                "start": 7,
+                "length": 7,
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "..",
+                    "start": 7,
+                    "length": 2,
+                    "children": []
+                  },
+                  {
+                    "type": "member-name-shorthand",
+                    "text": "price",
+                    "start": 9,
+                    "length": 5,
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}"
+`;
+
+exports[`parse cst-corpus $.store.book[*].author 1`] = `
+"{
+  "stack": [],
+  "root": {
+    "type": "jsonpath-query",
+    "text": "$.store.book[*].author",
+    "start": 0,
+    "length": 22,
+    "children": [
+      {
+        "type": "root-identifier",
+        "text": "$",
+        "start": 0,
+        "length": 1,
+        "children": []
+      },
+      {
+        "type": "segments",
+        "text": ".store.book[*].author",
+        "start": 1,
+        "length": 21,
+        "children": [
+          {
+            "type": "segment",
+            "text": ".store",
+            "start": 1,
+            "length": 6,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": ".store",
+                "start": 1,
+                "length": 6,
+                "children": [
+                  {
+                    "type": "text",
+                    "text": ".",
+                    "start": 1,
+                    "length": 1,
+                    "children": []
+                  },
+                  {
+                    "type": "member-name-shorthand",
+                    "text": "store",
+                    "start": 2,
+                    "length": 5,
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "segment",
+            "text": ".book",
+            "start": 7,
+            "length": 5,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": ".book",
+                "start": 7,
+                "length": 5,
+                "children": [
+                  {
+                    "type": "text",
+                    "text": ".",
+                    "start": 7,
+                    "length": 1,
+                    "children": []
+                  },
+                  {
+                    "type": "member-name-shorthand",
+                    "text": "book",
+                    "start": 8,
+                    "length": 4,
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "segment",
+            "text": "[*]",
+            "start": 12,
+            "length": 3,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": "[*]",
+                "start": 12,
+                "length": 3,
+                "children": [
+                  {
+                    "type": "bracketed-selection",
+                    "text": "[*]",
+                    "start": 12,
+                    "length": 3,
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "[",
+                        "start": 12,
+                        "length": 1,
+                        "children": []
+                      },
+                      {
+                        "type": "selector",
+                        "text": "*",
+                        "start": 13,
+                        "length": 1,
+                        "children": [
+                          {
+                            "type": "wildcard-selector",
+                            "text": "*",
+                            "start": 13,
+                            "length": 1,
+                            "children": []
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": "]",
+                        "start": 14,
+                        "length": 1,
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "segment",
+            "text": ".author",
+            "start": 15,
+            "length": 7,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": ".author",
+                "start": 15,
+                "length": 7,
+                "children": [
+                  {
+                    "type": "text",
+                    "text": ".",
+                    "start": 15,
+                    "length": 1,
+                    "children": []
+                  },
+                  {
+                    "type": "member-name-shorthand",
+                    "text": "author",
+                    "start": 16,
+                    "length": 6,
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}"
+`;
+
+exports[`parse cst-corpus $.store.book[?@.price < 10].title 1`] = `
+"{
+  "stack": [],
+  "root": {
+    "type": "jsonpath-query",
+    "text": "$.store.book[?@.price < 10].title",
+    "start": 0,
+    "length": 33,
+    "children": [
+      {
+        "type": "root-identifier",
+        "text": "$",
+        "start": 0,
+        "length": 1,
+        "children": []
+      },
+      {
+        "type": "segments",
+        "text": ".store.book[?@.price < 10].title",
+        "start": 1,
+        "length": 32,
+        "children": [
+          {
+            "type": "segment",
+            "text": ".store",
+            "start": 1,
+            "length": 6,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": ".store",
+                "start": 1,
+                "length": 6,
+                "children": [
+                  {
+                    "type": "text",
+                    "text": ".",
+                    "start": 1,
+                    "length": 1,
+                    "children": []
+                  },
+                  {
+                    "type": "member-name-shorthand",
+                    "text": "store",
+                    "start": 2,
+                    "length": 5,
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "segment",
+            "text": ".book",
+            "start": 7,
+            "length": 5,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": ".book",
+                "start": 7,
+                "length": 5,
+                "children": [
+                  {
+                    "type": "text",
+                    "text": ".",
+                    "start": 7,
+                    "length": 1,
+                    "children": []
+                  },
+                  {
+                    "type": "member-name-shorthand",
+                    "text": "book",
+                    "start": 8,
+                    "length": 4,
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "segment",
+            "text": "[?@.price < 10]",
+            "start": 12,
+            "length": 15,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": "[?@.price < 10]",
+                "start": 12,
+                "length": 15,
+                "children": [
+                  {
+                    "type": "bracketed-selection",
+                    "text": "[?@.price < 10]",
+                    "start": 12,
+                    "length": 15,
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "[",
+                        "start": 12,
+                        "length": 1,
+                        "children": []
+                      },
+                      {
+                        "type": "selector",
+                        "text": "?@.price < 10",
+                        "start": 13,
+                        "length": 13,
+                        "children": [
+                          {
+                            "type": "filter-selector",
+                            "text": "?@.price < 10",
+                            "start": 13,
+                            "length": 13,
+                            "children": [
+                              {
+                                "type": "text",
+                                "text": "?",
+                                "start": 13,
+                                "length": 1,
+                                "children": []
+                              },
+                              {
+                                "type": "logical-expr",
+                                "text": "@.price < 10",
+                                "start": 14,
+                                "length": 12,
+                                "children": [
+                                  {
+                                    "type": "logical-or-expr",
+                                    "text": "@.price < 10",
+                                    "start": 14,
+                                    "length": 12,
+                                    "children": [
+                                      {
+                                        "type": "logical-and-expr",
+                                        "text": "@.price < 10",
+                                        "start": 14,
+                                        "length": 12,
+                                        "children": [
+                                          {
+                                            "type": "basic-expr",
+                                            "text": "@.price < 10",
+                                            "start": 14,
+                                            "length": 12,
+                                            "children": [
+                                              {
+                                                "type": "comparison-expr",
+                                                "text": "@.price < 10",
+                                                "start": 14,
+                                                "length": 12,
+                                                "children": [
+                                                  {
+                                                    "type": "comparable",
+                                                    "text": "@.price",
+                                                    "start": 14,
+                                                    "length": 7,
+                                                    "children": [
+                                                      {
+                                                        "type": "singular-query",
+                                                        "text": "@.price",
+                                                        "start": 14,
+                                                        "length": 7,
+                                                        "children": [
+                                                          {
+                                                            "type": "rel-singular-query",
+                                                            "text": "@.price",
+                                                            "start": 14,
+                                                            "length": 7,
+                                                            "children": [
+                                                              {
+                                                                "type": "current-node-identifier",
+                                                                "text": "@",
+                                                                "start": 14,
+                                                                "length": 1,
+                                                                "children": []
+                                                              },
+                                                              {
+                                                                "type": "singular-query-segments",
+                                                                "text": ".price",
+                                                                "start": 15,
+                                                                "length": 6,
+                                                                "children": [
+                                                                  {
+                                                                    "type": "name-segment",
+                                                                    "text": ".price",
+                                                                    "start": 15,
+                                                                    "length": 6,
+                                                                    "children": [
+                                                                      {
+                                                                        "type": "text",
+                                                                        "text": ".",
+                                                                        "start": 15,
+                                                                        "length": 1,
+                                                                        "children": []
+                                                                      },
+                                                                      {
+                                                                        "type": "member-name-shorthand",
+                                                                        "text": "price",
+                                                                        "start": 16,
+                                                                        "length": 5,
+                                                                        "children": []
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                ]
+                                                              }
+                                                            ]
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  },
+                                                  {
+                                                    "type": "text",
+                                                    "text": " ",
+                                                    "start": 21,
+                                                    "length": 1,
+                                                    "children": []
+                                                  },
+                                                  {
+                                                    "type": "comparison-op",
+                                                    "text": "<",
+                                                    "start": 22,
+                                                    "length": 1,
+                                                    "children": []
+                                                  },
+                                                  {
+                                                    "type": "text",
+                                                    "text": " ",
+                                                    "start": 23,
+                                                    "length": 1,
+                                                    "children": []
+                                                  },
+                                                  {
+                                                    "type": "comparable",
+                                                    "text": "10",
+                                                    "start": 24,
+                                                    "length": 2,
+                                                    "children": [
+                                                      {
+                                                        "type": "literal",
+                                                        "text": "10",
+                                                        "start": 24,
+                                                        "length": 2,
+                                                        "children": [
+                                                          {
+                                                            "type": "number",
+                                                            "text": "10",
+                                                            "start": 24,
+                                                            "length": 2,
+                                                            "children": []
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": "]",
+                        "start": 26,
+                        "length": 1,
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "segment",
+            "text": ".title",
+            "start": 27,
+            "length": 6,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": ".title",
+                "start": 27,
+                "length": 6,
+                "children": [
+                  {
+                    "type": "text",
+                    "text": ".",
+                    "start": 27,
+                    "length": 1,
+                    "children": []
+                  },
+                  {
+                    "type": "member-name-shorthand",
+                    "text": "title",
+                    "start": 28,
+                    "length": 5,
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}"
+`;
+
+exports[`parse cst-corpus $.store.book[0].title 1`] = `
+"{
+  "stack": [],
+  "root": {
+    "type": "jsonpath-query",
+    "text": "$.store.book[0].title",
+    "start": 0,
+    "length": 21,
+    "children": [
+      {
+        "type": "root-identifier",
+        "text": "$",
+        "start": 0,
+        "length": 1,
+        "children": []
+      },
+      {
+        "type": "segments",
+        "text": ".store.book[0].title",
+        "start": 1,
+        "length": 20,
+        "children": [
+          {
+            "type": "segment",
+            "text": ".store",
+            "start": 1,
+            "length": 6,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": ".store",
+                "start": 1,
+                "length": 6,
+                "children": [
+                  {
+                    "type": "text",
+                    "text": ".",
+                    "start": 1,
+                    "length": 1,
+                    "children": []
+                  },
+                  {
+                    "type": "member-name-shorthand",
+                    "text": "store",
+                    "start": 2,
+                    "length": 5,
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "segment",
+            "text": ".book",
+            "start": 7,
+            "length": 5,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": ".book",
+                "start": 7,
+                "length": 5,
+                "children": [
+                  {
+                    "type": "text",
+                    "text": ".",
+                    "start": 7,
+                    "length": 1,
+                    "children": []
+                  },
+                  {
+                    "type": "member-name-shorthand",
+                    "text": "book",
+                    "start": 8,
+                    "length": 4,
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "segment",
+            "text": "[0]",
+            "start": 12,
+            "length": 3,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": "[0]",
+                "start": 12,
+                "length": 3,
+                "children": [
+                  {
+                    "type": "bracketed-selection",
+                    "text": "[0]",
+                    "start": 12,
+                    "length": 3,
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "[",
+                        "start": 12,
+                        "length": 1,
+                        "children": []
+                      },
+                      {
+                        "type": "selector",
+                        "text": "0",
+                        "start": 13,
+                        "length": 1,
+                        "children": [
+                          {
+                            "type": "index-selector",
+                            "text": "0",
+                            "start": 13,
+                            "length": 1,
+                            "children": []
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": "]",
+                        "start": 14,
+                        "length": 1,
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "segment",
+            "text": ".title",
+            "start": 15,
+            "length": 6,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": ".title",
+                "start": 15,
+                "length": 6,
+                "children": [
+                  {
+                    "type": "text",
+                    "text": ".",
+                    "start": 15,
+                    "length": 1,
+                    "children": []
+                  },
+                  {
+                    "type": "member-name-shorthand",
+                    "text": "title",
+                    "start": 16,
+                    "length": 5,
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}"
+`;
+
+exports[`parse cst-corpus $['store']['book'][0]['title'] 1`] = `
+"{
+  "stack": [],
+  "root": {
+    "type": "jsonpath-query",
+    "text": "$['store']['book'][0]['title']",
+    "start": 0,
+    "length": 30,
+    "children": [
+      {
+        "type": "root-identifier",
+        "text": "$",
+        "start": 0,
+        "length": 1,
+        "children": []
+      },
+      {
+        "type": "segments",
+        "text": "['store']['book'][0]['title']",
+        "start": 1,
+        "length": 29,
+        "children": [
+          {
+            "type": "segment",
+            "text": "['store']",
+            "start": 1,
+            "length": 9,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": "['store']",
+                "start": 1,
+                "length": 9,
+                "children": [
+                  {
+                    "type": "bracketed-selection",
+                    "text": "['store']",
+                    "start": 1,
+                    "length": 9,
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "[",
+                        "start": 1,
+                        "length": 1,
+                        "children": []
+                      },
+                      {
+                        "type": "selector",
+                        "text": "'store'",
+                        "start": 2,
+                        "length": 7,
+                        "children": [
+                          {
+                            "type": "name-selector",
+                            "text": "'store'",
+                            "start": 2,
+                            "length": 7,
+                            "children": [
+                              {
+                                "type": "string-literal",
+                                "text": "'store'",
+                                "start": 2,
+                                "length": 7,
+                                "children": [
+                                  {
+                                    "type": "text",
+                                    "text": "'",
+                                    "start": 2,
+                                    "length": 1,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "single-quoted",
+                                    "text": "s",
+                                    "start": 3,
+                                    "length": 1,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "single-quoted",
+                                    "text": "t",
+                                    "start": 4,
+                                    "length": 1,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "single-quoted",
+                                    "text": "o",
+                                    "start": 5,
+                                    "length": 1,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "single-quoted",
+                                    "text": "r",
+                                    "start": 6,
+                                    "length": 1,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "single-quoted",
+                                    "text": "e",
+                                    "start": 7,
+                                    "length": 1,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "text",
+                                    "text": "'",
+                                    "start": 8,
+                                    "length": 1,
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": "]",
+                        "start": 9,
+                        "length": 1,
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "segment",
+            "text": "['book']",
+            "start": 10,
+            "length": 8,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": "['book']",
+                "start": 10,
+                "length": 8,
+                "children": [
+                  {
+                    "type": "bracketed-selection",
+                    "text": "['book']",
+                    "start": 10,
+                    "length": 8,
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "[",
+                        "start": 10,
+                        "length": 1,
+                        "children": []
+                      },
+                      {
+                        "type": "selector",
+                        "text": "'book'",
+                        "start": 11,
+                        "length": 6,
+                        "children": [
+                          {
+                            "type": "name-selector",
+                            "text": "'book'",
+                            "start": 11,
+                            "length": 6,
+                            "children": [
+                              {
+                                "type": "string-literal",
+                                "text": "'book'",
+                                "start": 11,
+                                "length": 6,
+                                "children": [
+                                  {
+                                    "type": "text",
+                                    "text": "'",
+                                    "start": 11,
+                                    "length": 1,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "single-quoted",
+                                    "text": "b",
+                                    "start": 12,
+                                    "length": 1,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "single-quoted",
+                                    "text": "o",
+                                    "start": 13,
+                                    "length": 1,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "single-quoted",
+                                    "text": "o",
+                                    "start": 14,
+                                    "length": 1,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "single-quoted",
+                                    "text": "k",
+                                    "start": 15,
+                                    "length": 1,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "text",
+                                    "text": "'",
+                                    "start": 16,
+                                    "length": 1,
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": "]",
+                        "start": 17,
+                        "length": 1,
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "segment",
+            "text": "[0]",
+            "start": 18,
+            "length": 3,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": "[0]",
+                "start": 18,
+                "length": 3,
+                "children": [
+                  {
+                    "type": "bracketed-selection",
+                    "text": "[0]",
+                    "start": 18,
+                    "length": 3,
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "[",
+                        "start": 18,
+                        "length": 1,
+                        "children": []
+                      },
+                      {
+                        "type": "selector",
+                        "text": "0",
+                        "start": 19,
+                        "length": 1,
+                        "children": [
+                          {
+                            "type": "index-selector",
+                            "text": "0",
+                            "start": 19,
+                            "length": 1,
+                            "children": []
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": "]",
+                        "start": 20,
+                        "length": 1,
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "segment",
+            "text": "['title']",
+            "start": 21,
+            "length": 9,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": "['title']",
+                "start": 21,
+                "length": 9,
+                "children": [
+                  {
+                    "type": "bracketed-selection",
+                    "text": "['title']",
+                    "start": 21,
+                    "length": 9,
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "[",
+                        "start": 21,
+                        "length": 1,
+                        "children": []
+                      },
+                      {
+                        "type": "selector",
+                        "text": "'title'",
+                        "start": 22,
+                        "length": 7,
+                        "children": [
+                          {
+                            "type": "name-selector",
+                            "text": "'title'",
+                            "start": 22,
+                            "length": 7,
+                            "children": [
+                              {
+                                "type": "string-literal",
+                                "text": "'title'",
+                                "start": 22,
+                                "length": 7,
+                                "children": [
+                                  {
+                                    "type": "text",
+                                    "text": "'",
+                                    "start": 22,
+                                    "length": 1,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "single-quoted",
+                                    "text": "t",
+                                    "start": 23,
+                                    "length": 1,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "single-quoted",
+                                    "text": "i",
+                                    "start": 24,
+                                    "length": 1,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "single-quoted",
+                                    "text": "t",
+                                    "start": 25,
+                                    "length": 1,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "single-quoted",
+                                    "text": "l",
+                                    "start": 26,
+                                    "length": 1,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "single-quoted",
+                                    "text": "e",
+                                    "start": 27,
+                                    "length": 1,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "text",
+                                    "text": "'",
+                                    "start": 28,
+                                    "length": 1,
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": "]",
+                        "start": 29,
+                        "length": 1,
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}"
+`;

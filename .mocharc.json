@@ -1,4 +1,5 @@
 {
   "recursive": true,
-  "spec": "test/**/*.js"
+  "spec": "test/**/*.js",
+  "require": ["mocha-expect-snapshot"]
 }

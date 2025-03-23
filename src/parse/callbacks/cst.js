@@ -14,7 +14,7 @@ const cst = (ruleName) => {
     }
 
     // drop the empty nodes
-    if (phraseLength === 0) return
+    if (phraseLength === 0) return;
 
     if (state === identifiers.SEM_PRE) {
       const node = {
@@ -28,8 +28,9 @@ const cst = (ruleName) => {
       if (data.stack.length > 0) {
         const parent = data.stack[data.stack.length - 1];
 
-        // text nodes within text nodes are redundant
-        if (!(parent.type === 'text' && node.type === 'text')) {
+        const isTextWithinTextNode = parent.type === 'text' && node.type === 'text';
+
+        if (!isTextWithinTextNode) {
           parent.children.push(node);
         }
       } else {

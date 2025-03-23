@@ -25,7 +25,7 @@
     "build:es": "cross-env BABEL_ENV=es babel src --out-dir es --extensions '.js' --out-file-extension '.mjs'",
     "build:cjs": "cross-env BABEL_ENV=cjs babel src --out-dir cjs --extensions '.js' --out-file-extension '.cjs'",
     "build:cjs:apg-lite": "cross-env BABEL_ENV=cjs babel node_modules/apg-lite/lib/parser.js --out-file ./cjs/apg-lite.cjs",
-    "test": "mocha",
+    "test": "cross-env UPDATE_SNAPSHOT=new mocha",
     "test:watch": "npm-watch test",
     "watch": "npm-watch"
   },
@@ -74,6 +74,7 @@
     "cross-env": "^7.0.3",
     "husky": "=9.1.7",
     "mocha": "=11.1.0",
+    "mocha-expect-snapshot": "^7.2.0",
     "npm-watch": "^0.13.0",
     "prettier": "^3.5.2"
   }

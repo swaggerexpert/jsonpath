@@ -1,19 +1,26 @@
 /**
  * Parsing
  */
-export function parse(jsonpath: string): ParseResult;
+export function parse(jsonpath: string, options?: ParseOptions): ParseResult;
 
-interface ParseResult {
+export interface ParseOptions {
+  readonly ast?: AST;
+}
+
+export interface AST {
+  readonly translate: (parts: Record<string, CSTNode>) => Record<string, CSTNode>;
+  readonly toXml: () => string;
+}
+
+export interface ParseResult {
   readonly result: {
     readonly success: boolean;
   };
-  readonly ast: {
-    readonly translate: (parts: Record<string, CSTNode>) => Record<string, CSTNode>;
-    readonly toXml: () => string;
-  };
+  readonly ast: AST;
+  readonly computed: Record<string, CSTNode>;
 }
 
-interface CSTNode {
+export interface CSTNode {
   type: string,
   text: string,
   start: number,
