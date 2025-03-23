@@ -1,0 +1,11 @@
+@swaggerexpert/jsonpath
+Copyright 2025, Vladimír Gorej
+@swaggerexpert/jsonpath is licensed under Apache 2.0 license.
+Copy of the Apache 2.0 license can be found in `LICENSE` file.
+
+JSONPath: Query Expressions for JSON
+Copyright (c) 2024 IETF Trust and the persons identified as the document authors. All rights reserved.
+https://www.rfc-editor.org/rfc/rfc9535
+Majority of ABNF grammar (grammar.bnf) and certain texts within the README.md file
+are licensed under Revised BSD License - https://spdx.org/licenses/BSD-3-Clause.html.
+
