@@ -38,8 +38,7 @@
     "url": "https://github.com/swaggerexpert/jsonpath.git"
   },
   "keywords": [
-    "json",
-    "path",
+    "jsonpath",
     "parser",
     "validator",
     "rfc9535"
