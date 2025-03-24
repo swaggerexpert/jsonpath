@@ -1,5 +1,85 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`parse cst-corpus $ 1`] = `
+"{
+  "stack": [],
+  "root": {
+    "type": "jsonpath-query",
+    "text": "$",
+    "start": 0,
+    "length": 1,
+    "children": [
+      {
+        "type": "root-identifier",
+        "text": "$",
+        "start": 0,
+        "length": 1,
+        "children": []
+      }
+    ]
+  }
+}"
+`;
+
+exports[`parse cst-corpus $..* 1`] = `
+"{
+  "stack": [],
+  "root": {
+    "type": "jsonpath-query",
+    "text": "$..*",
+    "start": 0,
+    "length": 4,
+    "children": [
+      {
+        "type": "root-identifier",
+        "text": "$",
+        "start": 0,
+        "length": 1,
+        "children": []
+      },
+      {
+        "type": "segments",
+        "text": "..*",
+        "start": 1,
+        "length": 3,
+        "children": [
+          {
+            "type": "segment",
+            "text": "..*",
+            "start": 1,
+            "length": 3,
+            "children": [
+              {
+                "type": "descendant-segment",
+                "text": "..*",
+                "start": 1,
+                "length": 3,
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "..",
+                    "start": 1,
+                    "length": 2,
+                    "children": []
+                  },
+                  {
+                    "type": "wildcard-selector",
+                    "text": "*",
+                    "start": 3,
+                    "length": 1,
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}"
+`;
+
 exports[`parse cst-corpus $..author 1`] = `
 "{
   "stack": [],
@@ -47,6 +127,851 @@ exports[`parse cst-corpus $..author 1`] = `
                     "start": 3,
                     "length": 6,
                     "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}"
+`;
+
+exports[`parse cst-corpus $..book[:2] 1`] = `
+"{
+  "stack": [],
+  "root": {
+    "type": "jsonpath-query",
+    "text": "$..book[:2]",
+    "start": 0,
+    "length": 11,
+    "children": [
+      {
+        "type": "root-identifier",
+        "text": "$",
+        "start": 0,
+        "length": 1,
+        "children": []
+      },
+      {
+        "type": "segments",
+        "text": "..book[:2]",
+        "start": 1,
+        "length": 10,
+        "children": [
+          {
+            "type": "segment",
+            "text": "..book",
+            "start": 1,
+            "length": 6,
+            "children": [
+              {
+                "type": "descendant-segment",
+                "text": "..book",
+                "start": 1,
+                "length": 6,
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "..",
+                    "start": 1,
+                    "length": 2,
+                    "children": []
+                  },
+                  {
+                    "type": "member-name-shorthand",
+                    "text": "book",
+                    "start": 3,
+                    "length": 4,
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "segment",
+            "text": "[:2]",
+            "start": 7,
+            "length": 4,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": "[:2]",
+                "start": 7,
+                "length": 4,
+                "children": [
+                  {
+                    "type": "bracketed-selection",
+                    "text": "[:2]",
+                    "start": 7,
+                    "length": 4,
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "[",
+                        "start": 7,
+                        "length": 1,
+                        "children": []
+                      },
+                      {
+                        "type": "selector",
+                        "text": ":2",
+                        "start": 8,
+                        "length": 2,
+                        "children": [
+                          {
+                            "type": "slice-selector",
+                            "text": ":2",
+                            "start": 8,
+                            "length": 2,
+                            "children": [
+                              {
+                                "type": "text",
+                                "text": ":",
+                                "start": 8,
+                                "length": 1,
+                                "children": []
+                              },
+                              {
+                                "type": "end",
+                                "text": "2",
+                                "start": 9,
+                                "length": 1,
+                                "children": []
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": "]",
+                        "start": 10,
+                        "length": 1,
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}"
+`;
+
+exports[`parse cst-corpus $..book[?@.isbn] 1`] = `
+"{
+  "stack": [],
+  "root": {
+    "type": "jsonpath-query",
+    "text": "$..book[?@.isbn]",
+    "start": 0,
+    "length": 16,
+    "children": [
+      {
+        "type": "root-identifier",
+        "text": "$",
+        "start": 0,
+        "length": 1,
+        "children": []
+      },
+      {
+        "type": "segments",
+        "text": "..book[?@.isbn]",
+        "start": 1,
+        "length": 15,
+        "children": [
+          {
+            "type": "segment",
+            "text": "..book",
+            "start": 1,
+            "length": 6,
+            "children": [
+              {
+                "type": "descendant-segment",
+                "text": "..book",
+                "start": 1,
+                "length": 6,
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "..",
+                    "start": 1,
+                    "length": 2,
+                    "children": []
+                  },
+                  {
+                    "type": "member-name-shorthand",
+                    "text": "book",
+                    "start": 3,
+                    "length": 4,
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "segment",
+            "text": "[?@.isbn]",
+            "start": 7,
+            "length": 9,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": "[?@.isbn]",
+                "start": 7,
+                "length": 9,
+                "children": [
+                  {
+                    "type": "bracketed-selection",
+                    "text": "[?@.isbn]",
+                    "start": 7,
+                    "length": 9,
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "[",
+                        "start": 7,
+                        "length": 1,
+                        "children": []
+                      },
+                      {
+                        "type": "selector",
+                        "text": "?@.isbn",
+                        "start": 8,
+                        "length": 7,
+                        "children": [
+                          {
+                            "type": "filter-selector",
+                            "text": "?@.isbn",
+                            "start": 8,
+                            "length": 7,
+                            "children": [
+                              {
+                                "type": "text",
+                                "text": "?",
+                                "start": 8,
+                                "length": 1,
+                                "children": []
+                              },
+                              {
+                                "type": "logical-expr",
+                                "text": "@.isbn",
+                                "start": 9,
+                                "length": 6,
+                                "children": [
+                                  {
+                                    "type": "logical-or-expr",
+                                    "text": "@.isbn",
+                                    "start": 9,
+                                    "length": 6,
+                                    "children": [
+                                      {
+                                        "type": "logical-and-expr",
+                                        "text": "@.isbn",
+                                        "start": 9,
+                                        "length": 6,
+                                        "children": [
+                                          {
+                                            "type": "basic-expr",
+                                            "text": "@.isbn",
+                                            "start": 9,
+                                            "length": 6,
+                                            "children": [
+                                              {
+                                                "type": "test-expr",
+                                                "text": "@.isbn",
+                                                "start": 9,
+                                                "length": 6,
+                                                "children": [
+                                                  {
+                                                    "type": "filter-query",
+                                                    "text": "@.isbn",
+                                                    "start": 9,
+                                                    "length": 6,
+                                                    "children": [
+                                                      {
+                                                        "type": "rel-query",
+                                                        "text": "@.isbn",
+                                                        "start": 9,
+                                                        "length": 6,
+                                                        "children": [
+                                                          {
+                                                            "type": "current-node-identifier",
+                                                            "text": "@",
+                                                            "start": 9,
+                                                            "length": 1,
+                                                            "children": []
+                                                          },
+                                                          {
+                                                            "type": "segments",
+                                                            "text": ".isbn",
+                                                            "start": 10,
+                                                            "length": 5,
+                                                            "children": [
+                                                              {
+                                                                "type": "segment",
+                                                                "text": ".isbn",
+                                                                "start": 10,
+                                                                "length": 5,
+                                                                "children": [
+                                                                  {
+                                                                    "type": "child-segment",
+                                                                    "text": ".isbn",
+                                                                    "start": 10,
+                                                                    "length": 5,
+                                                                    "children": [
+                                                                      {
+                                                                        "type": "text",
+                                                                        "text": ".",
+                                                                        "start": 10,
+                                                                        "length": 1,
+                                                                        "children": []
+                                                                      },
+                                                                      {
+                                                                        "type": "member-name-shorthand",
+                                                                        "text": "isbn",
+                                                                        "start": 11,
+                                                                        "length": 4,
+                                                                        "children": []
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                ]
+                                                              }
+                                                            ]
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": "]",
+                        "start": 15,
+                        "length": 1,
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}"
+`;
+
+exports[`parse cst-corpus $..book[?@.price<10] 1`] = `
+"{
+  "stack": [],
+  "root": {
+    "type": "jsonpath-query",
+    "text": "$..book[?@.price<10]",
+    "start": 0,
+    "length": 20,
+    "children": [
+      {
+        "type": "root-identifier",
+        "text": "$",
+        "start": 0,
+        "length": 1,
+        "children": []
+      },
+      {
+        "type": "segments",
+        "text": "..book[?@.price<10]",
+        "start": 1,
+        "length": 19,
+        "children": [
+          {
+            "type": "segment",
+            "text": "..book",
+            "start": 1,
+            "length": 6,
+            "children": [
+              {
+                "type": "descendant-segment",
+                "text": "..book",
+                "start": 1,
+                "length": 6,
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "..",
+                    "start": 1,
+                    "length": 2,
+                    "children": []
+                  },
+                  {
+                    "type": "member-name-shorthand",
+                    "text": "book",
+                    "start": 3,
+                    "length": 4,
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "segment",
+            "text": "[?@.price<10]",
+            "start": 7,
+            "length": 13,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": "[?@.price<10]",
+                "start": 7,
+                "length": 13,
+                "children": [
+                  {
+                    "type": "bracketed-selection",
+                    "text": "[?@.price<10]",
+                    "start": 7,
+                    "length": 13,
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "[",
+                        "start": 7,
+                        "length": 1,
+                        "children": []
+                      },
+                      {
+                        "type": "selector",
+                        "text": "?@.price<10",
+                        "start": 8,
+                        "length": 11,
+                        "children": [
+                          {
+                            "type": "filter-selector",
+                            "text": "?@.price<10",
+                            "start": 8,
+                            "length": 11,
+                            "children": [
+                              {
+                                "type": "text",
+                                "text": "?",
+                                "start": 8,
+                                "length": 1,
+                                "children": []
+                              },
+                              {
+                                "type": "logical-expr",
+                                "text": "@.price<10",
+                                "start": 9,
+                                "length": 10,
+                                "children": [
+                                  {
+                                    "type": "logical-or-expr",
+                                    "text": "@.price<10",
+                                    "start": 9,
+                                    "length": 10,
+                                    "children": [
+                                      {
+                                        "type": "logical-and-expr",
+                                        "text": "@.price<10",
+                                        "start": 9,
+                                        "length": 10,
+                                        "children": [
+                                          {
+                                            "type": "basic-expr",
+                                            "text": "@.price<10",
+                                            "start": 9,
+                                            "length": 10,
+                                            "children": [
+                                              {
+                                                "type": "comparison-expr",
+                                                "text": "@.price<10",
+                                                "start": 9,
+                                                "length": 10,
+                                                "children": [
+                                                  {
+                                                    "type": "comparable",
+                                                    "text": "@.price",
+                                                    "start": 9,
+                                                    "length": 7,
+                                                    "children": [
+                                                      {
+                                                        "type": "singular-query",
+                                                        "text": "@.price",
+                                                        "start": 9,
+                                                        "length": 7,
+                                                        "children": [
+                                                          {
+                                                            "type": "rel-singular-query",
+                                                            "text": "@.price",
+                                                            "start": 9,
+                                                            "length": 7,
+                                                            "children": [
+                                                              {
+                                                                "type": "current-node-identifier",
+                                                                "text": "@",
+                                                                "start": 9,
+                                                                "length": 1,
+                                                                "children": []
+                                                              },
+                                                              {
+                                                                "type": "singular-query-segments",
+                                                                "text": ".price",
+                                                                "start": 10,
+                                                                "length": 6,
+                                                                "children": [
+                                                                  {
+                                                                    "type": "name-segment",
+                                                                    "text": ".price",
+                                                                    "start": 10,
+                                                                    "length": 6,
+                                                                    "children": [
+                                                                      {
+                                                                        "type": "text",
+                                                                        "text": ".",
+                                                                        "start": 10,
+                                                                        "length": 1,
+                                                                        "children": []
+                                                                      },
+                                                                      {
+                                                                        "type": "member-name-shorthand",
+                                                                        "text": "price",
+                                                                        "start": 11,
+                                                                        "length": 5,
+                                                                        "children": []
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                ]
+                                                              }
+                                                            ]
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  },
+                                                  {
+                                                    "type": "comparison-op",
+                                                    "text": "<",
+                                                    "start": 16,
+                                                    "length": 1,
+                                                    "children": []
+                                                  },
+                                                  {
+                                                    "type": "comparable",
+                                                    "text": "10",
+                                                    "start": 17,
+                                                    "length": 2,
+                                                    "children": [
+                                                      {
+                                                        "type": "literal",
+                                                        "text": "10",
+                                                        "start": 17,
+                                                        "length": 2,
+                                                        "children": [
+                                                          {
+                                                            "type": "number",
+                                                            "text": "10",
+                                                            "start": 17,
+                                                            "length": 2,
+                                                            "children": []
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": "]",
+                        "start": 19,
+                        "length": 1,
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}"
+`;
+
+exports[`parse cst-corpus $..book[-1] 1`] = `
+"{
+  "stack": [],
+  "root": {
+    "type": "jsonpath-query",
+    "text": "$..book[-1]",
+    "start": 0,
+    "length": 11,
+    "children": [
+      {
+        "type": "root-identifier",
+        "text": "$",
+        "start": 0,
+        "length": 1,
+        "children": []
+      },
+      {
+        "type": "segments",
+        "text": "..book[-1]",
+        "start": 1,
+        "length": 10,
+        "children": [
+          {
+            "type": "segment",
+            "text": "..book",
+            "start": 1,
+            "length": 6,
+            "children": [
+              {
+                "type": "descendant-segment",
+                "text": "..book",
+                "start": 1,
+                "length": 6,
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "..",
+                    "start": 1,
+                    "length": 2,
+                    "children": []
+                  },
+                  {
+                    "type": "member-name-shorthand",
+                    "text": "book",
+                    "start": 3,
+                    "length": 4,
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "segment",
+            "text": "[-1]",
+            "start": 7,
+            "length": 4,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": "[-1]",
+                "start": 7,
+                "length": 4,
+                "children": [
+                  {
+                    "type": "bracketed-selection",
+                    "text": "[-1]",
+                    "start": 7,
+                    "length": 4,
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "[",
+                        "start": 7,
+                        "length": 1,
+                        "children": []
+                      },
+                      {
+                        "type": "selector",
+                        "text": "-1",
+                        "start": 8,
+                        "length": 2,
+                        "children": [
+                          {
+                            "type": "index-selector",
+                            "text": "-1",
+                            "start": 8,
+                            "length": 2,
+                            "children": []
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": "]",
+                        "start": 10,
+                        "length": 1,
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}"
+`;
+
+exports[`parse cst-corpus $..book[0,1] 1`] = `
+"{
+  "stack": [],
+  "root": {
+    "type": "jsonpath-query",
+    "text": "$..book[0,1]",
+    "start": 0,
+    "length": 12,
+    "children": [
+      {
+        "type": "root-identifier",
+        "text": "$",
+        "start": 0,
+        "length": 1,
+        "children": []
+      },
+      {
+        "type": "segments",
+        "text": "..book[0,1]",
+        "start": 1,
+        "length": 11,
+        "children": [
+          {
+            "type": "segment",
+            "text": "..book",
+            "start": 1,
+            "length": 6,
+            "children": [
+              {
+                "type": "descendant-segment",
+                "text": "..book",
+                "start": 1,
+                "length": 6,
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "..",
+                    "start": 1,
+                    "length": 2,
+                    "children": []
+                  },
+                  {
+                    "type": "member-name-shorthand",
+                    "text": "book",
+                    "start": 3,
+                    "length": 4,
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "segment",
+            "text": "[0,1]",
+            "start": 7,
+            "length": 5,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": "[0,1]",
+                "start": 7,
+                "length": 5,
+                "children": [
+                  {
+                    "type": "bracketed-selection",
+                    "text": "[0,1]",
+                    "start": 7,
+                    "length": 5,
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "[",
+                        "start": 7,
+                        "length": 1,
+                        "children": []
+                      },
+                      {
+                        "type": "selector",
+                        "text": "0",
+                        "start": 8,
+                        "length": 1,
+                        "children": [
+                          {
+                            "type": "index-selector",
+                            "text": "0",
+                            "start": 8,
+                            "length": 1,
+                            "children": []
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": ",",
+                        "start": 9,
+                        "length": 1,
+                        "children": []
+                      },
+                      {
+                        "type": "selector",
+                        "text": "1",
+                        "start": 10,
+                        "length": 1,
+                        "children": [
+                          {
+                            "type": "index-selector",
+                            "text": "1",
+                            "start": 10,
+                            "length": 1,
+                            "children": []
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": "]",
+                        "start": 11,
+                        "length": 1,
+                        "children": []
+                      }
+                    ]
                   }
                 ]
               }
@@ -155,6 +1080,1429 @@ exports[`parse cst-corpus $..book[2] 1`] = `
                         "type": "text",
                         "text": "]",
                         "start": 9,
+                        "length": 1,
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}"
+`;
+
+exports[`parse cst-corpus $..book[2].author 1`] = `
+"{
+  "stack": [],
+  "root": {
+    "type": "jsonpath-query",
+    "text": "$..book[2].author",
+    "start": 0,
+    "length": 17,
+    "children": [
+      {
+        "type": "root-identifier",
+        "text": "$",
+        "start": 0,
+        "length": 1,
+        "children": []
+      },
+      {
+        "type": "segments",
+        "text": "..book[2].author",
+        "start": 1,
+        "length": 16,
+        "children": [
+          {
+            "type": "segment",
+            "text": "..book",
+            "start": 1,
+            "length": 6,
+            "children": [
+              {
+                "type": "descendant-segment",
+                "text": "..book",
+                "start": 1,
+                "length": 6,
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "..",
+                    "start": 1,
+                    "length": 2,
+                    "children": []
+                  },
+                  {
+                    "type": "member-name-shorthand",
+                    "text": "book",
+                    "start": 3,
+                    "length": 4,
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "segment",
+            "text": "[2]",
+            "start": 7,
+            "length": 3,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": "[2]",
+                "start": 7,
+                "length": 3,
+                "children": [
+                  {
+                    "type": "bracketed-selection",
+                    "text": "[2]",
+                    "start": 7,
+                    "length": 3,
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "[",
+                        "start": 7,
+                        "length": 1,
+                        "children": []
+                      },
+                      {
+                        "type": "selector",
+                        "text": "2",
+                        "start": 8,
+                        "length": 1,
+                        "children": [
+                          {
+                            "type": "index-selector",
+                            "text": "2",
+                            "start": 8,
+                            "length": 1,
+                            "children": []
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": "]",
+                        "start": 9,
+                        "length": 1,
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "segment",
+            "text": ".author",
+            "start": 10,
+            "length": 7,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": ".author",
+                "start": 10,
+                "length": 7,
+                "children": [
+                  {
+                    "type": "text",
+                    "text": ".",
+                    "start": 10,
+                    "length": 1,
+                    "children": []
+                  },
+                  {
+                    "type": "member-name-shorthand",
+                    "text": "author",
+                    "start": 11,
+                    "length": 6,
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}"
+`;
+
+exports[`parse cst-corpus $..book[2].publisher 1`] = `
+"{
+  "stack": [],
+  "root": {
+    "type": "jsonpath-query",
+    "text": "$..book[2].publisher",
+    "start": 0,
+    "length": 20,
+    "children": [
+      {
+        "type": "root-identifier",
+        "text": "$",
+        "start": 0,
+        "length": 1,
+        "children": []
+      },
+      {
+        "type": "segments",
+        "text": "..book[2].publisher",
+        "start": 1,
+        "length": 19,
+        "children": [
+          {
+            "type": "segment",
+            "text": "..book",
+            "start": 1,
+            "length": 6,
+            "children": [
+              {
+                "type": "descendant-segment",
+                "text": "..book",
+                "start": 1,
+                "length": 6,
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "..",
+                    "start": 1,
+                    "length": 2,
+                    "children": []
+                  },
+                  {
+                    "type": "member-name-shorthand",
+                    "text": "book",
+                    "start": 3,
+                    "length": 4,
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "segment",
+            "text": "[2]",
+            "start": 7,
+            "length": 3,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": "[2]",
+                "start": 7,
+                "length": 3,
+                "children": [
+                  {
+                    "type": "bracketed-selection",
+                    "text": "[2]",
+                    "start": 7,
+                    "length": 3,
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "[",
+                        "start": 7,
+                        "length": 1,
+                        "children": []
+                      },
+                      {
+                        "type": "selector",
+                        "text": "2",
+                        "start": 8,
+                        "length": 1,
+                        "children": [
+                          {
+                            "type": "index-selector",
+                            "text": "2",
+                            "start": 8,
+                            "length": 1,
+                            "children": []
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": "]",
+                        "start": 9,
+                        "length": 1,
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "segment",
+            "text": ".publisher",
+            "start": 10,
+            "length": 10,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": ".publisher",
+                "start": 10,
+                "length": 10,
+                "children": [
+                  {
+                    "type": "text",
+                    "text": ".",
+                    "start": 10,
+                    "length": 1,
+                    "children": []
+                  },
+                  {
+                    "type": "member-name-shorthand",
+                    "text": "publisher",
+                    "start": 11,
+                    "length": 9,
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}"
+`;
+
+exports[`parse cst-corpus $.a[*] 1`] = `
+"{
+  "stack": [],
+  "root": {
+    "type": "jsonpath-query",
+    "text": "$.a[*]",
+    "start": 0,
+    "length": 6,
+    "children": [
+      {
+        "type": "root-identifier",
+        "text": "$",
+        "start": 0,
+        "length": 1,
+        "children": []
+      },
+      {
+        "type": "segments",
+        "text": ".a[*]",
+        "start": 1,
+        "length": 5,
+        "children": [
+          {
+            "type": "segment",
+            "text": ".a",
+            "start": 1,
+            "length": 2,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": ".a",
+                "start": 1,
+                "length": 2,
+                "children": [
+                  {
+                    "type": "text",
+                    "text": ".",
+                    "start": 1,
+                    "length": 1,
+                    "children": []
+                  },
+                  {
+                    "type": "member-name-shorthand",
+                    "text": "a",
+                    "start": 2,
+                    "length": 1,
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "segment",
+            "text": "[*]",
+            "start": 3,
+            "length": 3,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": "[*]",
+                "start": 3,
+                "length": 3,
+                "children": [
+                  {
+                    "type": "bracketed-selection",
+                    "text": "[*]",
+                    "start": 3,
+                    "length": 3,
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "[",
+                        "start": 3,
+                        "length": 1,
+                        "children": []
+                      },
+                      {
+                        "type": "selector",
+                        "text": "*",
+                        "start": 4,
+                        "length": 1,
+                        "children": [
+                          {
+                            "type": "wildcard-selector",
+                            "text": "*",
+                            "start": 4,
+                            "length": 1,
+                            "children": []
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": "]",
+                        "start": 5,
+                        "length": 1,
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}"
+`;
+
+exports[`parse cst-corpus $.o["j j"]["k.k"] 1`] = `
+"{
+  "stack": [],
+  "root": {
+    "type": "jsonpath-query",
+    "text": "$.o[\\"j j\\"][\\"k.k\\"]",
+    "start": 0,
+    "length": 17,
+    "children": [
+      {
+        "type": "root-identifier",
+        "text": "$",
+        "start": 0,
+        "length": 1,
+        "children": []
+      },
+      {
+        "type": "segments",
+        "text": ".o[\\"j j\\"][\\"k.k\\"]",
+        "start": 1,
+        "length": 16,
+        "children": [
+          {
+            "type": "segment",
+            "text": ".o",
+            "start": 1,
+            "length": 2,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": ".o",
+                "start": 1,
+                "length": 2,
+                "children": [
+                  {
+                    "type": "text",
+                    "text": ".",
+                    "start": 1,
+                    "length": 1,
+                    "children": []
+                  },
+                  {
+                    "type": "member-name-shorthand",
+                    "text": "o",
+                    "start": 2,
+                    "length": 1,
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "segment",
+            "text": "[\\"j j\\"]",
+            "start": 3,
+            "length": 7,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": "[\\"j j\\"]",
+                "start": 3,
+                "length": 7,
+                "children": [
+                  {
+                    "type": "bracketed-selection",
+                    "text": "[\\"j j\\"]",
+                    "start": 3,
+                    "length": 7,
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "[",
+                        "start": 3,
+                        "length": 1,
+                        "children": []
+                      },
+                      {
+                        "type": "selector",
+                        "text": "\\"j j\\"",
+                        "start": 4,
+                        "length": 5,
+                        "children": [
+                          {
+                            "type": "name-selector",
+                            "text": "\\"j j\\"",
+                            "start": 4,
+                            "length": 5,
+                            "children": [
+                              {
+                                "type": "string-literal",
+                                "text": "\\"j j\\"",
+                                "start": 4,
+                                "length": 5,
+                                "children": [
+                                  {
+                                    "type": "text",
+                                    "text": "\\"",
+                                    "start": 4,
+                                    "length": 1,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "double-quoted",
+                                    "text": "j",
+                                    "start": 5,
+                                    "length": 1,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "double-quoted",
+                                    "text": " ",
+                                    "start": 6,
+                                    "length": 1,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "double-quoted",
+                                    "text": "j",
+                                    "start": 7,
+                                    "length": 1,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "text",
+                                    "text": "\\"",
+                                    "start": 8,
+                                    "length": 1,
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": "]",
+                        "start": 9,
+                        "length": 1,
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "segment",
+            "text": "[\\"k.k\\"]",
+            "start": 10,
+            "length": 7,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": "[\\"k.k\\"]",
+                "start": 10,
+                "length": 7,
+                "children": [
+                  {
+                    "type": "bracketed-selection",
+                    "text": "[\\"k.k\\"]",
+                    "start": 10,
+                    "length": 7,
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "[",
+                        "start": 10,
+                        "length": 1,
+                        "children": []
+                      },
+                      {
+                        "type": "selector",
+                        "text": "\\"k.k\\"",
+                        "start": 11,
+                        "length": 5,
+                        "children": [
+                          {
+                            "type": "name-selector",
+                            "text": "\\"k.k\\"",
+                            "start": 11,
+                            "length": 5,
+                            "children": [
+                              {
+                                "type": "string-literal",
+                                "text": "\\"k.k\\"",
+                                "start": 11,
+                                "length": 5,
+                                "children": [
+                                  {
+                                    "type": "text",
+                                    "text": "\\"",
+                                    "start": 11,
+                                    "length": 1,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "double-quoted",
+                                    "text": "k",
+                                    "start": 12,
+                                    "length": 1,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "double-quoted",
+                                    "text": ".",
+                                    "start": 13,
+                                    "length": 1,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "double-quoted",
+                                    "text": "k",
+                                    "start": 14,
+                                    "length": 1,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "text",
+                                    "text": "\\"",
+                                    "start": 15,
+                                    "length": 1,
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": "]",
+                        "start": 16,
+                        "length": 1,
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}"
+`;
+
+exports[`parse cst-corpus $.o['j j'] 1`] = `
+"{
+  "stack": [],
+  "root": {
+    "type": "jsonpath-query",
+    "text": "$.o['j j']",
+    "start": 0,
+    "length": 10,
+    "children": [
+      {
+        "type": "root-identifier",
+        "text": "$",
+        "start": 0,
+        "length": 1,
+        "children": []
+      },
+      {
+        "type": "segments",
+        "text": ".o['j j']",
+        "start": 1,
+        "length": 9,
+        "children": [
+          {
+            "type": "segment",
+            "text": ".o",
+            "start": 1,
+            "length": 2,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": ".o",
+                "start": 1,
+                "length": 2,
+                "children": [
+                  {
+                    "type": "text",
+                    "text": ".",
+                    "start": 1,
+                    "length": 1,
+                    "children": []
+                  },
+                  {
+                    "type": "member-name-shorthand",
+                    "text": "o",
+                    "start": 2,
+                    "length": 1,
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "segment",
+            "text": "['j j']",
+            "start": 3,
+            "length": 7,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": "['j j']",
+                "start": 3,
+                "length": 7,
+                "children": [
+                  {
+                    "type": "bracketed-selection",
+                    "text": "['j j']",
+                    "start": 3,
+                    "length": 7,
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "[",
+                        "start": 3,
+                        "length": 1,
+                        "children": []
+                      },
+                      {
+                        "type": "selector",
+                        "text": "'j j'",
+                        "start": 4,
+                        "length": 5,
+                        "children": [
+                          {
+                            "type": "name-selector",
+                            "text": "'j j'",
+                            "start": 4,
+                            "length": 5,
+                            "children": [
+                              {
+                                "type": "string-literal",
+                                "text": "'j j'",
+                                "start": 4,
+                                "length": 5,
+                                "children": [
+                                  {
+                                    "type": "text",
+                                    "text": "'",
+                                    "start": 4,
+                                    "length": 1,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "single-quoted",
+                                    "text": "j",
+                                    "start": 5,
+                                    "length": 1,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "single-quoted",
+                                    "text": " ",
+                                    "start": 6,
+                                    "length": 1,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "single-quoted",
+                                    "text": "j",
+                                    "start": 7,
+                                    "length": 1,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "text",
+                                    "text": "'",
+                                    "start": 8,
+                                    "length": 1,
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": "]",
+                        "start": 9,
+                        "length": 1,
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}"
+`;
+
+exports[`parse cst-corpus $.o['j j']['k.k'] 1`] = `
+"{
+  "stack": [],
+  "root": {
+    "type": "jsonpath-query",
+    "text": "$.o['j j']['k.k']",
+    "start": 0,
+    "length": 17,
+    "children": [
+      {
+        "type": "root-identifier",
+        "text": "$",
+        "start": 0,
+        "length": 1,
+        "children": []
+      },
+      {
+        "type": "segments",
+        "text": ".o['j j']['k.k']",
+        "start": 1,
+        "length": 16,
+        "children": [
+          {
+            "type": "segment",
+            "text": ".o",
+            "start": 1,
+            "length": 2,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": ".o",
+                "start": 1,
+                "length": 2,
+                "children": [
+                  {
+                    "type": "text",
+                    "text": ".",
+                    "start": 1,
+                    "length": 1,
+                    "children": []
+                  },
+                  {
+                    "type": "member-name-shorthand",
+                    "text": "o",
+                    "start": 2,
+                    "length": 1,
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "segment",
+            "text": "['j j']",
+            "start": 3,
+            "length": 7,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": "['j j']",
+                "start": 3,
+                "length": 7,
+                "children": [
+                  {
+                    "type": "bracketed-selection",
+                    "text": "['j j']",
+                    "start": 3,
+                    "length": 7,
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "[",
+                        "start": 3,
+                        "length": 1,
+                        "children": []
+                      },
+                      {
+                        "type": "selector",
+                        "text": "'j j'",
+                        "start": 4,
+                        "length": 5,
+                        "children": [
+                          {
+                            "type": "name-selector",
+                            "text": "'j j'",
+                            "start": 4,
+                            "length": 5,
+                            "children": [
+                              {
+                                "type": "string-literal",
+                                "text": "'j j'",
+                                "start": 4,
+                                "length": 5,
+                                "children": [
+                                  {
+                                    "type": "text",
+                                    "text": "'",
+                                    "start": 4,
+                                    "length": 1,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "single-quoted",
+                                    "text": "j",
+                                    "start": 5,
+                                    "length": 1,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "single-quoted",
+                                    "text": " ",
+                                    "start": 6,
+                                    "length": 1,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "single-quoted",
+                                    "text": "j",
+                                    "start": 7,
+                                    "length": 1,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "text",
+                                    "text": "'",
+                                    "start": 8,
+                                    "length": 1,
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": "]",
+                        "start": 9,
+                        "length": 1,
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "segment",
+            "text": "['k.k']",
+            "start": 10,
+            "length": 7,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": "['k.k']",
+                "start": 10,
+                "length": 7,
+                "children": [
+                  {
+                    "type": "bracketed-selection",
+                    "text": "['k.k']",
+                    "start": 10,
+                    "length": 7,
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "[",
+                        "start": 10,
+                        "length": 1,
+                        "children": []
+                      },
+                      {
+                        "type": "selector",
+                        "text": "'k.k'",
+                        "start": 11,
+                        "length": 5,
+                        "children": [
+                          {
+                            "type": "name-selector",
+                            "text": "'k.k'",
+                            "start": 11,
+                            "length": 5,
+                            "children": [
+                              {
+                                "type": "string-literal",
+                                "text": "'k.k'",
+                                "start": 11,
+                                "length": 5,
+                                "children": [
+                                  {
+                                    "type": "text",
+                                    "text": "'",
+                                    "start": 11,
+                                    "length": 1,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "single-quoted",
+                                    "text": "k",
+                                    "start": 12,
+                                    "length": 1,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "single-quoted",
+                                    "text": ".",
+                                    "start": 13,
+                                    "length": 1,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "single-quoted",
+                                    "text": "k",
+                                    "start": 14,
+                                    "length": 1,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "text",
+                                    "text": "'",
+                                    "start": 15,
+                                    "length": 1,
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": "]",
+                        "start": 16,
+                        "length": 1,
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}"
+`;
+
+exports[`parse cst-corpus $.o[*, *] 1`] = `
+"{
+  "stack": [],
+  "root": {
+    "type": "jsonpath-query",
+    "text": "$.o[*, *]",
+    "start": 0,
+    "length": 9,
+    "children": [
+      {
+        "type": "root-identifier",
+        "text": "$",
+        "start": 0,
+        "length": 1,
+        "children": []
+      },
+      {
+        "type": "segments",
+        "text": ".o[*, *]",
+        "start": 1,
+        "length": 8,
+        "children": [
+          {
+            "type": "segment",
+            "text": ".o",
+            "start": 1,
+            "length": 2,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": ".o",
+                "start": 1,
+                "length": 2,
+                "children": [
+                  {
+                    "type": "text",
+                    "text": ".",
+                    "start": 1,
+                    "length": 1,
+                    "children": []
+                  },
+                  {
+                    "type": "member-name-shorthand",
+                    "text": "o",
+                    "start": 2,
+                    "length": 1,
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "segment",
+            "text": "[*, *]",
+            "start": 3,
+            "length": 6,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": "[*, *]",
+                "start": 3,
+                "length": 6,
+                "children": [
+                  {
+                    "type": "bracketed-selection",
+                    "text": "[*, *]",
+                    "start": 3,
+                    "length": 6,
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "[",
+                        "start": 3,
+                        "length": 1,
+                        "children": []
+                      },
+                      {
+                        "type": "selector",
+                        "text": "*",
+                        "start": 4,
+                        "length": 1,
+                        "children": [
+                          {
+                            "type": "wildcard-selector",
+                            "text": "*",
+                            "start": 4,
+                            "length": 1,
+                            "children": []
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": ",",
+                        "start": 5,
+                        "length": 1,
+                        "children": []
+                      },
+                      {
+                        "type": "text",
+                        "text": " ",
+                        "start": 6,
+                        "length": 1,
+                        "children": []
+                      },
+                      {
+                        "type": "selector",
+                        "text": "*",
+                        "start": 7,
+                        "length": 1,
+                        "children": [
+                          {
+                            "type": "wildcard-selector",
+                            "text": "*",
+                            "start": 7,
+                            "length": 1,
+                            "children": []
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": "]",
+                        "start": 8,
+                        "length": 1,
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}"
+`;
+
+exports[`parse cst-corpus $.o[*] 1`] = `
+"{
+  "stack": [],
+  "root": {
+    "type": "jsonpath-query",
+    "text": "$.o[*]",
+    "start": 0,
+    "length": 6,
+    "children": [
+      {
+        "type": "root-identifier",
+        "text": "$",
+        "start": 0,
+        "length": 1,
+        "children": []
+      },
+      {
+        "type": "segments",
+        "text": ".o[*]",
+        "start": 1,
+        "length": 5,
+        "children": [
+          {
+            "type": "segment",
+            "text": ".o",
+            "start": 1,
+            "length": 2,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": ".o",
+                "start": 1,
+                "length": 2,
+                "children": [
+                  {
+                    "type": "text",
+                    "text": ".",
+                    "start": 1,
+                    "length": 1,
+                    "children": []
+                  },
+                  {
+                    "type": "member-name-shorthand",
+                    "text": "o",
+                    "start": 2,
+                    "length": 1,
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "segment",
+            "text": "[*]",
+            "start": 3,
+            "length": 3,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": "[*]",
+                "start": 3,
+                "length": 3,
+                "children": [
+                  {
+                    "type": "bracketed-selection",
+                    "text": "[*]",
+                    "start": 3,
+                    "length": 3,
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "[",
+                        "start": 3,
+                        "length": 1,
+                        "children": []
+                      },
+                      {
+                        "type": "selector",
+                        "text": "*",
+                        "start": 4,
+                        "length": 1,
+                        "children": [
+                          {
+                            "type": "wildcard-selector",
+                            "text": "*",
+                            "start": 4,
+                            "length": 1,
+                            "children": []
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": "]",
+                        "start": 5,
+                        "length": 1,
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}"
+`;
+
+exports[`parse cst-corpus $.o[*] 2`] = `
+"{
+  "stack": [],
+  "root": {
+    "type": "jsonpath-query",
+    "text": "$.o[*]",
+    "start": 0,
+    "length": 6,
+    "children": [
+      {
+        "type": "root-identifier",
+        "text": "$",
+        "start": 0,
+        "length": 1,
+        "children": []
+      },
+      {
+        "type": "segments",
+        "text": ".o[*]",
+        "start": 1,
+        "length": 5,
+        "children": [
+          {
+            "type": "segment",
+            "text": ".o",
+            "start": 1,
+            "length": 2,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": ".o",
+                "start": 1,
+                "length": 2,
+                "children": [
+                  {
+                    "type": "text",
+                    "text": ".",
+                    "start": 1,
+                    "length": 1,
+                    "children": []
+                  },
+                  {
+                    "type": "member-name-shorthand",
+                    "text": "o",
+                    "start": 2,
+                    "length": 1,
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "segment",
+            "text": "[*]",
+            "start": 3,
+            "length": 3,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": "[*]",
+                "start": 3,
+                "length": 3,
+                "children": [
+                  {
+                    "type": "bracketed-selection",
+                    "text": "[*]",
+                    "start": 3,
+                    "length": 3,
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "[",
+                        "start": 3,
+                        "length": 1,
+                        "children": []
+                      },
+                      {
+                        "type": "selector",
+                        "text": "*",
+                        "start": 4,
+                        "length": 1,
+                        "children": [
+                          {
+                            "type": "wildcard-selector",
+                            "text": "*",
+                            "start": 4,
+                            "length": 1,
+                            "children": []
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": "]",
+                        "start": 5,
                         "length": 1,
                         "children": []
                       }
@@ -1018,6 +3366,201 @@ exports[`parse cst-corpus $.store.book[0].title 1`] = `
 }"
 `;
 
+exports[`parse cst-corpus $["'"]["@"] 1`] = `
+"{
+  "stack": [],
+  "root": {
+    "type": "jsonpath-query",
+    "text": "$[\\"'\\"][\\"@\\"]",
+    "start": 0,
+    "length": 11,
+    "children": [
+      {
+        "type": "root-identifier",
+        "text": "$",
+        "start": 0,
+        "length": 1,
+        "children": []
+      },
+      {
+        "type": "segments",
+        "text": "[\\"'\\"][\\"@\\"]",
+        "start": 1,
+        "length": 10,
+        "children": [
+          {
+            "type": "segment",
+            "text": "[\\"'\\"]",
+            "start": 1,
+            "length": 5,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": "[\\"'\\"]",
+                "start": 1,
+                "length": 5,
+                "children": [
+                  {
+                    "type": "bracketed-selection",
+                    "text": "[\\"'\\"]",
+                    "start": 1,
+                    "length": 5,
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "[",
+                        "start": 1,
+                        "length": 1,
+                        "children": []
+                      },
+                      {
+                        "type": "selector",
+                        "text": "\\"'\\"",
+                        "start": 2,
+                        "length": 3,
+                        "children": [
+                          {
+                            "type": "name-selector",
+                            "text": "\\"'\\"",
+                            "start": 2,
+                            "length": 3,
+                            "children": [
+                              {
+                                "type": "string-literal",
+                                "text": "\\"'\\"",
+                                "start": 2,
+                                "length": 3,
+                                "children": [
+                                  {
+                                    "type": "text",
+                                    "text": "\\"",
+                                    "start": 2,
+                                    "length": 1,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "double-quoted",
+                                    "text": "'",
+                                    "start": 3,
+                                    "length": 1,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "text",
+                                    "text": "\\"",
+                                    "start": 4,
+                                    "length": 1,
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": "]",
+                        "start": 5,
+                        "length": 1,
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "segment",
+            "text": "[\\"@\\"]",
+            "start": 6,
+            "length": 5,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": "[\\"@\\"]",
+                "start": 6,
+                "length": 5,
+                "children": [
+                  {
+                    "type": "bracketed-selection",
+                    "text": "[\\"@\\"]",
+                    "start": 6,
+                    "length": 5,
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "[",
+                        "start": 6,
+                        "length": 1,
+                        "children": []
+                      },
+                      {
+                        "type": "selector",
+                        "text": "\\"@\\"",
+                        "start": 7,
+                        "length": 3,
+                        "children": [
+                          {
+                            "type": "name-selector",
+                            "text": "\\"@\\"",
+                            "start": 7,
+                            "length": 3,
+                            "children": [
+                              {
+                                "type": "string-literal",
+                                "text": "\\"@\\"",
+                                "start": 7,
+                                "length": 3,
+                                "children": [
+                                  {
+                                    "type": "text",
+                                    "text": "\\"",
+                                    "start": 7,
+                                    "length": 1,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "double-quoted",
+                                    "text": "@",
+                                    "start": 8,
+                                    "length": 1,
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "text",
+                                    "text": "\\"",
+                                    "start": 9,
+                                    "length": 1,
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": "]",
+                        "start": 10,
+                        "length": 1,
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}"
+`;
+
 exports[`parse cst-corpus $['store']['book'][0]['title'] 1`] = `
 "{
   "stack": [],
@@ -1410,6 +3953,252 @@ exports[`parse cst-corpus $['store']['book'][0]['title'] 1`] = `
                         "type": "text",
                         "text": "]",
                         "start": 29,
+                        "length": 1,
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}"
+`;
+
+exports[`parse cst-corpus $[*] 1`] = `
+"{
+  "stack": [],
+  "root": {
+    "type": "jsonpath-query",
+    "text": "$[*]",
+    "start": 0,
+    "length": 4,
+    "children": [
+      {
+        "type": "root-identifier",
+        "text": "$",
+        "start": 0,
+        "length": 1,
+        "children": []
+      },
+      {
+        "type": "segments",
+        "text": "[*]",
+        "start": 1,
+        "length": 3,
+        "children": [
+          {
+            "type": "segment",
+            "text": "[*]",
+            "start": 1,
+            "length": 3,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": "[*]",
+                "start": 1,
+                "length": 3,
+                "children": [
+                  {
+                    "type": "bracketed-selection",
+                    "text": "[*]",
+                    "start": 1,
+                    "length": 3,
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "[",
+                        "start": 1,
+                        "length": 1,
+                        "children": []
+                      },
+                      {
+                        "type": "selector",
+                        "text": "*",
+                        "start": 2,
+                        "length": 1,
+                        "children": [
+                          {
+                            "type": "wildcard-selector",
+                            "text": "*",
+                            "start": 2,
+                            "length": 1,
+                            "children": []
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": "]",
+                        "start": 3,
+                        "length": 1,
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}"
+`;
+
+exports[`parse cst-corpus $[-2] 1`] = `
+"{
+  "stack": [],
+  "root": {
+    "type": "jsonpath-query",
+    "text": "$[-2]",
+    "start": 0,
+    "length": 5,
+    "children": [
+      {
+        "type": "root-identifier",
+        "text": "$",
+        "start": 0,
+        "length": 1,
+        "children": []
+      },
+      {
+        "type": "segments",
+        "text": "[-2]",
+        "start": 1,
+        "length": 4,
+        "children": [
+          {
+            "type": "segment",
+            "text": "[-2]",
+            "start": 1,
+            "length": 4,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": "[-2]",
+                "start": 1,
+                "length": 4,
+                "children": [
+                  {
+                    "type": "bracketed-selection",
+                    "text": "[-2]",
+                    "start": 1,
+                    "length": 4,
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "[",
+                        "start": 1,
+                        "length": 1,
+                        "children": []
+                      },
+                      {
+                        "type": "selector",
+                        "text": "-2",
+                        "start": 2,
+                        "length": 2,
+                        "children": [
+                          {
+                            "type": "index-selector",
+                            "text": "-2",
+                            "start": 2,
+                            "length": 2,
+                            "children": []
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": "]",
+                        "start": 4,
+                        "length": 1,
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}"
+`;
+
+exports[`parse cst-corpus $[1] 1`] = `
+"{
+  "stack": [],
+  "root": {
+    "type": "jsonpath-query",
+    "text": "$[1]",
+    "start": 0,
+    "length": 4,
+    "children": [
+      {
+        "type": "root-identifier",
+        "text": "$",
+        "start": 0,
+        "length": 1,
+        "children": []
+      },
+      {
+        "type": "segments",
+        "text": "[1]",
+        "start": 1,
+        "length": 3,
+        "children": [
+          {
+            "type": "segment",
+            "text": "[1]",
+            "start": 1,
+            "length": 3,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": "[1]",
+                "start": 1,
+                "length": 3,
+                "children": [
+                  {
+                    "type": "bracketed-selection",
+                    "text": "[1]",
+                    "start": 1,
+                    "length": 3,
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "[",
+                        "start": 1,
+                        "length": 1,
+                        "children": []
+                      },
+                      {
+                        "type": "selector",
+                        "text": "1",
+                        "start": 2,
+                        "length": 1,
+                        "children": [
+                          {
+                            "type": "index-selector",
+                            "text": "1",
+                            "start": 2,
+                            "length": 1,
+                            "children": []
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": "]",
+                        "start": 3,
                         "length": 1,
                         "children": []
                       }
