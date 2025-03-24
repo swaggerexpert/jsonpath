@@ -7,7 +7,7 @@
 [![try on RunKit](https://img.shields.io/badge/try%20on-RunKit-brightgreen.svg?style=flat)](https://npm.runkit.com/@swaggerexpert/jsonpath)
 [![Tidelift](https://tidelift.com/badges/package/npm/@swaggerexpert%2Fjsonpath)](https://tidelift.com/subscription/pkg/npm-.swaggerexpert-jsonpath?utm_source=npm-swaggerexpert-jsonpath&utm_medium=referral&utm_campaign=readme)
 
-`@swaggerexpert/jsonpath` is a **parser** and **validator** for [RFC 9535](https://www.rfc-editor.org/rfc/rfc9535) Query Expressions for JSON - JSONPath.
+`@swaggerexpert/jsonpath` is a **parser** and **validator** for [RFC 9535](https://www.rfc-editor.org/rfc/rfc9535) Query Expressions for JSON - **JSONPath**.
 
 The development of this library contributed to the identification and formal submission of [Errata 8343](https://www.rfc-editor.org/errata/eid8343) against RFC 9535.
 
