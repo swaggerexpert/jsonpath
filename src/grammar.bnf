@@ -143,10 +143,11 @@ LCALPHA             = %x61-7A  ; "a".."z"
 
 function-expr       = function-name left-paren S [function-argument ; MODIFICATION: surrogate text rule used
                          *(S comma S function-argument)] S right-paren ; MODIFICATION: surrogate text rule used
-function-argument   = literal /
+function-argument   = logical-expr / ; MODIFICATION: PEG-ordered
+                      function-expr /
                       filter-query / ; (includes singular-query)
-                      logical-expr /
-                      function-expr
+                      literal
+
 
 ; https://www.rfc-editor.org/rfc/rfc9535#section-2.5
 segment             = child-segment / descendant-segment

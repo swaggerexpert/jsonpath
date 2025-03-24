@@ -599,10 +599,10 @@ export default function grammar(){
   /* function-argument */
   this.rules[58].opcodes = [];
   this.rules[58].opcodes[0] = { type: 1, children: [1,2,3,4] };// ALT
-  this.rules[58].opcodes[1] = { type: 4, index: 38 };// RNM(literal)
-  this.rules[58].opcodes[2] = { type: 4, index: 34 };// RNM(filter-query)
-  this.rules[58].opcodes[3] = { type: 4, index: 27 };// RNM(logical-expr)
-  this.rules[58].opcodes[4] = { type: 4, index: 57 };// RNM(function-expr)
+  this.rules[58].opcodes[1] = { type: 4, index: 27 };// RNM(logical-expr)
+  this.rules[58].opcodes[2] = { type: 4, index: 57 };// RNM(function-expr)
+  this.rules[58].opcodes[3] = { type: 4, index: 34 };// RNM(filter-query)
+  this.rules[58].opcodes[4] = { type: 4, index: 38 };// RNM(literal)
 
   /* segment */
   this.rules[59].opcodes = [];
@@ -967,10 +967,11 @@ export default function grammar(){
     str += "\n";
     str += "function-expr       = function-name left-paren S [function-argument ; MODIFICATION: surrogate text rule used\n";
     str += "                         *(S comma S function-argument)] S right-paren ; MODIFICATION: surrogate text rule used\n";
-    str += "function-argument   = literal /\n";
+    str += "function-argument   = logical-expr / ; MODIFICATION: PEG-ordered\n";
+    str += "                      function-expr /\n";
     str += "                      filter-query / ; (includes singular-query)\n";
-    str += "                      logical-expr /\n";
-    str += "                      function-expr\n";
+    str += "                      literal\n";
+    str += "\n";
     str += "\n";
     str += "; https://www.rfc-editor.org/rfc/rfc9535#section-2.5\n";
     str += "segment             = child-segment / descendant-segment\n";
