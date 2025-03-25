@@ -113,9 +113,10 @@ current-node-identifier = "@"
 comparison-expr     = comparable S comparison-op S comparable
 literal             = number / string-literal /
                       true / false / null
-comparable          = literal /
-                      singular-query / ; singular query value
-                      function-expr    ; ValueType
+comparable          = singular-query / ; singular query value
+                      function-expr /  ; ValueType
+                      literal
+                      ; MODIFICATION: https://www.rfc-editor.org/errata/eid8343
 comparison-op       = "==" / "!=" /
                       "<=" / ">=" /
                       "<"  / ">"
@@ -143,7 +144,7 @@ LCALPHA             = %x61-7A  ; "a".."z"
 
 function-expr       = function-name left-paren S [function-argument ; MODIFICATION: surrogate text rule used
                          *(S comma S function-argument)] S right-paren ; MODIFICATION: surrogate text rule used
-function-argument   = logical-expr / ; MODIFICATION: PEG-ordered
+function-argument   = logical-expr / ; MODIFICATION: https://www.rfc-editor.org/errata/eid8343
                       function-expr /
                       filter-query / ; (includes singular-query)
                       literal

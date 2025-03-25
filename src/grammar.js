@@ -456,9 +456,9 @@ export default function grammar(){
   /* comparable */
   this.rules[39].opcodes = [];
   this.rules[39].opcodes[0] = { type: 1, children: [1,2,3] };// ALT
-  this.rules[39].opcodes[1] = { type: 4, index: 38 };// RNM(literal)
-  this.rules[39].opcodes[2] = { type: 4, index: 41 };// RNM(singular-query)
-  this.rules[39].opcodes[3] = { type: 4, index: 57 };// RNM(function-expr)
+  this.rules[39].opcodes[1] = { type: 4, index: 41 };// RNM(singular-query)
+  this.rules[39].opcodes[2] = { type: 4, index: 57 };// RNM(function-expr)
+  this.rules[39].opcodes[3] = { type: 4, index: 38 };// RNM(literal)
 
   /* comparison-op */
   this.rules[40].opcodes = [];
@@ -937,9 +937,10 @@ export default function grammar(){
     str += "comparison-expr     = comparable S comparison-op S comparable\n";
     str += "literal             = number / string-literal /\n";
     str += "                      true / false / null\n";
-    str += "comparable          = literal /\n";
-    str += "                      singular-query / ; singular query value\n";
-    str += "                      function-expr    ; ValueType\n";
+    str += "comparable          = singular-query / ; singular query value\n";
+    str += "                      function-expr /  ; ValueType\n";
+    str += "                      literal\n";
+    str += "                      ; MODIFICATION: https://www.rfc-editor.org/errata/eid8343\n";
     str += "comparison-op       = \"==\" / \"!=\" /\n";
     str += "                      \"<=\" / \">=\" /\n";
     str += "                      \"<\"  / \">\"\n";
@@ -967,7 +968,7 @@ export default function grammar(){
     str += "\n";
     str += "function-expr       = function-name left-paren S [function-argument ; MODIFICATION: surrogate text rule used\n";
     str += "                         *(S comma S function-argument)] S right-paren ; MODIFICATION: surrogate text rule used\n";
-    str += "function-argument   = logical-expr / ; MODIFICATION: PEG-ordered\n";
+    str += "function-argument   = logical-expr / ; MODIFICATION: https://www.rfc-editor.org/errata/eid8343\n";
     str += "                      function-expr /\n";
     str += "                      filter-query / ; (includes singular-query)\n";
     str += "                      literal\n";

@@ -85,7 +85,7 @@ describe('parse', function () {
       '$[?value(@..color)]',
       '$[?bar(@.a)]',
       '$[?bnl(@.*)]',
-      '$[?blt(1==1)]',
+      '$[?blt(1==1)]', // https://www.rfc-editor.org/errata/eid8343
       '$[?blt(1)]',
       '$[?bal(1)]',
       // https://www.rfc-editor.org/rfc/rfc9535#section-2.5.1.3
@@ -117,6 +117,10 @@ describe('parse', function () {
       "$['a']['b'][1]",
       "$['\\u000B']",
       '$["\\u0061"]',
+      // https://www.rfc-editor.org/errata/eid8343
+      '$[?foo(1==2)]',
+      '$[?true(1)==0]',
+      '$[?true(1)==false(0)]'
     ];
 
     jsonPaths.forEach((jsonPath) => {

@@ -13694,6 +13694,266 @@ exports[`parse cst-corpus $[?count(foo(@.*)) == 1] 1`] = `
 }
 `;
 
+exports[`parse cst-corpus $[?foo(1==2)] 1`] = `
+{
+  "stack": [],
+  "root": {
+    "type": "jsonpath-query",
+    "text": "$[?foo(1==2)]",
+    "start": 0,
+    "length": 13,
+    "children": [
+      {
+        "type": "root-identifier",
+        "text": "$",
+        "start": 0,
+        "length": 1,
+        "children": [],
+      },
+      {
+        "type": "segments",
+        "text": "[?foo(1==2)]",
+        "start": 1,
+        "length": 12,
+        "children": [
+          {
+            "type": "segment",
+            "text": "[?foo(1==2)]",
+            "start": 1,
+            "length": 12,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": "[?foo(1==2)]",
+                "start": 1,
+                "length": 12,
+                "children": [
+                  {
+                    "type": "bracketed-selection",
+                    "text": "[?foo(1==2)]",
+                    "start": 1,
+                    "length": 12,
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "[",
+                        "start": 1,
+                        "length": 1,
+                        "children": [],
+                      },
+                      {
+                        "type": "selector",
+                        "text": "?foo(1==2)",
+                        "start": 2,
+                        "length": 10,
+                        "children": [
+                          {
+                            "type": "filter-selector",
+                            "text": "?foo(1==2)",
+                            "start": 2,
+                            "length": 10,
+                            "children": [
+                              {
+                                "type": "text",
+                                "text": "?",
+                                "start": 2,
+                                "length": 1,
+                                "children": [],
+                              },
+                              {
+                                "type": "logical-expr",
+                                "text": "foo(1==2)",
+                                "start": 3,
+                                "length": 9,
+                                "children": [
+                                  {
+                                    "type": "logical-or-expr",
+                                    "text": "foo(1==2)",
+                                    "start": 3,
+                                    "length": 9,
+                                    "children": [
+                                      {
+                                        "type": "logical-and-expr",
+                                        "text": "foo(1==2)",
+                                        "start": 3,
+                                        "length": 9,
+                                        "children": [
+                                          {
+                                            "type": "basic-expr",
+                                            "text": "foo(1==2)",
+                                            "start": 3,
+                                            "length": 9,
+                                            "children": [
+                                              {
+                                                "type": "test-expr",
+                                                "text": "foo(1==2)",
+                                                "start": 3,
+                                                "length": 9,
+                                                "children": [
+                                                  {
+                                                    "type": "function-expr",
+                                                    "text": "foo(1==2)",
+                                                    "start": 3,
+                                                    "length": 9,
+                                                    "children": [
+                                                      {
+                                                        "type": "function-name",
+                                                        "text": "foo",
+                                                        "start": 3,
+                                                        "length": 3,
+                                                        "children": [],
+                                                      },
+                                                      {
+                                                        "type": "text",
+                                                        "text": "(",
+                                                        "start": 6,
+                                                        "length": 1,
+                                                        "children": [],
+                                                      },
+                                                      {
+                                                        "type": "function-argument",
+                                                        "text": "1==2",
+                                                        "start": 7,
+                                                        "length": 4,
+                                                        "children": [
+                                                          {
+                                                            "type": "logical-expr",
+                                                            "text": "1==2",
+                                                            "start": 7,
+                                                            "length": 4,
+                                                            "children": [
+                                                              {
+                                                                "type": "logical-or-expr",
+                                                                "text": "1==2",
+                                                                "start": 7,
+                                                                "length": 4,
+                                                                "children": [
+                                                                  {
+                                                                    "type": "logical-and-expr",
+                                                                    "text": "1==2",
+                                                                    "start": 7,
+                                                                    "length": 4,
+                                                                    "children": [
+                                                                      {
+                                                                        "type": "basic-expr",
+                                                                        "text": "1==2",
+                                                                        "start": 7,
+                                                                        "length": 4,
+                                                                        "children": [
+                                                                          {
+                                                                            "type": "comparison-expr",
+                                                                            "text": "1==2",
+                                                                            "start": 7,
+                                                                            "length": 4,
+                                                                            "children": [
+                                                                              {
+                                                                                "type": "comparable",
+                                                                                "text": "1",
+                                                                                "start": 7,
+                                                                                "length": 1,
+                                                                                "children": [
+                                                                                  {
+                                                                                    "type": "literal",
+                                                                                    "text": "1",
+                                                                                    "start": 7,
+                                                                                    "length": 1,
+                                                                                    "children": [
+                                                                                      {
+                                                                                        "type": "number",
+                                                                                        "text": "1",
+                                                                                        "start": 7,
+                                                                                        "length": 1,
+                                                                                        "children": [],
+                                                                                      },
+                                                                                    ],
+                                                                                  },
+                                                                                ],
+                                                                              },
+                                                                              {
+                                                                                "type": "comparison-op",
+                                                                                "text": "==",
+                                                                                "start": 8,
+                                                                                "length": 2,
+                                                                                "children": [],
+                                                                              },
+                                                                              {
+                                                                                "type": "comparable",
+                                                                                "text": "2",
+                                                                                "start": 10,
+                                                                                "length": 1,
+                                                                                "children": [
+                                                                                  {
+                                                                                    "type": "literal",
+                                                                                    "text": "2",
+                                                                                    "start": 10,
+                                                                                    "length": 1,
+                                                                                    "children": [
+                                                                                      {
+                                                                                        "type": "number",
+                                                                                        "text": "2",
+                                                                                        "start": 10,
+                                                                                        "length": 1,
+                                                                                        "children": [],
+                                                                                      },
+                                                                                    ],
+                                                                                  },
+                                                                                ],
+                                                                              },
+                                                                            ],
+                                                                          },
+                                                                        ],
+                                                                      },
+                                                                    ],
+                                                                  },
+                                                                ],
+                                                              },
+                                                            ],
+                                                          },
+                                                        ],
+                                                      },
+                                                      {
+                                                        "type": "text",
+                                                        "text": ")",
+                                                        "start": 11,
+                                                        "length": 1,
+                                                        "children": [],
+                                                      },
+                                                    ],
+                                                  },
+                                                ],
+                                              },
+                                            ],
+                                          },
+                                        ],
+                                      },
+                                    ],
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "type": "text",
+                        "text": "]",
+                        "start": 12,
+                        "length": 1,
+                        "children": [],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+}
+`;
+
 exports[`parse cst-corpus $[?length(@) < 3] 1`] = `
 {
   "stack": [],
@@ -16170,6 +16430,483 @@ exports[`parse cst-corpus $[?search(@.author, "[BR]ob")] 1`] = `
                         "type": "text",
                         "text": "]",
                         "start": 29,
+                        "length": 1,
+                        "children": [],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+}
+`;
+
+exports[`parse cst-corpus $[?true(1)==0] 1`] = `
+{
+  "stack": [],
+  "root": {
+    "type": "jsonpath-query",
+    "text": "$[?true(1)==0]",
+    "start": 0,
+    "length": 14,
+    "children": [
+      {
+        "type": "root-identifier",
+        "text": "$",
+        "start": 0,
+        "length": 1,
+        "children": [],
+      },
+      {
+        "type": "segments",
+        "text": "[?true(1)==0]",
+        "start": 1,
+        "length": 13,
+        "children": [
+          {
+            "type": "segment",
+            "text": "[?true(1)==0]",
+            "start": 1,
+            "length": 13,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": "[?true(1)==0]",
+                "start": 1,
+                "length": 13,
+                "children": [
+                  {
+                    "type": "bracketed-selection",
+                    "text": "[?true(1)==0]",
+                    "start": 1,
+                    "length": 13,
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "[",
+                        "start": 1,
+                        "length": 1,
+                        "children": [],
+                      },
+                      {
+                        "type": "selector",
+                        "text": "?true(1)==0",
+                        "start": 2,
+                        "length": 11,
+                        "children": [
+                          {
+                            "type": "filter-selector",
+                            "text": "?true(1)==0",
+                            "start": 2,
+                            "length": 11,
+                            "children": [
+                              {
+                                "type": "text",
+                                "text": "?",
+                                "start": 2,
+                                "length": 1,
+                                "children": [],
+                              },
+                              {
+                                "type": "logical-expr",
+                                "text": "true(1)==0",
+                                "start": 3,
+                                "length": 10,
+                                "children": [
+                                  {
+                                    "type": "logical-or-expr",
+                                    "text": "true(1)==0",
+                                    "start": 3,
+                                    "length": 10,
+                                    "children": [
+                                      {
+                                        "type": "logical-and-expr",
+                                        "text": "true(1)==0",
+                                        "start": 3,
+                                        "length": 10,
+                                        "children": [
+                                          {
+                                            "type": "basic-expr",
+                                            "text": "true(1)==0",
+                                            "start": 3,
+                                            "length": 10,
+                                            "children": [
+                                              {
+                                                "type": "comparison-expr",
+                                                "text": "true(1)==0",
+                                                "start": 3,
+                                                "length": 10,
+                                                "children": [
+                                                  {
+                                                    "type": "comparable",
+                                                    "text": "true(1)",
+                                                    "start": 3,
+                                                    "length": 7,
+                                                    "children": [
+                                                      {
+                                                        "type": "function-expr",
+                                                        "text": "true(1)",
+                                                        "start": 3,
+                                                        "length": 7,
+                                                        "children": [
+                                                          {
+                                                            "type": "function-name",
+                                                            "text": "true",
+                                                            "start": 3,
+                                                            "length": 4,
+                                                            "children": [],
+                                                          },
+                                                          {
+                                                            "type": "text",
+                                                            "text": "(",
+                                                            "start": 7,
+                                                            "length": 1,
+                                                            "children": [],
+                                                          },
+                                                          {
+                                                            "type": "function-argument",
+                                                            "text": "1",
+                                                            "start": 8,
+                                                            "length": 1,
+                                                            "children": [
+                                                              {
+                                                                "type": "literal",
+                                                                "text": "1",
+                                                                "start": 8,
+                                                                "length": 1,
+                                                                "children": [
+                                                                  {
+                                                                    "type": "number",
+                                                                    "text": "1",
+                                                                    "start": 8,
+                                                                    "length": 1,
+                                                                    "children": [],
+                                                                  },
+                                                                ],
+                                                              },
+                                                            ],
+                                                          },
+                                                          {
+                                                            "type": "text",
+                                                            "text": ")",
+                                                            "start": 9,
+                                                            "length": 1,
+                                                            "children": [],
+                                                          },
+                                                        ],
+                                                      },
+                                                    ],
+                                                  },
+                                                  {
+                                                    "type": "comparison-op",
+                                                    "text": "==",
+                                                    "start": 10,
+                                                    "length": 2,
+                                                    "children": [],
+                                                  },
+                                                  {
+                                                    "type": "comparable",
+                                                    "text": "0",
+                                                    "start": 12,
+                                                    "length": 1,
+                                                    "children": [
+                                                      {
+                                                        "type": "literal",
+                                                        "text": "0",
+                                                        "start": 12,
+                                                        "length": 1,
+                                                        "children": [
+                                                          {
+                                                            "type": "number",
+                                                            "text": "0",
+                                                            "start": 12,
+                                                            "length": 1,
+                                                            "children": [],
+                                                          },
+                                                        ],
+                                                      },
+                                                    ],
+                                                  },
+                                                ],
+                                              },
+                                            ],
+                                          },
+                                        ],
+                                      },
+                                    ],
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "type": "text",
+                        "text": "]",
+                        "start": 13,
+                        "length": 1,
+                        "children": [],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+}
+`;
+
+exports[`parse cst-corpus $[?true(1)==false(0)] 1`] = `
+{
+  "stack": [],
+  "root": {
+    "type": "jsonpath-query",
+    "text": "$[?true(1)==false(0)]",
+    "start": 0,
+    "length": 21,
+    "children": [
+      {
+        "type": "root-identifier",
+        "text": "$",
+        "start": 0,
+        "length": 1,
+        "children": [],
+      },
+      {
+        "type": "segments",
+        "text": "[?true(1)==false(0)]",
+        "start": 1,
+        "length": 20,
+        "children": [
+          {
+            "type": "segment",
+            "text": "[?true(1)==false(0)]",
+            "start": 1,
+            "length": 20,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": "[?true(1)==false(0)]",
+                "start": 1,
+                "length": 20,
+                "children": [
+                  {
+                    "type": "bracketed-selection",
+                    "text": "[?true(1)==false(0)]",
+                    "start": 1,
+                    "length": 20,
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "[",
+                        "start": 1,
+                        "length": 1,
+                        "children": [],
+                      },
+                      {
+                        "type": "selector",
+                        "text": "?true(1)==false(0)",
+                        "start": 2,
+                        "length": 18,
+                        "children": [
+                          {
+                            "type": "filter-selector",
+                            "text": "?true(1)==false(0)",
+                            "start": 2,
+                            "length": 18,
+                            "children": [
+                              {
+                                "type": "text",
+                                "text": "?",
+                                "start": 2,
+                                "length": 1,
+                                "children": [],
+                              },
+                              {
+                                "type": "logical-expr",
+                                "text": "true(1)==false(0)",
+                                "start": 3,
+                                "length": 17,
+                                "children": [
+                                  {
+                                    "type": "logical-or-expr",
+                                    "text": "true(1)==false(0)",
+                                    "start": 3,
+                                    "length": 17,
+                                    "children": [
+                                      {
+                                        "type": "logical-and-expr",
+                                        "text": "true(1)==false(0)",
+                                        "start": 3,
+                                        "length": 17,
+                                        "children": [
+                                          {
+                                            "type": "basic-expr",
+                                            "text": "true(1)==false(0)",
+                                            "start": 3,
+                                            "length": 17,
+                                            "children": [
+                                              {
+                                                "type": "comparison-expr",
+                                                "text": "true(1)==false(0)",
+                                                "start": 3,
+                                                "length": 17,
+                                                "children": [
+                                                  {
+                                                    "type": "comparable",
+                                                    "text": "true(1)",
+                                                    "start": 3,
+                                                    "length": 7,
+                                                    "children": [
+                                                      {
+                                                        "type": "function-expr",
+                                                        "text": "true(1)",
+                                                        "start": 3,
+                                                        "length": 7,
+                                                        "children": [
+                                                          {
+                                                            "type": "function-name",
+                                                            "text": "true",
+                                                            "start": 3,
+                                                            "length": 4,
+                                                            "children": [],
+                                                          },
+                                                          {
+                                                            "type": "text",
+                                                            "text": "(",
+                                                            "start": 7,
+                                                            "length": 1,
+                                                            "children": [],
+                                                          },
+                                                          {
+                                                            "type": "function-argument",
+                                                            "text": "1",
+                                                            "start": 8,
+                                                            "length": 1,
+                                                            "children": [
+                                                              {
+                                                                "type": "literal",
+                                                                "text": "1",
+                                                                "start": 8,
+                                                                "length": 1,
+                                                                "children": [
+                                                                  {
+                                                                    "type": "number",
+                                                                    "text": "1",
+                                                                    "start": 8,
+                                                                    "length": 1,
+                                                                    "children": [],
+                                                                  },
+                                                                ],
+                                                              },
+                                                            ],
+                                                          },
+                                                          {
+                                                            "type": "text",
+                                                            "text": ")",
+                                                            "start": 9,
+                                                            "length": 1,
+                                                            "children": [],
+                                                          },
+                                                        ],
+                                                      },
+                                                    ],
+                                                  },
+                                                  {
+                                                    "type": "comparison-op",
+                                                    "text": "==",
+                                                    "start": 10,
+                                                    "length": 2,
+                                                    "children": [],
+                                                  },
+                                                  {
+                                                    "type": "comparable",
+                                                    "text": "false(0)",
+                                                    "start": 12,
+                                                    "length": 8,
+                                                    "children": [
+                                                      {
+                                                        "type": "function-expr",
+                                                        "text": "false(0)",
+                                                        "start": 12,
+                                                        "length": 8,
+                                                        "children": [
+                                                          {
+                                                            "type": "function-name",
+                                                            "text": "false",
+                                                            "start": 12,
+                                                            "length": 5,
+                                                            "children": [],
+                                                          },
+                                                          {
+                                                            "type": "text",
+                                                            "text": "(",
+                                                            "start": 17,
+                                                            "length": 1,
+                                                            "children": [],
+                                                          },
+                                                          {
+                                                            "type": "function-argument",
+                                                            "text": "0",
+                                                            "start": 18,
+                                                            "length": 1,
+                                                            "children": [
+                                                              {
+                                                                "type": "literal",
+                                                                "text": "0",
+                                                                "start": 18,
+                                                                "length": 1,
+                                                                "children": [
+                                                                  {
+                                                                    "type": "number",
+                                                                    "text": "0",
+                                                                    "start": 18,
+                                                                    "length": 1,
+                                                                    "children": [],
+                                                                  },
+                                                                ],
+                                                              },
+                                                            ],
+                                                          },
+                                                          {
+                                                            "type": "text",
+                                                            "text": ")",
+                                                            "start": 19,
+                                                            "length": 1,
+                                                            "children": [],
+                                                          },
+                                                        ],
+                                                      },
+                                                    ],
+                                                  },
+                                                ],
+                                              },
+                                            ],
+                                          },
+                                        ],
+                                      },
+                                    ],
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "type": "text",
+                        "text": "]",
+                        "start": 20,
                         "length": 1,
                         "children": [],
                       },
