@@ -1,4 +1,4 @@
-import { Parser } from 'apg-lite';
+import { Parser, Stats } from 'apg-lite';
 
 import Grammar from '../grammar.js';
 import translateEvaluator from './evaluators/translate.js';
@@ -7,7 +7,7 @@ import JSONPathParseError from '../errors/JSONPathParseError.js';
 
 const grammar = new Grammar();
 
-const parse = (jsonPath, { ast = new JSONPathQueryCST(), evaluator = translateEvaluator } = {}) => {
+const parse = (jsonPath, { ast = new JSONPathQueryCST(), stats = false, evaluator = translateEvaluator } = {}) => {
   if (typeof jsonPath !== 'string') {
     throw new TypeError('JSONPath must be a string');
   }
@@ -15,11 +15,12 @@ const parse = (jsonPath, { ast = new JSONPathQueryCST(), evaluator = translateEv
   try {
     const parser = new Parser();
     parser.ast = ast;
+    if (stats) parser.stats = new Stats();
 
     const result = parser.parse(grammar, 'jsonpath-query', jsonPath);
     const computed = evaluator(ast, { result });
 
-    return { result, ast, computed };
+    return { result, ast, stats: parser.stats, computed };
   } catch (error) {
     throw new JSONPathParseError('Unexpected error during JSONPath parsing', {
       cause: error,

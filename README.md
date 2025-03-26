@@ -32,6 +32,7 @@ The development of this library contributed to the identification and formal sub
     - [Parsing](#parsing)
       - [Concrete Syntax Tree (CST)](#concrete-syntax-tree-cst)
       - [Interpreting Parse result as XML](#interpreting-parse-result-as-xml)
+      - [Parse statistics](#parse-statistics)
     - [Errors](#errors)
     - [Grammar](#grammar)
 - [More about JSONPath](#more-about-jsonpath)
@@ -285,6 +286,20 @@ import { parse } from '@swaggerexpert/jsonpath';
 
 const parseResult = parse('$.store.book[0].title');
 const xml = parseResult.ast.toXml();
+```
+
+###### Parse statistics
+
+`parse` function returns additional statistical information about the parsing process.
+Collection of the statistics can be enabled by setting `stats` option to `true`.
+
+```js
+import { parse } from '@swaggerexpert/jsonpath';
+
+const { stats } = parse('$.store.book[0].title', { stats: true});
+
+stats.displayStats(); // returns operator stats
+stats.displayHits(); // returns rules grouped by hit count
 ```
 
 #### Errors
