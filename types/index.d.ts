@@ -5,6 +5,7 @@ export function parse(jsonpath: string, options?: ParseOptions): ParseResult;
 
 export interface ParseOptions {
   readonly ast?: AST;
+  readonly stats?: boolean;
 }
 
 export interface AST {
@@ -18,14 +19,20 @@ export interface ParseResult {
   };
   readonly ast: AST;
   readonly computed: Record<string, CSTNode>;
+  readonly stats?: Stats;
 }
 
 export interface CSTNode {
-  type: string,
-  text: string,
-  start: number,
-  length: number,
-  children: CSTNode[],
+  readonly type: string,
+  readonly text: string,
+  readonly start: number,
+  readonly length: number,
+  readonly children: CSTNode[],
+}
+
+export interface Stats {
+  displayStats(): string;
+  displayHits(): string;
 }
 
 /**
