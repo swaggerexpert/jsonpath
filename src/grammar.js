@@ -600,8 +600,8 @@ export default function grammar(){
   this.rules[58].opcodes = [];
   this.rules[58].opcodes[0] = { type: 1, children: [1,2,3,4] };// ALT
   this.rules[58].opcodes[1] = { type: 4, index: 27 };// RNM(logical-expr)
-  this.rules[58].opcodes[2] = { type: 4, index: 57 };// RNM(function-expr)
-  this.rules[58].opcodes[3] = { type: 4, index: 34 };// RNM(filter-query)
+  this.rules[58].opcodes[2] = { type: 4, index: 34 };// RNM(filter-query)
+  this.rules[58].opcodes[3] = { type: 4, index: 57 };// RNM(function-expr)
   this.rules[58].opcodes[4] = { type: 4, index: 38 };// RNM(literal)
 
   /* segment */
@@ -969,8 +969,8 @@ export default function grammar(){
     str += "function-expr       = function-name left-paren S [function-argument ; MODIFICATION: surrogate text rule used\n";
     str += "                         *(S comma S function-argument)] S right-paren ; MODIFICATION: surrogate text rule used\n";
     str += "function-argument   = logical-expr / ; MODIFICATION: https://www.rfc-editor.org/errata/eid8343\n";
-    str += "                      function-expr /\n";
     str += "                      filter-query / ; (includes singular-query)\n";
+    str += "                      function-expr /\n";
     str += "                      literal\n";
     str += "\n";
     str += "\n";

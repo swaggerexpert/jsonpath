@@ -145,8 +145,8 @@ LCALPHA             = %x61-7A  ; "a".."z"
 function-expr       = function-name left-paren S [function-argument ; MODIFICATION: surrogate text rule used
                          *(S comma S function-argument)] S right-paren ; MODIFICATION: surrogate text rule used
 function-argument   = logical-expr / ; MODIFICATION: https://www.rfc-editor.org/errata/eid8343
-                      function-expr /
                       filter-query / ; (includes singular-query)
+                      function-expr /
                       literal
 
 
