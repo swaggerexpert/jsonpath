@@ -296,7 +296,7 @@ Collection of the statistics can be enabled by setting `stats` option to `true`.
 ```js
 import { parse } from '@swaggerexpert/jsonpath';
 
-const { stats } = parse('$.store.book[0].title', { stats: true});
+const { stats } = parse('$.store.book[0].title', { stats: true });
 
 stats.displayStats(); // returns operator stats
 stats.displayHits(); // returns rules grouped by hit count
