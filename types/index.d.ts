@@ -6,6 +6,7 @@ export function parse(jsonpath: string, options?: ParseOptions): ParseResult;
 export interface ParseOptions {
   readonly ast?: AST;
   readonly stats?: boolean;
+  readonly trace?: boolean;
 }
 
 export interface AST {
@@ -20,6 +21,7 @@ export interface ParseResult {
   readonly ast: AST;
   readonly computed: Record<string, CSTNode>;
   readonly stats?: Stats;
+  readonly trace?: Trace;
 }
 
 export interface CSTNode {
@@ -33,6 +35,10 @@ export interface CSTNode {
 export interface Stats {
   displayStats(): string;
   displayHits(): string;
+}
+
+export interface Trace {
+  displayTrace(): string;
 }
 
 /**
