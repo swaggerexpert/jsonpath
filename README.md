@@ -30,6 +30,8 @@ The development of this library contributed to the identification and formal sub
   - [Installation](#installation)
   - [Usage](#usage)
     - [Parsing](#parsing)
+      - [Concrete Syntax Tree (CST)](#concrete-syntax-tree-cst)
+      - [Interpreting Parse result as XML](#interpreting-parse-result-as-xml)
     - [Errors](#errors)
     - [Grammar](#grammar)
 - [More about JSONPath](#more-about-jsonpath)
@@ -256,7 +258,27 @@ const parseResult = parse('$.store.book[0].title', { ast: new JSONPathQueryCST()
 }
 ```
 
-###### Interpreting AST as XML
+###### Concrete Syntax Tree (CST)
+
+[Concrete Syntax Tree](https://en.wikipedia.org/wiki/Parse_tree) (Parse tree) is available on parse result via `computed` field.
+Instance of `JSONPathQueryCST` needs to be assigned to `ast` option in `parse` function (default behavior).
+CST is suitable to be consumed by other tools like IDEs, editors, etc...
+
+```js
+import { parse } from '@swaggerexpert/jsonpath';
+
+const { computed: CST } = parse('$.store.book[0].title');
+```
+
+or
+
+```js
+import { parse, JSONPathQueryCST } from '@swaggerexpert/jsonpath';
+
+const { computed: CST } = parse('$.store.book[0].title', { ast: new JSONPathQueryCST() });
+```
+
+###### Interpreting Parse result as XML
 
 ```js
 import { parse } from '@swaggerexpert/jsonpath';
@@ -453,8 +475,8 @@ LCALPHA             = %x61-7A  ; "a".."z"
 function-expr       = function-name left-paren S [function-argument ; MODIFICATION: surrogate text rule used
                          *(S comma S function-argument)] S right-paren ; MODIFICATION: surrogate text rule used
 function-argument   = logical-expr / ; MODIFICATION: https://www.rfc-editor.org/errata/eid8343
-                      function-expr /
                       filter-query / ; (includes singular-query)
+                      function-expr /
                       literal
 
 
