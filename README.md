@@ -32,7 +32,8 @@ The development of this library contributed to the identification and formal sub
     - [Parsing](#parsing)
       - [Concrete Syntax Tree (CST)](#concrete-syntax-tree-cst)
       - [Interpreting Parse result as XML](#interpreting-parse-result-as-xml)
-      - [Parse statistics](#parse-statistics)
+      - [Statistics](#statistics)
+      - [Tracing](#tracing)
     - [Errors](#errors)
     - [Grammar](#grammar)
 - [More about JSONPath](#more-about-jsonpath)
@@ -288,7 +289,7 @@ const parseResult = parse('$.store.book[0].title');
 const xml = parseResult.ast.toXml();
 ```
 
-###### Parse statistics
+###### Statistics
 
 `parse` function returns additional statistical information about the parsing process.
 Collection of the statistics can be enabled by setting `stats` option to `true`.
@@ -301,6 +302,25 @@ const { stats } = parse('$.store.book[0].title', { stats: true });
 stats.displayStats(); // returns operator stats
 stats.displayHits(); // returns rules grouped by hit count
 ```
+
+###### Tracing
+
+`parse` function returns additional tracing information about the parsing process.
+Tracing can be enabled by setting `trace` option to `true`. Tracing is essential
+for debugging failed matches or analyzing rule execution flow.
+
+```js
+import { parse } from '@swaggerexpert/jsonpath';
+
+const { result, trace } = parse('$fdfadfd', { trace: true });
+
+result.success; // returns false
+trace.displayTrace(); // returns trace information
+```
+
+By combining information from `result` and `trace`, it is possible to analyze the parsing process in detail
+and generate a messages like this: `'Syntax error at position 1, expected "[", ".", ".."'`. Please see this
+[test file](https://github.com/swaggerexpert/jsonpath/blob/main/test/parse/trace.js) for more information how to achieve that.
 
 #### Errors
 
