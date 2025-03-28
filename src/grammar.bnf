@@ -116,7 +116,7 @@ literal             = number / string-literal /
 comparable          = singular-query / ; singular query value
                       function-expr /  ; ValueType
                       literal
-                      ; MODIFICATION: https://www.rfc-editor.org/errata/eid8343
+                      ; MODIFICATION: https://www.rfc-editor.org/errata/eid8352
 comparison-op       = "==" / "!=" /
                       "<=" / ">=" /
                       "<"  / ">"

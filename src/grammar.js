@@ -940,7 +940,7 @@ export default function grammar(){
     str += "comparable          = singular-query / ; singular query value\n";
     str += "                      function-expr /  ; ValueType\n";
     str += "                      literal\n";
-    str += "                      ; MODIFICATION: https://www.rfc-editor.org/errata/eid8343\n";
+    str += "                      ; MODIFICATION: https://www.rfc-editor.org/errata/eid8352\n";
     str += "comparison-op       = \"==\" / \"!=\" /\n";
     str += "                      \"<=\" / \">=\" /\n";
     str += "                      \"<\"  / \">\"\n";

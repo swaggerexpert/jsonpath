@@ -9,7 +9,11 @@
 
 `@swaggerexpert/jsonpath` is a **parser** and **validator** for [RFC 9535](https://www.rfc-editor.org/rfc/rfc9535) Query Expressions for JSON - **JSONPath**.
 
-The development of this library contributed to the identification and formal submission of [Errata 8343](https://www.rfc-editor.org/errata/eid8343) against RFC 9535.
+The development of this library contributed to the identification and formal submission of following **erratas** against the RFC 9535:
+- [Errata ID: 8343](https://www.rfc-editor.org/errata/eid8343)
+- [Errata ID: 8352](https://www.rfc-editor.org/errata/eid8352)
+- [Errata ID: 8353](https://www.rfc-editor.org/errata/eid8353)
+- [Errata ID: 8354](https://www.rfc-editor.org/errata/eid8354)
 
 <table>
   <tr>
