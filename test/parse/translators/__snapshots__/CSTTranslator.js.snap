@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`parse translators CSTTranslator should translate a JSONPath to a CST 1`] = `
+{
+  "root": {
+    "type": "jsonpath-query",
+    "text": "$",
+    "start": 0,
+    "length": 1,
+    "children": [
+      {
+        "type": "root-identifier",
+        "text": "$",
+        "start": 0,
+        "length": 1,
+        "children": [],
+      },
+    ],
+  },
+}
+`;

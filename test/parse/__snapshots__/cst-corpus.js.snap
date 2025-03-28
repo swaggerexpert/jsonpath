@@ -2,7 +2,6 @@
 
 exports[`parse cst-corpus $ 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$",
@@ -23,7 +22,6 @@ exports[`parse cst-corpus $ 1`] = `
 
 exports[`parse cst-corpus $..* 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$..*",
@@ -82,7 +80,6 @@ exports[`parse cst-corpus $..* 1`] = `
 
 exports[`parse cst-corpus $..* 2`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$..*",
@@ -141,7 +138,6 @@ exports[`parse cst-corpus $..* 2`] = `
 
 exports[`parse cst-corpus $..[*] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$..[*]",
@@ -230,7 +226,6 @@ exports[`parse cst-corpus $..[*] 1`] = `
 
 exports[`parse cst-corpus $..[0] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$..[0]",
@@ -319,7 +314,6 @@ exports[`parse cst-corpus $..[0] 1`] = `
 
 exports[`parse cst-corpus $..author 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$..author",
@@ -378,7 +372,6 @@ exports[`parse cst-corpus $..author 1`] = `
 
 exports[`parse cst-corpus $..book[:2] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$..book[:2]",
@@ -505,7 +498,6 @@ exports[`parse cst-corpus $..book[:2] 1`] = `
 
 exports[`parse cst-corpus $..book[?@.isbn] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$..book[?@.isbn]",
@@ -726,7 +718,6 @@ exports[`parse cst-corpus $..book[?@.isbn] 1`] = `
 
 exports[`parse cst-corpus $..book[?@.price<10] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$..book[?@.price<10]",
@@ -977,7 +968,6 @@ exports[`parse cst-corpus $..book[?@.price<10] 1`] = `
 
 exports[`parse cst-corpus $..book[-1] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$..book[-1]",
@@ -1089,7 +1079,6 @@ exports[`parse cst-corpus $..book[-1] 1`] = `
 
 exports[`parse cst-corpus $..book[0,1] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$..book[0,1]",
@@ -1223,7 +1212,6 @@ exports[`parse cst-corpus $..book[0,1] 1`] = `
 
 exports[`parse cst-corpus $..book[2] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$..book[2]",
@@ -1335,7 +1323,6 @@ exports[`parse cst-corpus $..book[2] 1`] = `
 
 exports[`parse cst-corpus $..book[2].author 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$..book[2].author",
@@ -1477,7 +1464,6 @@ exports[`parse cst-corpus $..book[2].author 1`] = `
 
 exports[`parse cst-corpus $..book[2].publisher 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$..book[2].publisher",
@@ -1619,7 +1605,6 @@ exports[`parse cst-corpus $..book[2].publisher 1`] = `
 
 exports[`parse cst-corpus $..j 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$..j",
@@ -1678,7 +1663,6 @@ exports[`parse cst-corpus $..j 1`] = `
 
 exports[`parse cst-corpus $..o 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$..o",
@@ -1737,7 +1721,6 @@ exports[`parse cst-corpus $..o 1`] = `
 
 exports[`parse cst-corpus $.a 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$.a",
@@ -1796,7 +1779,6 @@ exports[`parse cst-corpus $.a 1`] = `
 
 exports[`parse cst-corpus $.a..[0, 1] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$.a..[0, 1]",
@@ -1944,7 +1926,6 @@ exports[`parse cst-corpus $.a..[0, 1] 1`] = `
 
 exports[`parse cst-corpus $.a.d 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$.a.d",
@@ -2033,7 +2014,6 @@ exports[`parse cst-corpus $.a.d 1`] = `
 
 exports[`parse cst-corpus $.a[*] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$.a[*]",
@@ -2145,7 +2125,6 @@ exports[`parse cst-corpus $.a[*] 1`] = `
 
 exports[`parse cst-corpus $.a[?(@.b == 'kilo')] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$.a[?(@.b == 'kilo')]",
@@ -2507,7 +2486,6 @@ exports[`parse cst-corpus $.a[?(@.b == 'kilo')] 1`] = `
 
 exports[`parse cst-corpus $.a[?@ == @] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$.a[?@ == @]",
@@ -2750,7 +2728,6 @@ exports[`parse cst-corpus $.a[?@ == @] 1`] = `
 
 exports[`parse cst-corpus $.a[?@.b == $.x] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$.a[?@.b == $.x]",
@@ -3053,7 +3030,6 @@ exports[`parse cst-corpus $.a[?@.b == $.x] 1`] = `
 
 exports[`parse cst-corpus $.a[?@.b == 'kilo'] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$.a[?@.b == 'kilo']",
@@ -3361,7 +3337,6 @@ exports[`parse cst-corpus $.a[?@.b == 'kilo'] 1`] = `
 
 exports[`parse cst-corpus $.a[?@.b] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$.a[?@.b]",
@@ -3582,7 +3557,6 @@ exports[`parse cst-corpus $.a[?@.b] 1`] = `
 
 exports[`parse cst-corpus $.a[?@<2 || @.b == "k"] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$.a[?@<2 || @.b == "k"]",
@@ -3975,7 +3949,6 @@ exports[`parse cst-corpus $.a[?@<2 || @.b == "k"] 1`] = `
 
 exports[`parse cst-corpus $.a[?@>3.5] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$.a[?@>3.5]",
@@ -4196,7 +4169,6 @@ exports[`parse cst-corpus $.a[?@>3.5] 1`] = `
 
 exports[`parse cst-corpus $.a[?match(@.b, "[jk]")] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$.a[?match(@.b, "[jk]")]",
@@ -4574,7 +4546,6 @@ exports[`parse cst-corpus $.a[?match(@.b, "[jk]")] 1`] = `
 
 exports[`parse cst-corpus $.a[?search(@.b, "[jk]")] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$.a[?search(@.b, "[jk]")]",
@@ -4952,7 +4923,6 @@ exports[`parse cst-corpus $.a[?search(@.b, "[jk]")] 1`] = `
 
 exports[`parse cst-corpus $.a[0] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$.a[0]",
@@ -5064,7 +5034,6 @@ exports[`parse cst-corpus $.a[0] 1`] = `
 
 exports[`parse cst-corpus $.b[*] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$.b[*]",
@@ -5176,7 +5145,6 @@ exports[`parse cst-corpus $.b[*] 1`] = `
 
 exports[`parse cst-corpus $.b[?@==null] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$.b[?@==null]",
@@ -5397,7 +5365,6 @@ exports[`parse cst-corpus $.b[?@==null] 1`] = `
 
 exports[`parse cst-corpus $.b[?@] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$.b[?@]",
@@ -5580,7 +5547,6 @@ exports[`parse cst-corpus $.b[?@] 1`] = `
 
 exports[`parse cst-corpus $.b[0] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$.b[0]",
@@ -5692,7 +5658,6 @@ exports[`parse cst-corpus $.b[0] 1`] = `
 
 exports[`parse cst-corpus $.c[?@.d==null] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$.c[?@.d==null]",
@@ -5943,7 +5908,6 @@ exports[`parse cst-corpus $.c[?@.d==null] 1`] = `
 
 exports[`parse cst-corpus $.null 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$.null",
@@ -6002,7 +5966,6 @@ exports[`parse cst-corpus $.null 1`] = `
 
 exports[`parse cst-corpus $.o..[*, *] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$.o..[*, *]",
@@ -6150,7 +6113,6 @@ exports[`parse cst-corpus $.o..[*, *] 1`] = `
 
 exports[`parse cst-corpus $.o["j j"]["k.k"] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$.o["j j"]["k.k"]",
@@ -6403,7 +6365,6 @@ exports[`parse cst-corpus $.o["j j"]["k.k"] 1`] = `
 
 exports[`parse cst-corpus $.o['j j'] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$.o['j j']",
@@ -6559,7 +6520,6 @@ exports[`parse cst-corpus $.o['j j'] 1`] = `
 
 exports[`parse cst-corpus $.o['j j']['k.k'] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$.o['j j']['k.k']",
@@ -6812,7 +6772,6 @@ exports[`parse cst-corpus $.o['j j']['k.k'] 1`] = `
 
 exports[`parse cst-corpus $.o[*, *] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$.o[*, *]",
@@ -6953,7 +6912,6 @@ exports[`parse cst-corpus $.o[*, *] 1`] = `
 
 exports[`parse cst-corpus $.o[*] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$.o[*]",
@@ -7065,7 +7023,6 @@ exports[`parse cst-corpus $.o[*] 1`] = `
 
 exports[`parse cst-corpus $.o[*] 2`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$.o[*]",
@@ -7177,7 +7134,6 @@ exports[`parse cst-corpus $.o[*] 2`] = `
 
 exports[`parse cst-corpus $.o[?@.u || @.x] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$.o[?@.u || @.x]",
@@ -7504,7 +7460,6 @@ exports[`parse cst-corpus $.o[?@.u || @.x] 1`] = `
 
 exports[`parse cst-corpus $.o[?@<3, ?@<3] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$.o[?@<3, ?@<3]",
@@ -7863,7 +7818,6 @@ exports[`parse cst-corpus $.o[?@<3, ?@<3] 1`] = `
 
 exports[`parse cst-corpus $.o[?@>1 && @<4] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$.o[?@>1 && @<4]",
@@ -8182,7 +8136,6 @@ exports[`parse cst-corpus $.o[?@>1 && @<4] 1`] = `
 
 exports[`parse cst-corpus $.o[?@>1 && @<4] 2`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$.o[?@>1 && @<4]",
@@ -8501,7 +8454,6 @@ exports[`parse cst-corpus $.o[?@>1 && @<4] 2`] = `
 
 exports[`parse cst-corpus $.store.* 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$.store.*",
@@ -8590,7 +8542,6 @@ exports[`parse cst-corpus $.store.* 1`] = `
 
 exports[`parse cst-corpus $.store..price 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$.store..price",
@@ -8679,7 +8630,6 @@ exports[`parse cst-corpus $.store..price 1`] = `
 
 exports[`parse cst-corpus $.store.book[*].author 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$.store.book[*].author",
@@ -8851,7 +8801,6 @@ exports[`parse cst-corpus $.store.book[*].author 1`] = `
 
 exports[`parse cst-corpus $.store.book[?@.price < 10].title 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$.store.book[?@.price < 10].title",
@@ -9176,7 +9125,6 @@ exports[`parse cst-corpus $.store.book[?@.price < 10].title 1`] = `
 
 exports[`parse cst-corpus $.store.book[0].title 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$.store.book[0].title",
@@ -9348,7 +9296,6 @@ exports[`parse cst-corpus $.store.book[0].title 1`] = `
 
 exports[`parse cst-corpus $["'"]["@"] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$["'"]["@"]",
@@ -9543,7 +9490,6 @@ exports[`parse cst-corpus $["'"]["@"] 1`] = `
 
 exports[`parse cst-corpus $["\\u0061"] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$["\\u0061"]",
@@ -9655,7 +9601,6 @@ exports[`parse cst-corpus $["\\u0061"] 1`] = `
 
 exports[`parse cst-corpus $['\\u000B'] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$['\\u000B']",
@@ -9767,7 +9712,6 @@ exports[`parse cst-corpus $['\\u000B'] 1`] = `
 
 exports[`parse cst-corpus $['a'] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$['a']",
@@ -9879,7 +9823,6 @@ exports[`parse cst-corpus $['a'] 1`] = `
 
 exports[`parse cst-corpus $['a']['b'][1] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$['a']['b'][1]",
@@ -10127,7 +10070,6 @@ exports[`parse cst-corpus $['a']['b'][1] 1`] = `
 
 exports[`parse cst-corpus $['store']['book'][0]['title'] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$['store']['book'][0]['title']",
@@ -10535,7 +10477,6 @@ exports[`parse cst-corpus $['store']['book'][0]['title'] 1`] = `
 
 exports[`parse cst-corpus $[*] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$[*]",
@@ -10617,7 +10558,6 @@ exports[`parse cst-corpus $[*] 1`] = `
 
 exports[`parse cst-corpus $[::-1] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$[::-1]",
@@ -10721,7 +10661,6 @@ exports[`parse cst-corpus $[::-1] 1`] = `
 
 exports[`parse cst-corpus $[?@.*] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$[?@.*]",
@@ -10912,7 +10851,6 @@ exports[`parse cst-corpus $[?@.*] 1`] = `
 
 exports[`parse cst-corpus $[?@[?@.b]] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$[?@[?@.b]]",
@@ -11235,7 +11173,6 @@ exports[`parse cst-corpus $[?@[?@.b]] 1`] = `
 
 exports[`parse cst-corpus $[?bal(1)] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$[?bal(1)]",
@@ -11417,7 +11354,6 @@ exports[`parse cst-corpus $[?bal(1)] 1`] = `
 
 exports[`parse cst-corpus $[?bar(@.a)] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$[?bar(@.a)]",
@@ -11685,7 +11621,6 @@ exports[`parse cst-corpus $[?bar(@.a)] 1`] = `
 
 exports[`parse cst-corpus $[?blt(1)] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$[?blt(1)]",
@@ -11867,7 +11802,6 @@ exports[`parse cst-corpus $[?blt(1)] 1`] = `
 
 exports[`parse cst-corpus $[?blt(1==1)] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$[?blt(1==1)]",
@@ -12127,7 +12061,6 @@ exports[`parse cst-corpus $[?blt(1==1)] 1`] = `
 
 exports[`parse cst-corpus $[?bnl(@.*)] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$[?bnl(@.*)]",
@@ -12395,7 +12328,6 @@ exports[`parse cst-corpus $[?bnl(@.*)] 1`] = `
 
 exports[`parse cst-corpus $[?count(@.*) == 1] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$[?count(@.*) == 1]",
@@ -12715,7 +12647,6 @@ exports[`parse cst-corpus $[?count(@.*) == 1] 1`] = `
 
 exports[`parse cst-corpus $[?count(@.*.author) >= 5] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$[?count(@.*.author) >= 5]",
@@ -13065,7 +12996,6 @@ exports[`parse cst-corpus $[?count(@.*.author) >= 5] 1`] = `
 
 exports[`parse cst-corpus $[?count(1) == 1] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$[?count(1) == 1]",
@@ -13299,7 +13229,6 @@ exports[`parse cst-corpus $[?count(1) == 1] 1`] = `
 
 exports[`parse cst-corpus $[?count(foo(@.*)) == 1] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$[?count(foo(@.*)) == 1]",
@@ -13696,7 +13625,6 @@ exports[`parse cst-corpus $[?count(foo(@.*)) == 1] 1`] = `
 
 exports[`parse cst-corpus $[?foo(1==2)] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$[?foo(1==2)]",
@@ -13956,7 +13884,6 @@ exports[`parse cst-corpus $[?foo(1==2)] 1`] = `
 
 exports[`parse cst-corpus $[?length(@) < 3] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$[?length(@) < 3]",
@@ -14238,7 +14165,6 @@ exports[`parse cst-corpus $[?length(@) < 3] 1`] = `
 
 exports[`parse cst-corpus $[?length(@.*) < 3] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$[?length(@.*) < 3]",
@@ -14558,7 +14484,6 @@ exports[`parse cst-corpus $[?length(@.*) < 3] 1`] = `
 
 exports[`parse cst-corpus $[?length(@.authors) >= 5] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$[?length(@.authors) >= 5]",
@@ -14878,7 +14803,6 @@ exports[`parse cst-corpus $[?length(@.authors) >= 5] 1`] = `
 
 exports[`parse cst-corpus $[?match(@.date, "1974-05-..")] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$[?match(@.date, "1974-05-..")]",
@@ -15268,7 +15192,6 @@ exports[`parse cst-corpus $[?match(@.date, "1974-05-..")] 1`] = `
 
 exports[`parse cst-corpus $[?match(@.timezone, 'Europe/.*') == true] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$[?match(@.timezone, 'Europe/.*') == true]",
@@ -15703,7 +15626,6 @@ exports[`parse cst-corpus $[?match(@.timezone, 'Europe/.*') == true] 1`] = `
 
 exports[`parse cst-corpus $[?match(@.timezone, 'Europe/.*')] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$[?match(@.timezone, 'Europe/.*')]",
@@ -16086,7 +16008,6 @@ exports[`parse cst-corpus $[?match(@.timezone, 'Europe/.*')] 1`] = `
 
 exports[`parse cst-corpus $[?search(@.author, "[BR]ob")] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$[?search(@.author, "[BR]ob")]",
@@ -16448,7 +16369,6 @@ exports[`parse cst-corpus $[?search(@.author, "[BR]ob")] 1`] = `
 
 exports[`parse cst-corpus $[?true(1)==0] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$[?true(1)==0]",
@@ -16668,7 +16588,6 @@ exports[`parse cst-corpus $[?true(1)==0] 1`] = `
 
 exports[`parse cst-corpus $[?true(1)==false(0)] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$[?true(1)==false(0)]",
@@ -16925,7 +16844,6 @@ exports[`parse cst-corpus $[?true(1)==false(0)] 1`] = `
 
 exports[`parse cst-corpus $[?value(@..color) == "red"] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$[?value(@..color) == "red"]",
@@ -17281,7 +17199,6 @@ exports[`parse cst-corpus $[?value(@..color) == "red"] 1`] = `
 
 exports[`parse cst-corpus $[?value(@..color) == "red"] 2`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$[?value(@..color) == "red"]",
@@ -17637,7 +17554,6 @@ exports[`parse cst-corpus $[?value(@..color) == "red"] 2`] = `
 
 exports[`parse cst-corpus $[?value(@..color)] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$[?value(@..color)]",
@@ -17905,7 +17821,6 @@ exports[`parse cst-corpus $[?value(@..color)] 1`] = `
 
 exports[`parse cst-corpus $[-2] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$[-2]",
@@ -17987,7 +17902,6 @@ exports[`parse cst-corpus $[-2] 1`] = `
 
 exports[`parse cst-corpus $[0, 0] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$[0, 0]",
@@ -18098,7 +18012,6 @@ exports[`parse cst-corpus $[0, 0] 1`] = `
 
 exports[`parse cst-corpus $[0, 3] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$[0, 3]",
@@ -18209,7 +18122,6 @@ exports[`parse cst-corpus $[0, 3] 1`] = `
 
 exports[`parse cst-corpus $[0:2, 5] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$[0:2, 5]",
@@ -18342,7 +18254,6 @@ exports[`parse cst-corpus $[0:2, 5] 1`] = `
 
 exports[`parse cst-corpus $[1:3] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$[1:3]",
@@ -18446,7 +18357,6 @@ exports[`parse cst-corpus $[1:3] 1`] = `
 
 exports[`parse cst-corpus $[1:5:2] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$[1:5:2]",
@@ -18564,7 +18474,6 @@ exports[`parse cst-corpus $[1:5:2] 1`] = `
 
 exports[`parse cst-corpus $[1] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$[1]",
@@ -18646,7 +18555,6 @@ exports[`parse cst-corpus $[1] 1`] = `
 
 exports[`parse cst-corpus $[1] 2`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$[1]",
@@ -18728,7 +18636,6 @@ exports[`parse cst-corpus $[1] 2`] = `
 
 exports[`parse cst-corpus $[2] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$[2]",
@@ -18810,7 +18717,6 @@ exports[`parse cst-corpus $[2] 1`] = `
 
 exports[`parse cst-corpus $[5:] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$[5:]",
@@ -18907,7 +18813,6 @@ exports[`parse cst-corpus $[5:] 1`] = `
 
 exports[`parse cst-corpus $[5:1:-2] 1`] = `
 {
-  "stack": [],
   "root": {
     "type": "jsonpath-query",
     "text": "$[5:1:-2]",
