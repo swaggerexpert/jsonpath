@@ -2,7 +2,7 @@ import { Ast as AST } from 'apg-lite';
 
 import cstCallback from '../callbacks/cst.js';
 
-class JSONPathQueryCST extends AST {
+class CSTTranslator extends AST {
   constructor() {
     super();
 
@@ -94,6 +94,13 @@ class JSONPathQueryCST extends AST {
     this.callbacks['left-paren'] = cstCallback('text');
     this.callbacks['right-paren'] = cstCallback('text');
   }
+
+  getTree() {
+    const data = { stack: [], root: null };
+    this.translate(data);
+    delete data.stack;
+    return data;
+  }
 }
 
-export default JSONPathQueryCST;
+export default CSTTranslator;

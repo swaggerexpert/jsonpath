@@ -8,11 +8,6 @@ const cst = (ruleName) => {
       throw new JSONPathParseError("parser's user data must be an object");
     }
 
-    if (!data.stack) {
-      data.stack = [];
-      data.root = null;
-    }
-
     // drop the empty nodes
     if (phraseLength === 0) return;
 

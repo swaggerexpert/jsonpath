@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`parse translators XMLTranslator should translate a JSONPath to a XML 1`] = `
+"<?xml version="1.0" encoding="utf-8"?>
+<root nodes="3" characters="1">
+<!-- input string -->
+  $
+ <node name="jsonpath-query" index="0" length="1">
+   $
+  <node name="root-identifier" index="0" length="1">
+    $
+  </node><!-- name="root-identifier" -->
+  <node name="segments" index="1" length="0">
+    
+  </node><!-- name="segments" -->
+ </node><!-- name="jsonpath-query" -->
+</root>
+"
+`;

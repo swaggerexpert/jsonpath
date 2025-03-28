@@ -4,22 +4,33 @@
 export function parse(jsonpath: string, options?: ParseOptions): ParseResult;
 
 export interface ParseOptions {
-  readonly ast?: AST;
+  readonly translator?: Translator | null;
   readonly stats?: boolean;
   readonly trace?: boolean;
 }
 
-export interface AST {
-  readonly translate: (parts: Record<string, CSTNode>) => Record<string, CSTNode>;
-  readonly toXml: () => string;
+export interface Translator<TTree = unknown> {
+  getTree(): TTree;
+}
+export declare class CSTTranslator implements Translator<CSTTree> {
+  getTree(): CSTTree;
+}
+export declare class XMLTranslator implements Translator<XMLTree> {
+  getTree(): XMLTree;
 }
 
-export interface ParseResult {
+export interface ParseResult<TTree = unknown> {
   readonly result: {
     readonly success: boolean;
+    readonly state: number;
+    readonly stateName: string;
+    readonly length: number;
+    readonly matched: number;
+    readonly maxMatched: number;
+    readonly maxTreeDepth: number
+    readonly nodeHits: number;
   };
-  readonly ast: AST;
-  readonly computed: Record<string, CSTNode>;
+  readonly tree: TTree;
   readonly stats?: Stats;
   readonly trace?: Trace;
 }
@@ -31,6 +42,12 @@ export interface CSTNode {
   readonly length: number,
   readonly children: CSTNode[],
 }
+
+export interface CSTTree {
+  readonly root: CSTNode;
+}
+
+export type XMLTree = string;
 
 export interface Stats {
   displayStats(): string;

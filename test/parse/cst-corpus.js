@@ -1,7 +1,7 @@
 import { assert } from 'chai';
 import { jestExpect as expect } from 'mocha-expect-snapshot';
 
-import { parse, JSONPathQueryCST } from '../../src/index.js';
+import { parse } from '../../src/index.js';
 
 describe('parse', function () {
   context('cst-corpus', function () {
@@ -120,15 +120,15 @@ describe('parse', function () {
       // https://www.rfc-editor.org/errata/eid8343
       '$[?foo(1==2)]',
       '$[?true(1)==0]',
-      '$[?true(1)==false(0)]'
+      '$[?true(1)==false(0)]',
     ];
 
     jsonPaths.forEach((jsonPath) => {
       specify(jsonPath, function () {
-        const parseResult = parse(jsonPath, { ast: new JSONPathQueryCST() });
+        const parseResult = parse(jsonPath);
 
         assert.isTrue(parseResult.result.success);
-        expect(parseResult.computed).toMatchSnapshot();
+        expect(parseResult.tree).toMatchSnapshot();
       });
     });
   });

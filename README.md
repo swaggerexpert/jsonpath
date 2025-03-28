@@ -34,8 +34,9 @@ The development of this library contributed to the identification and formal sub
   - [Installation](#installation)
   - [Usage](#usage)
     - [Parsing](#parsing)
-      - [Concrete Syntax Tree (CST)](#concrete-syntax-tree-cst)
-      - [Interpreting Parse result as XML](#interpreting-parse-result-as-xml)
+      - [Translators](#translators)
+        - [CST](#cst-translator)
+        - [XML](#xml-translator)
       - [Statistics](#statistics)
       - [Tracing](#tracing)
     - [Errors](#errors)
@@ -72,228 +73,72 @@ const parseResult = parse('$.store.book[0].title');
 or
 
 ```js
-import { parse, JSONPathQueryCST } from '@swaggerexpert/jsonpath';
+import { parse, CSTTranslator } from '@swaggerexpert/jsonpath';
 
-const parseResult = parse('$.store.book[0].title', { ast: new JSONPathQueryCST() });
+const parseResult = parse('$.store.book[0].title', { translator: new CSTTranslator() });
 ```
 
 **parseResult** variable has the following shape:
 
 ```
 {
-  result: {
-    success: true,
-    state: 101,
-    stateName: 'MATCH',
-    length: 21,
-    matched: 21,
-    maxMatched: 21,
-    maxTreeDepth: 21,
-    nodeHits: 298
-  },
-  ast: <JSONPathQueryCST>,
-  computed: {
-    stack: [],
-    root: {
-      type: 'jsonpath-query',
-      text: '$.store.book[0].title',
-      start: 0,
-      length: 21,
-      children: [
-        {
-          type: 'root-identifier',
-          text: '$',
-          start: 0,
-          length: 1,
-          children: []
-        },
-        {
-          type: 'segments',
-          text: '.store.book[0].title',
-          start: 1,
-          length: 20,
-          children: [
-            {
-              type: 'segment',
-              text: '.store',
-              start: 1,
-              length: 6,
-              children: [
-                {
-                  type: 'child-segment',
-                  text: '.store',
-                  start: 1,
-                  length: 6,
-                  children: [
-                    {
-                      type: 'text',
-                      text: '.',
-                      start: 1,
-                      length: 1,
-                      children: []
-                    },
-                    {
-                      type: 'member-name-shorthand',
-                      text: 'store',
-                      start: 2,
-                      length: 5,
-                      children: []
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              type: 'segment',
-              text: '.book',
-              start: 7,
-              length: 5,
-              children: [
-                {
-                  type: 'child-segment',
-                  text: '.book',
-                  start: 7,
-                  length: 5,
-                  children: [
-                    {
-                      type: 'text',
-                      text: '.',
-                      start: 7,
-                      length: 1,
-                      children: []
-                    },
-                    {
-                      type: 'member-name-shorthand',
-                      text: 'book',
-                      start: 8,
-                      length: 4,
-                      children: []
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              type: 'segment',
-              text: '[0]',
-              start: 12,
-              length: 3,
-              children: [
-                {
-                  type: 'child-segment',
-                  text: '[0]',
-                  start: 12,
-                  length: 3,
-                  children: [
-                    {
-                      type: 'bracketed-selection',
-                      text: '[0]',
-                      start: 12,
-                      length: 3,
-                      children: [
-                        {
-                          type: 'text',
-                          text: '[',
-                          start: 12,
-                          length: 1,
-                          children: []
-                        },
-                        {
-                          type: 'selector',
-                          text: '0',
-                          start: 13,
-                          length: 1,
-                          children: [
-                            {
-                              type: 'index-selector',
-                              text: '0',
-                              start: 13,
-                              length: 1,
-                              children: []
-                            }
-                          ]
-                        },
-                        {
-                          type: 'text',
-                          text: ']',
-                          start: 14,
-                          length: 1,
-                          children: []
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              type: 'segment',
-              text: '.title',
-              start: 15,
-              length: 6,
-              children: [
-                {
-                  type: 'child-segment',
-                  text: '.title',
-                  start: 15,
-                  length: 6,
-                  children: [
-                    {
-                      type: 'text',
-                      text: '.',
-                      start: 15,
-                      length: 1,
-                      children: []
-                    },
-                    {
-                      type: 'member-name-shorthand',
-                      text: 'title',
-                      start: 16,
-                      length: 5,
-                      children: []
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    }
-  }
+  result: <ParseResult['result]>,
+  tree: <ParseResult['tree']>,
+  stats: <ParseResult['stats']>,
+  trace: <ParseResult['trace']>,
 }
 ```
 
-###### Concrete Syntax Tree (CST)
+[TypeScript typings](https://github.com/swaggerexpert/jsonpath/blob/main/types/index.d.ts) are available for all fields attached to parse result object returned by the `parse` function.
 
-[Concrete Syntax Tree](https://en.wikipedia.org/wiki/Parse_tree) (Parse tree) is available on parse result via `computed` field.
-Instance of `JSONPathQueryCST` needs to be assigned to `ast` option in `parse` function (default behavior).
+##### Translators
+
+`@swaggerexpert/jsonpath` provides several translators to convert the parse result into different tree representations.
+
+###### CST translator
+
+[Concrete Syntax Tree](https://en.wikipedia.org/wiki/Parse_tree) (Parse tree) representation is available on parse result
+by default or when instance of `CSTTranslator` is provided via a `translator` option to the `parse` function.
 CST is suitable to be consumed by other tools like IDEs, editors, etc...
 
 ```js
 import { parse } from '@swaggerexpert/jsonpath';
 
-const { computed: CST } = parse('$.store.book[0].title');
+const { tree: CST } = parse('$.store.book[0].title');
 ```
 
 or
 
 ```js
-import { parse, JSONPathQueryCST } from '@swaggerexpert/jsonpath';
+import { parse, CSTTranslator } from '@swaggerexpert/jsonpath';
 
-const { computed: CST } = parse('$.store.book[0].title', { ast: new JSONPathQueryCST() });
+const { tree: CST } = parse('$.store.book[0].title', { translator: new CSTTranslator() });
 ```
 
-###### Interpreting Parse result as XML
+CST tree has the following shape:
+
+```ts
+interface CSTTree {
+  readonly root: CSTNode;
+}
+interface CSTNode {
+  readonly type: string,
+  readonly text: string,
+  readonly start: number,
+  readonly length: number,
+  readonly children: CSTNode[],
+}
+```
+
+###### XML translator
 
 ```js
-import { parse } from '@swaggerexpert/jsonpath';
+import { parse, XMLTranslator } from '@swaggerexpert/jsonpath';
 
-const parseResult = parse('$.store.book[0].title');
-const xml = parseResult.ast.toXml();
+const { tree: XML } = parse('$.store.book[0].title', { translator: new XMLTranslator() });
 ```
 
-###### Statistics
+##### Statistics
 
 `parse` function returns additional statistical information about the parsing process.
 Collection of the statistics can be enabled by setting `stats` option to `true`.
@@ -307,7 +152,7 @@ stats.displayStats(); // returns operator stats
 stats.displayHits(); // returns rules grouped by hit count
 ```
 
-###### Tracing
+##### Tracing
 
 `parse` function returns additional tracing information about the parsing process.
 Tracing can be enabled by setting `trace` option to `true`. Tracing is essential
