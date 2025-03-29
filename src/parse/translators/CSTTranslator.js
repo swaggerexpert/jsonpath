@@ -79,6 +79,14 @@ class CSTTranslator extends AST {
     // https://www.rfc-editor.org/rfc/rfc9535#section-2.5.2.1
     this.callbacks['descendant-segment'] = cstCallback('descendant-segment');
 
+    // https://www.rfc-editor.org/rfc/rfc9535#name-normalized-paths
+    this.callbacks['normalized-path'] = cstCallback('normalized-path');
+    this.callbacks['normal-index-segment'] = cstCallback('normal-index-segment');
+    this.callbacks['normal-selector'] = cstCallback('normal-selector');
+    this.callbacks['normal-name-selector'] = cstCallback('normal-name-selector');
+    this.callbacks['normal-index-selector'] = cstCallback('normal-index-selector');
+    this.callbacks['normal-single-quoted'] = cstCallback('normal-single-quoted');
+
     // Surrogate named rules
     this.callbacks['dot-prefix'] = cstCallback('text');
     this.callbacks['double-dot-prefix'] = cstCallback('text');

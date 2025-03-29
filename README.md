@@ -34,6 +34,7 @@ The development of this library contributed to the identification and formal sub
   - [Installation](#installation)
   - [Usage](#usage)
     - [Parsing](#parsing)
+      - [Normalized paths](#normalized-paths)
       - [Translators](#translators)
         - [CST](#cst-translator)
         - [XML](#xml-translator)
@@ -70,14 +71,6 @@ import { parse } from '@swaggerexpert/jsonpath';
 const parseResult = parse('$.store.book[0].title');
 ```
 
-or
-
-```js
-import { parse, CSTTranslator } from '@swaggerexpert/jsonpath';
-
-const parseResult = parse('$.store.book[0].title', { translator: new CSTTranslator() });
-```
-
 **parseResult** variable has the following shape:
 
 ```
@@ -90,6 +83,31 @@ const parseResult = parse('$.store.book[0].title', { translator: new CSTTranslat
 ```
 
 [TypeScript typings](https://github.com/swaggerexpert/jsonpath/blob/main/types/index.d.ts) are available for all fields attached to parse result object returned by the `parse` function.
+
+
+##### Normalized paths
+
+[comment]: <> (SPDX-FileCopyrightText: Copyright &#40;c&#41; 2024 IETF Trust and the persons identified as the document authors. All rights reserved.)
+[comment]: <> (SPDX-License-Identifier: BSD-3-Clause)
+
+[Normalized Path](https://www.rfc-editor.org/rfc/rfc9535#name-normalized-paths) is a JSONPath query with restricted syntax.
+A Normalized Path represents the identity of a node in a specific value.
+There is precisely one Normalized Path identifying any particular node in a value.
+Normalized Paths provide a predictable format that simplifies testing and post-processing of nodelists, e.g., to remove duplicate nodes.
+Normalized Paths use the canonical bracket notation, rather than dot notation.
+Single quotes are used in Normalized Paths to delimit string member names. This reduces the number of characters that need escaping when Normalized Paths appear in strings delimited by double quotes.
+
+Parsing in normalized path mode can be enabled by setting `normalized` option to `true`.
+
+```js
+import { parse } from '@swaggerexpert/jsonpath';
+
+parse("$['a']", { normalized: true });
+parse("$[1]", { normalized: true });
+parse("$[2]", { normalized: true });
+parse("$['a']['b'][1]", { normalized: true });
+parse("$['\\u000b']", { normalized: true });
+```
 
 ##### Translators
 

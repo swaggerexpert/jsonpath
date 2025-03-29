@@ -180,9 +180,9 @@ descendant-segment  = double-dot-prefix (bracketed-selection / ; MODIFICATION: s
 
 ; https://www.rfc-editor.org/rfc/rfc9535#name-normalized-paths
 normalized-path      = root-identifier *(normal-index-segment)
-normal-index-segment = "[" normal-selector "]"
+normal-index-segment = left-bracket normal-selector right-bracket ; MODIFICATION: surrogate text rule used
 normal-selector      = normal-name-selector / normal-index-selector
-normal-name-selector = %x27 *normal-single-quoted %x27 ; 'string'
+normal-name-selector = squote *normal-single-quoted squote ; 'string', MODIFICATION: surrogate text rule used
 normal-single-quoted = normal-unescaped /
                        ESC normal-escapable
 normal-unescaped     =    ; omit %x0-1F control codes

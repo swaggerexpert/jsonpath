@@ -12,9 +12,9 @@ export default function grammar(){
   //        ALT = 41
   //        CAT = 60
   //        REP = 32
-  //        RNM = 174
-  //        TLS = 66
-  //        TBS = 30
+  //        RNM = 178
+  //        TLS = 64
+  //        TBS = 28
   //        TRG = 20
   //        ---   SABNF superset opcodes
   //        UDT = 0
@@ -685,9 +685,9 @@ export default function grammar(){
   /* normal-index-segment */
   this.rules[69].opcodes = [];
   this.rules[69].opcodes[0] = { type: 2, children: [1,2,3] };// CAT
-  this.rules[69].opcodes[1] = { type: 7, string: [91] };// TLS
+  this.rules[69].opcodes[1] = { type: 4, index: 80 };// RNM(left-bracket)
   this.rules[69].opcodes[2] = { type: 4, index: 70 };// RNM(normal-selector)
-  this.rules[69].opcodes[3] = { type: 7, string: [93] };// TLS
+  this.rules[69].opcodes[3] = { type: 4, index: 81 };// RNM(right-bracket)
 
   /* normal-selector */
   this.rules[70].opcodes = [];
@@ -698,10 +698,10 @@ export default function grammar(){
   /* normal-name-selector */
   this.rules[71].opcodes = [];
   this.rules[71].opcodes[0] = { type: 2, children: [1,2,4] };// CAT
-  this.rules[71].opcodes[1] = { type: 6, string: [39] };// TBS
+  this.rules[71].opcodes[1] = { type: 4, index: 87 };// RNM(squote)
   this.rules[71].opcodes[2] = { type: 3, min: 0, max: Infinity };// REP
   this.rules[71].opcodes[3] = { type: 4, index: 72 };// RNM(normal-single-quoted)
-  this.rules[71].opcodes[4] = { type: 6, string: [39] };// TBS
+  this.rules[71].opcodes[4] = { type: 4, index: 87 };// RNM(squote)
 
   /* normal-single-quoted */
   this.rules[72].opcodes = [];
@@ -1004,9 +1004,9 @@ export default function grammar(){
     str += "\n";
     str += "; https://www.rfc-editor.org/rfc/rfc9535#name-normalized-paths\n";
     str += "normalized-path      = root-identifier *(normal-index-segment)\n";
-    str += "normal-index-segment = \"[\" normal-selector \"]\"\n";
+    str += "normal-index-segment = left-bracket normal-selector right-bracket ; MODIFICATION: surrogate text rule used\n";
     str += "normal-selector      = normal-name-selector / normal-index-selector\n";
-    str += "normal-name-selector = %x27 *normal-single-quoted %x27 ; 'string'\n";
+    str += "normal-name-selector = squote *normal-single-quoted squote ; 'string', MODIFICATION: surrogate text rule used\n";
     str += "normal-single-quoted = normal-unescaped /\n";
     str += "                       ESC normal-escapable\n";
     str += "normal-unescaped     =    ; omit %x0-1F control codes\n";

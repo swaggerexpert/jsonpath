@@ -8,7 +8,13 @@ const grammar = new Grammar();
 
 const parse = (
   jsonPath,
-  { translator = new CSTTranslator(), stats = false, trace = false } = {},
+  {
+    normalized = false,
+    stats = false,
+    trace = false,
+    translator = new CSTTranslator(),
+    test = 3,
+  } = {},
 ) => {
   if (typeof jsonPath !== 'string') {
     throw new TypeError('JSONPath must be a string');
@@ -21,7 +27,8 @@ const parse = (
     if (stats) parser.stats = new Stats();
     if (trace) parser.trace = new Trace();
 
-    const result = parser.parse(grammar, 'jsonpath-query', jsonPath);
+    const startRule = normalized ? 'normalized-path' : 'jsonpath-query';
+    const result = parser.parse(grammar, startRule, jsonPath);
 
     return {
       result,

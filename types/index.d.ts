@@ -4,9 +4,10 @@
 export function parse(jsonpath: string, options?: ParseOptions): ParseResult;
 
 export interface ParseOptions {
-  readonly translator?: Translator | null;
+  readonly normalized?: boolean;
   readonly stats?: boolean;
   readonly trace?: boolean;
+  readonly translator?: Translator | null;
 }
 
 export interface Translator<TTree = unknown> {
