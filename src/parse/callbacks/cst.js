@@ -22,10 +22,18 @@ const cst = (ruleName) => {
 
       if (data.stack.length > 0) {
         const parent = data.stack[data.stack.length - 1];
+        const prevSibling = parent.children[parent.children.length - 1];
 
-        const isTextWithinTextNode = parent.type === 'text' && node.type === 'text';
+        const isTextNodeWithinTextNode = parent.type === 'text' && node.type === 'text';
+        const shouldCollapse =
+          data.options?.optimize &&
+          data.options?.collapsibleTypes?.includes(node.type) &&
+          prevSibling?.type === node.type;
 
-        if (!isTextWithinTextNode) {
+        if (shouldCollapse) {
+          prevSibling.text += node.text;
+          prevSibling.length += node.length;
+        } else if (!isTextNodeWithinTextNode) {
           parent.children.push(node);
         }
       } else {

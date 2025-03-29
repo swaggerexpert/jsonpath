@@ -1,0 +1,1055 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`parse translators CSTOptimizedTranslator should translate a JSONPath to a CST and avoid double-quoted optimization 1`] = `
+{
+  "root": {
+    "type": "jsonpath-query",
+    "text": "$[?match(@.timezone, "Europe/.*")]",
+    "start": 0,
+    "length": 34,
+    "children": [
+      {
+        "type": "root-identifier",
+        "text": "$",
+        "start": 0,
+        "length": 1,
+        "children": [],
+      },
+      {
+        "type": "segments",
+        "text": "[?match(@.timezone, "Europe/.*")]",
+        "start": 1,
+        "length": 33,
+        "children": [
+          {
+            "type": "segment",
+            "text": "[?match(@.timezone, "Europe/.*")]",
+            "start": 1,
+            "length": 33,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": "[?match(@.timezone, "Europe/.*")]",
+                "start": 1,
+                "length": 33,
+                "children": [
+                  {
+                    "type": "bracketed-selection",
+                    "text": "[?match(@.timezone, "Europe/.*")]",
+                    "start": 1,
+                    "length": 33,
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "[",
+                        "start": 1,
+                        "length": 1,
+                        "children": [],
+                      },
+                      {
+                        "type": "selector",
+                        "text": "?match(@.timezone, "Europe/.*")",
+                        "start": 2,
+                        "length": 31,
+                        "children": [
+                          {
+                            "type": "filter-selector",
+                            "text": "?match(@.timezone, "Europe/.*")",
+                            "start": 2,
+                            "length": 31,
+                            "children": [
+                              {
+                                "type": "text",
+                                "text": "?",
+                                "start": 2,
+                                "length": 1,
+                                "children": [],
+                              },
+                              {
+                                "type": "logical-expr",
+                                "text": "match(@.timezone, "Europe/.*")",
+                                "start": 3,
+                                "length": 30,
+                                "children": [
+                                  {
+                                    "type": "logical-or-expr",
+                                    "text": "match(@.timezone, "Europe/.*")",
+                                    "start": 3,
+                                    "length": 30,
+                                    "children": [
+                                      {
+                                        "type": "logical-and-expr",
+                                        "text": "match(@.timezone, "Europe/.*")",
+                                        "start": 3,
+                                        "length": 30,
+                                        "children": [
+                                          {
+                                            "type": "basic-expr",
+                                            "text": "match(@.timezone, "Europe/.*")",
+                                            "start": 3,
+                                            "length": 30,
+                                            "children": [
+                                              {
+                                                "type": "test-expr",
+                                                "text": "match(@.timezone, "Europe/.*")",
+                                                "start": 3,
+                                                "length": 30,
+                                                "children": [
+                                                  {
+                                                    "type": "function-expr",
+                                                    "text": "match(@.timezone, "Europe/.*")",
+                                                    "start": 3,
+                                                    "length": 30,
+                                                    "children": [
+                                                      {
+                                                        "type": "function-name",
+                                                        "text": "match",
+                                                        "start": 3,
+                                                        "length": 5,
+                                                        "children": [],
+                                                      },
+                                                      {
+                                                        "type": "text",
+                                                        "text": "(",
+                                                        "start": 8,
+                                                        "length": 1,
+                                                        "children": [],
+                                                      },
+                                                      {
+                                                        "type": "function-argument",
+                                                        "text": "@.timezone",
+                                                        "start": 9,
+                                                        "length": 10,
+                                                        "children": [
+                                                          {
+                                                            "type": "logical-expr",
+                                                            "text": "@.timezone",
+                                                            "start": 9,
+                                                            "length": 10,
+                                                            "children": [
+                                                              {
+                                                                "type": "logical-or-expr",
+                                                                "text": "@.timezone",
+                                                                "start": 9,
+                                                                "length": 10,
+                                                                "children": [
+                                                                  {
+                                                                    "type": "logical-and-expr",
+                                                                    "text": "@.timezone",
+                                                                    "start": 9,
+                                                                    "length": 10,
+                                                                    "children": [
+                                                                      {
+                                                                        "type": "basic-expr",
+                                                                        "text": "@.timezone",
+                                                                        "start": 9,
+                                                                        "length": 10,
+                                                                        "children": [
+                                                                          {
+                                                                            "type": "test-expr",
+                                                                            "text": "@.timezone",
+                                                                            "start": 9,
+                                                                            "length": 10,
+                                                                            "children": [
+                                                                              {
+                                                                                "type": "filter-query",
+                                                                                "text": "@.timezone",
+                                                                                "start": 9,
+                                                                                "length": 10,
+                                                                                "children": [
+                                                                                  {
+                                                                                    "type": "rel-query",
+                                                                                    "text": "@.timezone",
+                                                                                    "start": 9,
+                                                                                    "length": 10,
+                                                                                    "children": [
+                                                                                      {
+                                                                                        "type": "current-node-identifier",
+                                                                                        "text": "@",
+                                                                                        "start": 9,
+                                                                                        "length": 1,
+                                                                                        "children": [],
+                                                                                      },
+                                                                                      {
+                                                                                        "type": "segments",
+                                                                                        "text": ".timezone",
+                                                                                        "start": 10,
+                                                                                        "length": 9,
+                                                                                        "children": [
+                                                                                          {
+                                                                                            "type": "segment",
+                                                                                            "text": ".timezone",
+                                                                                            "start": 10,
+                                                                                            "length": 9,
+                                                                                            "children": [
+                                                                                              {
+                                                                                                "type": "child-segment",
+                                                                                                "text": ".timezone",
+                                                                                                "start": 10,
+                                                                                                "length": 9,
+                                                                                                "children": [
+                                                                                                  {
+                                                                                                    "type": "text",
+                                                                                                    "text": ".",
+                                                                                                    "start": 10,
+                                                                                                    "length": 1,
+                                                                                                    "children": [],
+                                                                                                  },
+                                                                                                  {
+                                                                                                    "type": "member-name-shorthand",
+                                                                                                    "text": "timezone",
+                                                                                                    "start": 11,
+                                                                                                    "length": 8,
+                                                                                                    "children": [],
+                                                                                                  },
+                                                                                                ],
+                                                                                              },
+                                                                                            ],
+                                                                                          },
+                                                                                        ],
+                                                                                      },
+                                                                                    ],
+                                                                                  },
+                                                                                ],
+                                                                              },
+                                                                            ],
+                                                                          },
+                                                                        ],
+                                                                      },
+                                                                    ],
+                                                                  },
+                                                                ],
+                                                              },
+                                                            ],
+                                                          },
+                                                        ],
+                                                      },
+                                                      {
+                                                        "type": "text",
+                                                        "text": ",",
+                                                        "start": 19,
+                                                        "length": 1,
+                                                        "children": [],
+                                                      },
+                                                      {
+                                                        "type": "text",
+                                                        "text": " ",
+                                                        "start": 20,
+                                                        "length": 1,
+                                                        "children": [],
+                                                      },
+                                                      {
+                                                        "type": "function-argument",
+                                                        "text": ""Europe/.*"",
+                                                        "start": 21,
+                                                        "length": 11,
+                                                        "children": [
+                                                          {
+                                                            "type": "literal",
+                                                            "text": ""Europe/.*"",
+                                                            "start": 21,
+                                                            "length": 11,
+                                                            "children": [
+                                                              {
+                                                                "type": "string-literal",
+                                                                "text": ""Europe/.*"",
+                                                                "start": 21,
+                                                                "length": 11,
+                                                                "children": [
+                                                                  {
+                                                                    "type": "text",
+                                                                    "text": """,
+                                                                    "start": 21,
+                                                                    "length": 1,
+                                                                    "children": [],
+                                                                  },
+                                                                  {
+                                                                    "type": "double-quoted",
+                                                                    "text": "E",
+                                                                    "start": 22,
+                                                                    "length": 1,
+                                                                    "children": [],
+                                                                  },
+                                                                  {
+                                                                    "type": "double-quoted",
+                                                                    "text": "u",
+                                                                    "start": 23,
+                                                                    "length": 1,
+                                                                    "children": [],
+                                                                  },
+                                                                  {
+                                                                    "type": "double-quoted",
+                                                                    "text": "r",
+                                                                    "start": 24,
+                                                                    "length": 1,
+                                                                    "children": [],
+                                                                  },
+                                                                  {
+                                                                    "type": "double-quoted",
+                                                                    "text": "o",
+                                                                    "start": 25,
+                                                                    "length": 1,
+                                                                    "children": [],
+                                                                  },
+                                                                  {
+                                                                    "type": "double-quoted",
+                                                                    "text": "p",
+                                                                    "start": 26,
+                                                                    "length": 1,
+                                                                    "children": [],
+                                                                  },
+                                                                  {
+                                                                    "type": "double-quoted",
+                                                                    "text": "e",
+                                                                    "start": 27,
+                                                                    "length": 1,
+                                                                    "children": [],
+                                                                  },
+                                                                  {
+                                                                    "type": "double-quoted",
+                                                                    "text": "/",
+                                                                    "start": 28,
+                                                                    "length": 1,
+                                                                    "children": [],
+                                                                  },
+                                                                  {
+                                                                    "type": "double-quoted",
+                                                                    "text": ".",
+                                                                    "start": 29,
+                                                                    "length": 1,
+                                                                    "children": [],
+                                                                  },
+                                                                  {
+                                                                    "type": "double-quoted",
+                                                                    "text": "*",
+                                                                    "start": 30,
+                                                                    "length": 1,
+                                                                    "children": [],
+                                                                  },
+                                                                  {
+                                                                    "type": "text",
+                                                                    "text": """,
+                                                                    "start": 31,
+                                                                    "length": 1,
+                                                                    "children": [],
+                                                                  },
+                                                                ],
+                                                              },
+                                                            ],
+                                                          },
+                                                        ],
+                                                      },
+                                                      {
+                                                        "type": "text",
+                                                        "text": ")",
+                                                        "start": 32,
+                                                        "length": 1,
+                                                        "children": [],
+                                                      },
+                                                    ],
+                                                  },
+                                                ],
+                                              },
+                                            ],
+                                          },
+                                        ],
+                                      },
+                                    ],
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "type": "text",
+                        "text": "]",
+                        "start": 33,
+                        "length": 1,
+                        "children": [],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+}
+`;
+
+exports[`parse translators CSTOptimizedTranslator should translate a JSONPath to a CST and optimize double-quoted 1`] = `
+{
+  "root": {
+    "type": "jsonpath-query",
+    "text": "$[?match(@.timezone, "Europe/.*")]",
+    "start": 0,
+    "length": 34,
+    "children": [
+      {
+        "type": "root-identifier",
+        "text": "$",
+        "start": 0,
+        "length": 1,
+        "children": [],
+      },
+      {
+        "type": "segments",
+        "text": "[?match(@.timezone, "Europe/.*")]",
+        "start": 1,
+        "length": 33,
+        "children": [
+          {
+            "type": "segment",
+            "text": "[?match(@.timezone, "Europe/.*")]",
+            "start": 1,
+            "length": 33,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": "[?match(@.timezone, "Europe/.*")]",
+                "start": 1,
+                "length": 33,
+                "children": [
+                  {
+                    "type": "bracketed-selection",
+                    "text": "[?match(@.timezone, "Europe/.*")]",
+                    "start": 1,
+                    "length": 33,
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "[",
+                        "start": 1,
+                        "length": 1,
+                        "children": [],
+                      },
+                      {
+                        "type": "selector",
+                        "text": "?match(@.timezone, "Europe/.*")",
+                        "start": 2,
+                        "length": 31,
+                        "children": [
+                          {
+                            "type": "filter-selector",
+                            "text": "?match(@.timezone, "Europe/.*")",
+                            "start": 2,
+                            "length": 31,
+                            "children": [
+                              {
+                                "type": "text",
+                                "text": "?",
+                                "start": 2,
+                                "length": 1,
+                                "children": [],
+                              },
+                              {
+                                "type": "logical-expr",
+                                "text": "match(@.timezone, "Europe/.*")",
+                                "start": 3,
+                                "length": 30,
+                                "children": [
+                                  {
+                                    "type": "logical-or-expr",
+                                    "text": "match(@.timezone, "Europe/.*")",
+                                    "start": 3,
+                                    "length": 30,
+                                    "children": [
+                                      {
+                                        "type": "logical-and-expr",
+                                        "text": "match(@.timezone, "Europe/.*")",
+                                        "start": 3,
+                                        "length": 30,
+                                        "children": [
+                                          {
+                                            "type": "basic-expr",
+                                            "text": "match(@.timezone, "Europe/.*")",
+                                            "start": 3,
+                                            "length": 30,
+                                            "children": [
+                                              {
+                                                "type": "test-expr",
+                                                "text": "match(@.timezone, "Europe/.*")",
+                                                "start": 3,
+                                                "length": 30,
+                                                "children": [
+                                                  {
+                                                    "type": "function-expr",
+                                                    "text": "match(@.timezone, "Europe/.*")",
+                                                    "start": 3,
+                                                    "length": 30,
+                                                    "children": [
+                                                      {
+                                                        "type": "function-name",
+                                                        "text": "match",
+                                                        "start": 3,
+                                                        "length": 5,
+                                                        "children": [],
+                                                      },
+                                                      {
+                                                        "type": "text",
+                                                        "text": "(",
+                                                        "start": 8,
+                                                        "length": 1,
+                                                        "children": [],
+                                                      },
+                                                      {
+                                                        "type": "function-argument",
+                                                        "text": "@.timezone",
+                                                        "start": 9,
+                                                        "length": 10,
+                                                        "children": [
+                                                          {
+                                                            "type": "logical-expr",
+                                                            "text": "@.timezone",
+                                                            "start": 9,
+                                                            "length": 10,
+                                                            "children": [
+                                                              {
+                                                                "type": "logical-or-expr",
+                                                                "text": "@.timezone",
+                                                                "start": 9,
+                                                                "length": 10,
+                                                                "children": [
+                                                                  {
+                                                                    "type": "logical-and-expr",
+                                                                    "text": "@.timezone",
+                                                                    "start": 9,
+                                                                    "length": 10,
+                                                                    "children": [
+                                                                      {
+                                                                        "type": "basic-expr",
+                                                                        "text": "@.timezone",
+                                                                        "start": 9,
+                                                                        "length": 10,
+                                                                        "children": [
+                                                                          {
+                                                                            "type": "test-expr",
+                                                                            "text": "@.timezone",
+                                                                            "start": 9,
+                                                                            "length": 10,
+                                                                            "children": [
+                                                                              {
+                                                                                "type": "filter-query",
+                                                                                "text": "@.timezone",
+                                                                                "start": 9,
+                                                                                "length": 10,
+                                                                                "children": [
+                                                                                  {
+                                                                                    "type": "rel-query",
+                                                                                    "text": "@.timezone",
+                                                                                    "start": 9,
+                                                                                    "length": 10,
+                                                                                    "children": [
+                                                                                      {
+                                                                                        "type": "current-node-identifier",
+                                                                                        "text": "@",
+                                                                                        "start": 9,
+                                                                                        "length": 1,
+                                                                                        "children": [],
+                                                                                      },
+                                                                                      {
+                                                                                        "type": "segments",
+                                                                                        "text": ".timezone",
+                                                                                        "start": 10,
+                                                                                        "length": 9,
+                                                                                        "children": [
+                                                                                          {
+                                                                                            "type": "segment",
+                                                                                            "text": ".timezone",
+                                                                                            "start": 10,
+                                                                                            "length": 9,
+                                                                                            "children": [
+                                                                                              {
+                                                                                                "type": "child-segment",
+                                                                                                "text": ".timezone",
+                                                                                                "start": 10,
+                                                                                                "length": 9,
+                                                                                                "children": [
+                                                                                                  {
+                                                                                                    "type": "text",
+                                                                                                    "text": ".",
+                                                                                                    "start": 10,
+                                                                                                    "length": 1,
+                                                                                                    "children": [],
+                                                                                                  },
+                                                                                                  {
+                                                                                                    "type": "member-name-shorthand",
+                                                                                                    "text": "timezone",
+                                                                                                    "start": 11,
+                                                                                                    "length": 8,
+                                                                                                    "children": [],
+                                                                                                  },
+                                                                                                ],
+                                                                                              },
+                                                                                            ],
+                                                                                          },
+                                                                                        ],
+                                                                                      },
+                                                                                    ],
+                                                                                  },
+                                                                                ],
+                                                                              },
+                                                                            ],
+                                                                          },
+                                                                        ],
+                                                                      },
+                                                                    ],
+                                                                  },
+                                                                ],
+                                                              },
+                                                            ],
+                                                          },
+                                                        ],
+                                                      },
+                                                      {
+                                                        "type": "text",
+                                                        "text": ",",
+                                                        "start": 19,
+                                                        "length": 1,
+                                                        "children": [],
+                                                      },
+                                                      {
+                                                        "type": "text",
+                                                        "text": " ",
+                                                        "start": 20,
+                                                        "length": 1,
+                                                        "children": [],
+                                                      },
+                                                      {
+                                                        "type": "function-argument",
+                                                        "text": ""Europe/.*"",
+                                                        "start": 21,
+                                                        "length": 11,
+                                                        "children": [
+                                                          {
+                                                            "type": "literal",
+                                                            "text": ""Europe/.*"",
+                                                            "start": 21,
+                                                            "length": 11,
+                                                            "children": [
+                                                              {
+                                                                "type": "string-literal",
+                                                                "text": ""Europe/.*"",
+                                                                "start": 21,
+                                                                "length": 11,
+                                                                "children": [
+                                                                  {
+                                                                    "type": "text",
+                                                                    "text": """,
+                                                                    "start": 21,
+                                                                    "length": 1,
+                                                                    "children": [],
+                                                                  },
+                                                                  {
+                                                                    "type": "double-quoted",
+                                                                    "text": "Europe/.*",
+                                                                    "start": 22,
+                                                                    "length": 9,
+                                                                    "children": [],
+                                                                  },
+                                                                  {
+                                                                    "type": "text",
+                                                                    "text": """,
+                                                                    "start": 31,
+                                                                    "length": 1,
+                                                                    "children": [],
+                                                                  },
+                                                                ],
+                                                              },
+                                                            ],
+                                                          },
+                                                        ],
+                                                      },
+                                                      {
+                                                        "type": "text",
+                                                        "text": ")",
+                                                        "start": 32,
+                                                        "length": 1,
+                                                        "children": [],
+                                                      },
+                                                    ],
+                                                  },
+                                                ],
+                                              },
+                                            ],
+                                          },
+                                        ],
+                                      },
+                                    ],
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "type": "text",
+                        "text": "]",
+                        "start": 33,
+                        "length": 1,
+                        "children": [],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+}
+`;
+
+exports[`parse translators CSTOptimizedTranslator should translate a JSONPath to a CST and optimize sing 1`] = `
+{
+  "root": {
+    "type": "jsonpath-query",
+    "text": "$",
+    "start": 0,
+    "length": 1,
+    "children": [
+      {
+        "type": "root-identifier",
+        "text": "$",
+        "start": 0,
+        "length": 1,
+        "children": [],
+      },
+    ],
+  },
+}
+`;
+
+exports[`parse translators CSTOptimizedTranslator should translate a JSONPath to a CST and optimize single-quoted 1`] = `
+{
+  "root": {
+    "type": "jsonpath-query",
+    "text": "$[?match(@.timezone, 'Europe/.*')]",
+    "start": 0,
+    "length": 34,
+    "children": [
+      {
+        "type": "root-identifier",
+        "text": "$",
+        "start": 0,
+        "length": 1,
+        "children": [],
+      },
+      {
+        "type": "segments",
+        "text": "[?match(@.timezone, 'Europe/.*')]",
+        "start": 1,
+        "length": 33,
+        "children": [
+          {
+            "type": "segment",
+            "text": "[?match(@.timezone, 'Europe/.*')]",
+            "start": 1,
+            "length": 33,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": "[?match(@.timezone, 'Europe/.*')]",
+                "start": 1,
+                "length": 33,
+                "children": [
+                  {
+                    "type": "bracketed-selection",
+                    "text": "[?match(@.timezone, 'Europe/.*')]",
+                    "start": 1,
+                    "length": 33,
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "[",
+                        "start": 1,
+                        "length": 1,
+                        "children": [],
+                      },
+                      {
+                        "type": "selector",
+                        "text": "?match(@.timezone, 'Europe/.*')",
+                        "start": 2,
+                        "length": 31,
+                        "children": [
+                          {
+                            "type": "filter-selector",
+                            "text": "?match(@.timezone, 'Europe/.*')",
+                            "start": 2,
+                            "length": 31,
+                            "children": [
+                              {
+                                "type": "text",
+                                "text": "?",
+                                "start": 2,
+                                "length": 1,
+                                "children": [],
+                              },
+                              {
+                                "type": "logical-expr",
+                                "text": "match(@.timezone, 'Europe/.*')",
+                                "start": 3,
+                                "length": 30,
+                                "children": [
+                                  {
+                                    "type": "logical-or-expr",
+                                    "text": "match(@.timezone, 'Europe/.*')",
+                                    "start": 3,
+                                    "length": 30,
+                                    "children": [
+                                      {
+                                        "type": "logical-and-expr",
+                                        "text": "match(@.timezone, 'Europe/.*')",
+                                        "start": 3,
+                                        "length": 30,
+                                        "children": [
+                                          {
+                                            "type": "basic-expr",
+                                            "text": "match(@.timezone, 'Europe/.*')",
+                                            "start": 3,
+                                            "length": 30,
+                                            "children": [
+                                              {
+                                                "type": "test-expr",
+                                                "text": "match(@.timezone, 'Europe/.*')",
+                                                "start": 3,
+                                                "length": 30,
+                                                "children": [
+                                                  {
+                                                    "type": "function-expr",
+                                                    "text": "match(@.timezone, 'Europe/.*')",
+                                                    "start": 3,
+                                                    "length": 30,
+                                                    "children": [
+                                                      {
+                                                        "type": "function-name",
+                                                        "text": "match",
+                                                        "start": 3,
+                                                        "length": 5,
+                                                        "children": [],
+                                                      },
+                                                      {
+                                                        "type": "text",
+                                                        "text": "(",
+                                                        "start": 8,
+                                                        "length": 1,
+                                                        "children": [],
+                                                      },
+                                                      {
+                                                        "type": "function-argument",
+                                                        "text": "@.timezone",
+                                                        "start": 9,
+                                                        "length": 10,
+                                                        "children": [
+                                                          {
+                                                            "type": "logical-expr",
+                                                            "text": "@.timezone",
+                                                            "start": 9,
+                                                            "length": 10,
+                                                            "children": [
+                                                              {
+                                                                "type": "logical-or-expr",
+                                                                "text": "@.timezone",
+                                                                "start": 9,
+                                                                "length": 10,
+                                                                "children": [
+                                                                  {
+                                                                    "type": "logical-and-expr",
+                                                                    "text": "@.timezone",
+                                                                    "start": 9,
+                                                                    "length": 10,
+                                                                    "children": [
+                                                                      {
+                                                                        "type": "basic-expr",
+                                                                        "text": "@.timezone",
+                                                                        "start": 9,
+                                                                        "length": 10,
+                                                                        "children": [
+                                                                          {
+                                                                            "type": "test-expr",
+                                                                            "text": "@.timezone",
+                                                                            "start": 9,
+                                                                            "length": 10,
+                                                                            "children": [
+                                                                              {
+                                                                                "type": "filter-query",
+                                                                                "text": "@.timezone",
+                                                                                "start": 9,
+                                                                                "length": 10,
+                                                                                "children": [
+                                                                                  {
+                                                                                    "type": "rel-query",
+                                                                                    "text": "@.timezone",
+                                                                                    "start": 9,
+                                                                                    "length": 10,
+                                                                                    "children": [
+                                                                                      {
+                                                                                        "type": "current-node-identifier",
+                                                                                        "text": "@",
+                                                                                        "start": 9,
+                                                                                        "length": 1,
+                                                                                        "children": [],
+                                                                                      },
+                                                                                      {
+                                                                                        "type": "segments",
+                                                                                        "text": ".timezone",
+                                                                                        "start": 10,
+                                                                                        "length": 9,
+                                                                                        "children": [
+                                                                                          {
+                                                                                            "type": "segment",
+                                                                                            "text": ".timezone",
+                                                                                            "start": 10,
+                                                                                            "length": 9,
+                                                                                            "children": [
+                                                                                              {
+                                                                                                "type": "child-segment",
+                                                                                                "text": ".timezone",
+                                                                                                "start": 10,
+                                                                                                "length": 9,
+                                                                                                "children": [
+                                                                                                  {
+                                                                                                    "type": "text",
+                                                                                                    "text": ".",
+                                                                                                    "start": 10,
+                                                                                                    "length": 1,
+                                                                                                    "children": [],
+                                                                                                  },
+                                                                                                  {
+                                                                                                    "type": "member-name-shorthand",
+                                                                                                    "text": "timezone",
+                                                                                                    "start": 11,
+                                                                                                    "length": 8,
+                                                                                                    "children": [],
+                                                                                                  },
+                                                                                                ],
+                                                                                              },
+                                                                                            ],
+                                                                                          },
+                                                                                        ],
+                                                                                      },
+                                                                                    ],
+                                                                                  },
+                                                                                ],
+                                                                              },
+                                                                            ],
+                                                                          },
+                                                                        ],
+                                                                      },
+                                                                    ],
+                                                                  },
+                                                                ],
+                                                              },
+                                                            ],
+                                                          },
+                                                        ],
+                                                      },
+                                                      {
+                                                        "type": "text",
+                                                        "text": ",",
+                                                        "start": 19,
+                                                        "length": 1,
+                                                        "children": [],
+                                                      },
+                                                      {
+                                                        "type": "text",
+                                                        "text": " ",
+                                                        "start": 20,
+                                                        "length": 1,
+                                                        "children": [],
+                                                      },
+                                                      {
+                                                        "type": "function-argument",
+                                                        "text": "'Europe/.*'",
+                                                        "start": 21,
+                                                        "length": 11,
+                                                        "children": [
+                                                          {
+                                                            "type": "literal",
+                                                            "text": "'Europe/.*'",
+                                                            "start": 21,
+                                                            "length": 11,
+                                                            "children": [
+                                                              {
+                                                                "type": "string-literal",
+                                                                "text": "'Europe/.*'",
+                                                                "start": 21,
+                                                                "length": 11,
+                                                                "children": [
+                                                                  {
+                                                                    "type": "text",
+                                                                    "text": "'",
+                                                                    "start": 21,
+                                                                    "length": 1,
+                                                                    "children": [],
+                                                                  },
+                                                                  {
+                                                                    "type": "single-quoted",
+                                                                    "text": "Europe/.*",
+                                                                    "start": 22,
+                                                                    "length": 9,
+                                                                    "children": [],
+                                                                  },
+                                                                  {
+                                                                    "type": "text",
+                                                                    "text": "'",
+                                                                    "start": 31,
+                                                                    "length": 1,
+                                                                    "children": [],
+                                                                  },
+                                                                ],
+                                                              },
+                                                            ],
+                                                          },
+                                                        ],
+                                                      },
+                                                      {
+                                                        "type": "text",
+                                                        "text": ")",
+                                                        "start": 32,
+                                                        "length": 1,
+                                                        "children": [],
+                                                      },
+                                                    ],
+                                                  },
+                                                ],
+                                              },
+                                            ],
+                                          },
+                                        ],
+                                      },
+                                    ],
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "type": "text",
+                        "text": "]",
+                        "start": 33,
+                        "length": 1,
+                        "children": [],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+}
+`;

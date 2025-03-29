@@ -16,6 +16,10 @@ export interface Translator<TTree = unknown> {
 export declare class CSTTranslator implements Translator<CSTTree> {
   getTree(): CSTTree;
 }
+export declare class CSTOptimizedTranslator implements CSTTranslator {
+  constructor(options?: { collapsibleTypes?: string[] });
+  getTree(): CSTTree;
+}
 export declare class XMLTranslator implements Translator<XMLTree> {
   getTree(): XMLTree;
 }

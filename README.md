@@ -37,6 +37,7 @@ The development of this library contributed to the identification and formal sub
       - [Normalized paths](#normalized-paths)
       - [Translators](#translators)
         - [CST](#cst-translator)
+        - [CST Optimized](#cst-optimized-translator)
         - [XML](#xml-translator)
       - [Statistics](#statistics)
       - [Tracing](#tracing)
@@ -146,6 +147,17 @@ interface CSTNode {
   readonly length: number,
   readonly children: CSTNode[],
 }
+```
+
+###### CST Optimized translator
+
+Same as CST, but optimizes the tree for more optimized representation. By default, it collapses
+fragmented `single-quoted` or `double-quoted` nodes into a single node.
+
+```js
+import { parse, CSTOptimizedTranslator } from '@swaggerexpert/jsonpath';
+
+const { tree: CST } = parse('$.store.book[0].title', { translator: new CSTOptimizedTranslator() });
 ```
 
 ###### XML translator
