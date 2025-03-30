@@ -1,7 +1,7 @@
 import CSTTranslator from './CSTTranslator.js';
 
 class CSTOptimizedTranslator extends CSTTranslator {
-  collapsibleTypes = ['single-quoted', 'double-quoted'];
+  collapsibleTypes = ['single-quoted', 'double-quoted', 'normal-single-quoted'];
 
   constructor({ collapsibleTypes } = {}) {
     super();

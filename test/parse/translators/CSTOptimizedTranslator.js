@@ -25,6 +25,19 @@ describe('parse', function () {
       });
 
       specify(
+        'should translate a JSONPath to a CST and optimize normal-single-quoted',
+        function () {
+          const parseResult = parse("$['abc']", {
+            normalized: true,
+            translator: new CSTOptimizedTranslator(),
+          });
+
+          assert.isTrue(parseResult.result.success);
+          expect(parseResult.tree).toMatchSnapshot();
+        },
+      );
+
+      specify(
         'should translate a JSONPath to a CST and avoid double-quoted optimization',
         function () {
           const parseResult = parse('$[?match(@.timezone, "Europe/.*")]', {

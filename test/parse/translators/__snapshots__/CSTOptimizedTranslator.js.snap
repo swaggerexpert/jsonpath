@@ -708,13 +708,13 @@ exports[`parse translators CSTOptimizedTranslator should translate a JSONPath to
 }
 `;
 
-exports[`parse translators CSTOptimizedTranslator should translate a JSONPath to a CST and optimize sing 1`] = `
+exports[`parse translators CSTOptimizedTranslator should translate a JSONPath to a CST and optimize normal-single-quoted 1`] = `
 {
   "root": {
-    "type": "jsonpath-query",
-    "text": "$",
+    "type": "normalized-path",
+    "text": "$['abc']",
     "start": 0,
-    "length": 1,
+    "length": 8,
     "children": [
       {
         "type": "root-identifier",
@@ -722,6 +722,65 @@ exports[`parse translators CSTOptimizedTranslator should translate a JSONPath to
         "start": 0,
         "length": 1,
         "children": [],
+      },
+      {
+        "type": "normal-index-segment",
+        "text": "['abc']",
+        "start": 1,
+        "length": 7,
+        "children": [
+          {
+            "type": "text",
+            "text": "[",
+            "start": 1,
+            "length": 1,
+            "children": [],
+          },
+          {
+            "type": "normal-selector",
+            "text": "'abc'",
+            "start": 2,
+            "length": 5,
+            "children": [
+              {
+                "type": "normal-name-selector",
+                "text": "'abc'",
+                "start": 2,
+                "length": 5,
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "'",
+                    "start": 2,
+                    "length": 1,
+                    "children": [],
+                  },
+                  {
+                    "type": "normal-single-quoted",
+                    "text": "abc",
+                    "start": 3,
+                    "length": 3,
+                    "children": [],
+                  },
+                  {
+                    "type": "text",
+                    "text": "'",
+                    "start": 6,
+                    "length": 1,
+                    "children": [],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            "type": "text",
+            "text": "]",
+            "start": 7,
+            "length": 1,
+            "children": [],
+          },
+        ],
       },
     ],
   },

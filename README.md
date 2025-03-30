@@ -152,7 +152,7 @@ interface CSTNode {
 ###### CST Optimized translator
 
 Same as CST, but optimizes the tree for more optimized representation. By default, it collapses
-fragmented `single-quoted` or `double-quoted` nodes into a single node.
+fragmented `single-quoted`, `double-quoted` or `normal-single-quoted` nodes into a single node.
 
 ```js
 import { parse, CSTOptimizedTranslator } from '@swaggerexpert/jsonpath';
@@ -360,7 +360,7 @@ literal             = number / string-literal /
 comparable          = singular-query / ; singular query value
                       function-expr /  ; ValueType
                       literal
-                      ; MODIFICATION: https://www.rfc-editor.org/errata/eid8343
+                      ; MODIFICATION: https://www.rfc-editor.org/errata/eid8352
 comparison-op       = "==" / "!=" /
                       "<=" / ">=" /
                       "<"  / ">"
@@ -424,9 +424,9 @@ descendant-segment  = double-dot-prefix (bracketed-selection / ; MODIFICATION: s
 
 ; https://www.rfc-editor.org/rfc/rfc9535#name-normalized-paths
 normalized-path      = root-identifier *(normal-index-segment)
-normal-index-segment = "[" normal-selector "]"
+normal-index-segment = left-bracket normal-selector right-bracket ; MODIFICATION: surrogate text rule used
 normal-selector      = normal-name-selector / normal-index-selector
-normal-name-selector = %x27 *normal-single-quoted %x27 ; 'string'
+normal-name-selector = squote *normal-single-quoted squote ; 'string', MODIFICATION: surrogate text rule used
 normal-single-quoted = normal-unescaped /
                        ESC normal-escapable
 normal-unescaped     =    ; omit %x0-1F control codes
