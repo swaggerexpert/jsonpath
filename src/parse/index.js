@@ -26,7 +26,7 @@ const parse = (
 
     return {
       result,
-      tree: parser.ast?.getTree(),
+      tree: result.success ? parser.ast?.getTree() : undefined,
       stats: parser.stats,
       trace: parser.trace,
     };
