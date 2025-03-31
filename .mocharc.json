@@ -3,5 +3,8 @@
   "spec": "test/**/*.js",
   "file": ["test/mocha-bootstrap.mjs"],
   "require": ["mocha-expect-snapshot"],
-  "ignore": ["test/mocha-bootstrap.mjs"]
+  "ignore": [
+    "test/fixtures/**/*.js",
+    "test/mocha-bootstrap.mjs"
+  ]
 }

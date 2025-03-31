@@ -8,13 +8,7 @@ const grammar = new Grammar();
 
 const parse = (
   jsonPath,
-  {
-    normalized = false,
-    stats = false,
-    trace = false,
-    translator = new CSTTranslator(),
-    test = 3,
-  } = {},
+  { normalized = false, stats = false, trace = false, translator = new CSTTranslator() } = {},
 ) => {
   if (typeof jsonPath !== 'string') {
     throw new TypeError('JSONPath must be a string');

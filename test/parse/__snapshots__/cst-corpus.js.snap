@@ -1777,6 +1777,64 @@ exports[`parse cst-corpus $.a 1`] = `
 }
 `;
 
+exports[`parse cst-corpus $.a 2`] = `
+{
+  "root": {
+    "type": "jsonpath-query",
+    "text": "$.a",
+    "start": 0,
+    "length": 3,
+    "children": [
+      {
+        "type": "root-identifier",
+        "text": "$",
+        "start": 0,
+        "length": 1,
+        "children": [],
+      },
+      {
+        "type": "segments",
+        "text": ".a",
+        "start": 1,
+        "length": 2,
+        "children": [
+          {
+            "type": "segment",
+            "text": ".a",
+            "start": 1,
+            "length": 2,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": ".a",
+                "start": 1,
+                "length": 2,
+                "children": [
+                  {
+                    "type": "text",
+                    "text": ".",
+                    "start": 1,
+                    "length": 1,
+                    "children": [],
+                  },
+                  {
+                    "type": "member-name-shorthand",
+                    "text": "a",
+                    "start": 2,
+                    "length": 1,
+                    "children": [],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+}
+`;
+
 exports[`parse cst-corpus $.a..[0, 1] 1`] = `
 {
   "root": {
@@ -1908,6 +1966,169 @@ exports[`parse cst-corpus $.a..[0, 1] 1`] = `
                         "type": "text",
                         "text": "]",
                         "start": 10,
+                        "length": 1,
+                        "children": [],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+}
+`;
+
+exports[`parse cst-corpus $.a.b[1:2] 1`] = `
+{
+  "root": {
+    "type": "jsonpath-query",
+    "text": "$.a.b[1:2]",
+    "start": 0,
+    "length": 10,
+    "children": [
+      {
+        "type": "root-identifier",
+        "text": "$",
+        "start": 0,
+        "length": 1,
+        "children": [],
+      },
+      {
+        "type": "segments",
+        "text": ".a.b[1:2]",
+        "start": 1,
+        "length": 9,
+        "children": [
+          {
+            "type": "segment",
+            "text": ".a",
+            "start": 1,
+            "length": 2,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": ".a",
+                "start": 1,
+                "length": 2,
+                "children": [
+                  {
+                    "type": "text",
+                    "text": ".",
+                    "start": 1,
+                    "length": 1,
+                    "children": [],
+                  },
+                  {
+                    "type": "member-name-shorthand",
+                    "text": "a",
+                    "start": 2,
+                    "length": 1,
+                    "children": [],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            "type": "segment",
+            "text": ".b",
+            "start": 3,
+            "length": 2,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": ".b",
+                "start": 3,
+                "length": 2,
+                "children": [
+                  {
+                    "type": "text",
+                    "text": ".",
+                    "start": 3,
+                    "length": 1,
+                    "children": [],
+                  },
+                  {
+                    "type": "member-name-shorthand",
+                    "text": "b",
+                    "start": 4,
+                    "length": 1,
+                    "children": [],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            "type": "segment",
+            "text": "[1:2]",
+            "start": 5,
+            "length": 5,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": "[1:2]",
+                "start": 5,
+                "length": 5,
+                "children": [
+                  {
+                    "type": "bracketed-selection",
+                    "text": "[1:2]",
+                    "start": 5,
+                    "length": 5,
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "[",
+                        "start": 5,
+                        "length": 1,
+                        "children": [],
+                      },
+                      {
+                        "type": "selector",
+                        "text": "1:2",
+                        "start": 6,
+                        "length": 3,
+                        "children": [
+                          {
+                            "type": "slice-selector",
+                            "text": "1:2",
+                            "start": 6,
+                            "length": 3,
+                            "children": [
+                              {
+                                "type": "start",
+                                "text": "1",
+                                "start": 6,
+                                "length": 1,
+                                "children": [],
+                              },
+                              {
+                                "type": "text",
+                                "text": ":",
+                                "start": 7,
+                                "length": 1,
+                                "children": [],
+                              },
+                              {
+                                "type": "end",
+                                "text": "2",
+                                "start": 8,
+                                "length": 1,
+                                "children": [],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "type": "text",
+                        "text": "]",
+                        "start": 9,
                         "length": 1,
                         "children": [],
                       },
@@ -9488,13 +9709,13 @@ exports[`parse cst-corpus $["'"]["@"] 1`] = `
 }
 `;
 
-exports[`parse cst-corpus $["\\u0061"] 1`] = `
+exports[`parse cst-corpus $["a"] 1`] = `
 {
   "root": {
     "type": "jsonpath-query",
-    "text": "$["\\u0061"]",
+    "text": "$["a"]",
     "start": 0,
-    "length": 11,
+    "length": 6,
     "children": [
       {
         "type": "root-identifier",
@@ -9505,27 +9726,27 @@ exports[`parse cst-corpus $["\\u0061"] 1`] = `
       },
       {
         "type": "segments",
-        "text": "["\\u0061"]",
+        "text": "["a"]",
         "start": 1,
-        "length": 10,
+        "length": 5,
         "children": [
           {
             "type": "segment",
-            "text": "["\\u0061"]",
+            "text": "["a"]",
             "start": 1,
-            "length": 10,
+            "length": 5,
             "children": [
               {
                 "type": "child-segment",
-                "text": "["\\u0061"]",
+                "text": "["a"]",
                 "start": 1,
-                "length": 10,
+                "length": 5,
                 "children": [
                   {
                     "type": "bracketed-selection",
-                    "text": "["\\u0061"]",
+                    "text": "["a"]",
                     "start": 1,
-                    "length": 10,
+                    "length": 5,
                     "children": [
                       {
                         "type": "text",
@@ -9536,21 +9757,21 @@ exports[`parse cst-corpus $["\\u0061"] 1`] = `
                       },
                       {
                         "type": "selector",
-                        "text": ""\\u0061"",
+                        "text": ""a"",
                         "start": 2,
-                        "length": 8,
+                        "length": 3,
                         "children": [
                           {
                             "type": "name-selector",
-                            "text": ""\\u0061"",
+                            "text": ""a"",
                             "start": 2,
-                            "length": 8,
+                            "length": 3,
                             "children": [
                               {
                                 "type": "string-literal",
-                                "text": ""\\u0061"",
+                                "text": ""a"",
                                 "start": 2,
-                                "length": 8,
+                                "length": 3,
                                 "children": [
                                   {
                                     "type": "text",
@@ -9561,15 +9782,15 @@ exports[`parse cst-corpus $["\\u0061"] 1`] = `
                                   },
                                   {
                                     "type": "double-quoted",
-                                    "text": "\\u0061",
+                                    "text": "a",
                                     "start": 3,
-                                    "length": 6,
+                                    "length": 1,
                                     "children": [],
                                   },
                                   {
                                     "type": "text",
                                     "text": """,
-                                    "start": 9,
+                                    "start": 4,
                                     "length": 1,
                                     "children": [],
                                   },
@@ -9582,7 +9803,7 @@ exports[`parse cst-corpus $["\\u0061"] 1`] = `
                       {
                         "type": "text",
                         "text": "]",
-                        "start": 10,
+                        "start": 5,
                         "length": 1,
                         "children": [],
                       },
@@ -9673,6 +9894,117 @@ exports[`parse cst-corpus $['\\u000B'] 1`] = `
                                   {
                                     "type": "single-quoted",
                                     "text": "\\u000B",
+                                    "start": 3,
+                                    "length": 6,
+                                    "children": [],
+                                  },
+                                  {
+                                    "type": "text",
+                                    "text": "'",
+                                    "start": 9,
+                                    "length": 1,
+                                    "children": [],
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "type": "text",
+                        "text": "]",
+                        "start": 10,
+                        "length": 1,
+                        "children": [],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+}
+`;
+
+exports[`parse cst-corpus $['\\u000b'] 1`] = `
+{
+  "root": {
+    "type": "jsonpath-query",
+    "text": "$['\\u000b']",
+    "start": 0,
+    "length": 11,
+    "children": [
+      {
+        "type": "root-identifier",
+        "text": "$",
+        "start": 0,
+        "length": 1,
+        "children": [],
+      },
+      {
+        "type": "segments",
+        "text": "['\\u000b']",
+        "start": 1,
+        "length": 10,
+        "children": [
+          {
+            "type": "segment",
+            "text": "['\\u000b']",
+            "start": 1,
+            "length": 10,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": "['\\u000b']",
+                "start": 1,
+                "length": 10,
+                "children": [
+                  {
+                    "type": "bracketed-selection",
+                    "text": "['\\u000b']",
+                    "start": 1,
+                    "length": 10,
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "[",
+                        "start": 1,
+                        "length": 1,
+                        "children": [],
+                      },
+                      {
+                        "type": "selector",
+                        "text": "'\\u000b'",
+                        "start": 2,
+                        "length": 8,
+                        "children": [
+                          {
+                            "type": "name-selector",
+                            "text": "'\\u000b'",
+                            "start": 2,
+                            "length": 8,
+                            "children": [
+                              {
+                                "type": "string-literal",
+                                "text": "'\\u000b'",
+                                "start": 2,
+                                "length": 8,
+                                "children": [
+                                  {
+                                    "type": "text",
+                                    "text": "'",
+                                    "start": 2,
+                                    "length": 1,
+                                    "children": [],
+                                  },
+                                  {
+                                    "type": "single-quoted",
+                                    "text": "\\u000b",
                                     "start": 3,
                                     "length": 6,
                                     "children": [],
@@ -17874,6 +18206,87 @@ exports[`parse cst-corpus $[-2] 1`] = `
                           {
                             "type": "index-selector",
                             "text": "-2",
+                            "start": 2,
+                            "length": 2,
+                            "children": [],
+                          },
+                        ],
+                      },
+                      {
+                        "type": "text",
+                        "text": "]",
+                        "start": 4,
+                        "length": 1,
+                        "children": [],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+}
+`;
+
+exports[`parse cst-corpus $[-3] 1`] = `
+{
+  "root": {
+    "type": "jsonpath-query",
+    "text": "$[-3]",
+    "start": 0,
+    "length": 5,
+    "children": [
+      {
+        "type": "root-identifier",
+        "text": "$",
+        "start": 0,
+        "length": 1,
+        "children": [],
+      },
+      {
+        "type": "segments",
+        "text": "[-3]",
+        "start": 1,
+        "length": 4,
+        "children": [
+          {
+            "type": "segment",
+            "text": "[-3]",
+            "start": 1,
+            "length": 4,
+            "children": [
+              {
+                "type": "child-segment",
+                "text": "[-3]",
+                "start": 1,
+                "length": 4,
+                "children": [
+                  {
+                    "type": "bracketed-selection",
+                    "text": "[-3]",
+                    "start": 1,
+                    "length": 4,
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "[",
+                        "start": 1,
+                        "length": 1,
+                        "children": [],
+                      },
+                      {
+                        "type": "selector",
+                        "text": "-3",
+                        "start": 2,
+                        "length": 2,
+                        "children": [
+                          {
+                            "type": "index-selector",
+                            "text": "-3",
                             "start": 2,
                             "length": 2,
                             "children": [],

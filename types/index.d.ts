@@ -64,6 +64,15 @@ export interface Trace {
 }
 
 /**
+ * Validation
+ */
+export function test(jsonpath: string, options?: TestOptions): boolean;
+
+export interface TestOptions {
+  readonly normalized?: boolean;
+}
+
+/**
  * Grammar
  */
 export function Grammar(): Grammar;

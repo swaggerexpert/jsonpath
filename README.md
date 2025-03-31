@@ -41,6 +41,7 @@ The development of this library contributed to the identification and formal sub
         - [XML](#xml-translator)
       - [Statistics](#statistics)
       - [Tracing](#tracing)
+    - [Validation](#validation)
     - [Errors](#errors)
     - [Grammar](#grammar)
 - [More about JSONPath](#more-about-jsonpath)
@@ -200,6 +201,26 @@ trace.displayTrace(); // returns trace information
 By combining information from `result` and `trace`, it is possible to analyze the parsing process in detail
 and generate a messages like this: `'Syntax error at position 1, expected "[", ".", ".."'`. Please see this
 [test file](https://github.com/swaggerexpert/jsonpath/blob/main/test/parse/trace.js) for more information how to achieve that.
+
+#### Validation
+
+`@swaggerexpert/jsonpath` provides a `test` function to validate JSONPath expressions.
+
+```js
+import { test } from '@swaggerexpert/jsonpath';
+
+test('$.store.book[0].title'); // => true
+test('$$'); // => false
+```
+
+Normalized paths can be validated by setting `normalized` option to `true`.
+
+```js
+import { test } from '@swaggerexpert/jsonpath';
+
+test("$['a']", { normalized: true }); // => true
+test('$.store.book[0].title', { normalized: true }); // => false
+```
 
 #### Errors
 
