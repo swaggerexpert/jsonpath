@@ -15,6 +15,13 @@ exports[`parse translators CSTTranslator should translate a JSONPath to a CST 1`
         "length": 1,
         "children": [],
       },
+      {
+        "type": "segments",
+        "text": "",
+        "start": 1,
+        "length": 0,
+        "children": [],
+      },
     ],
   },
 }

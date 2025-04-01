@@ -2,6 +2,7 @@ import CSTTranslator from './CSTTranslator.js';
 
 class CSTOptimizedTranslator extends CSTTranslator {
   collapsibleTypes = ['single-quoted', 'double-quoted', 'normal-single-quoted'];
+  droppableTypes = ['text', 'segments', 'singular-query-segments'];
 
   constructor({ collapsibleTypes } = {}) {
     super();
@@ -12,7 +13,11 @@ class CSTOptimizedTranslator extends CSTTranslator {
   }
 
   getTree() {
-    const options = { optimize: true, collapsibleTypes: this.collapsibleTypes };
+    const options = {
+      optimize: true,
+      collapsibleTypes: this.collapsibleTypes,
+      droppableTypes: this.droppableTypes,
+    };
     const data = { stack: [], root: null, options };
 
     this.translate(data);

@@ -154,6 +154,7 @@ interface CSTNode {
 
 Same as CST, but optimizes the tree for more optimized representation. By default, it collapses
 fragmented `single-quoted`, `double-quoted` or `normal-single-quoted` nodes into a single node.
+`text`, `segments` and `singular-query-segments` nodes, when empty, are removed from the tree.
 
 ```js
 import { parse, CSTOptimizedTranslator } from '@swaggerexpert/jsonpath';

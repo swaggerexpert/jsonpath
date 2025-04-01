@@ -2,18 +2,24 @@ import { utilities, identifiers } from 'apg-lite';
 
 import JSONPathParseError from '../../errors/JSONPathParseError.js';
 
-const cst = (ruleName) => {
+const cst = (nodeType) => {
   return (state, chars, phraseIndex, phraseLength, data) => {
     if (!(typeof data === 'object' && data !== null && !Array.isArray(data))) {
       throw new JSONPathParseError("parser's user data must be an object");
     }
 
     // drop the empty nodes
-    if (phraseLength === 0) return;
+    if (
+      data.options?.optimize &&
+      phraseLength === 0 &&
+      data.options?.droppableTypes?.includes(nodeType)
+    ) {
+      return;
+    }
 
     if (state === identifiers.SEM_PRE) {
       const node = {
-        type: ruleName,
+        type: nodeType,
         text: utilities.charsToString(chars, phraseIndex, phraseLength),
         start: phraseIndex,
         length: phraseLength,
