@@ -38,6 +38,4 @@ const parse = (
   }
 };
 
-console.dir(parse('$[?(!(@.price < 10))]'), { depth: null });
-
 export default parse;

@@ -1,0 +1,3351 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`parse ast-corpus $ 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [],
+}
+`;
+
+exports[`parse ast-corpus $..* 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "DescendantSegment",
+      "selector": {
+        "type": "WildcardSelector",
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $..* 2`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "DescendantSegment",
+      "selector": {
+        "type": "WildcardSelector",
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $..[*] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "DescendantSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "WildcardSelector",
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $..[0] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "DescendantSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "IndexSelector",
+            "value": 0,
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $..author 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "DescendantSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "author",
+        "format": "shorthand",
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $..book[:2] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "DescendantSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "book",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "SliceSelector",
+            "start": null,
+            "end": 2,
+            "step": null,
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $..book[?@.isbn] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "DescendantSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "book",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "FilterSelector",
+            "expression": {
+              "type": "TestExpr",
+              "expression": {
+                "type": "FilterQuery",
+                "query": {
+                  "type": "RelQuery",
+                  "segments": [
+                    {
+                      "type": "ChildSegment",
+                      "selector": {
+                        "type": "NameSelector",
+                        "value": "isbn",
+                        "format": "shorthand",
+                      },
+                    },
+                  ],
+                },
+              },
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $..book[?@.price<10] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "DescendantSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "book",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "FilterSelector",
+            "expression": {
+              "type": "ComparisonExpr",
+              "left": {
+                "type": "RelSingularQuery",
+                "segments": [
+                  {
+                    "type": "SingularQuerySegment",
+                    "selector": {
+                      "type": "NameSelector",
+                      "value": "price",
+                      "format": "shorthand",
+                    },
+                  },
+                ],
+              },
+              "op": "<",
+              "right": {
+                "type": "Literal",
+                "value": 10,
+              },
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $..book[-1] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "DescendantSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "book",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "IndexSelector",
+            "value": -1,
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $..book[0,1] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "DescendantSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "book",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "IndexSelector",
+            "value": 0,
+          },
+          {
+            "type": "IndexSelector",
+            "value": 1,
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $..book[2] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "DescendantSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "book",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "IndexSelector",
+            "value": 2,
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $..book[2].author 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "DescendantSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "book",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "IndexSelector",
+            "value": 2,
+          },
+        ],
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "author",
+        "format": "shorthand",
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $..book[2].publisher 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "DescendantSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "book",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "IndexSelector",
+            "value": 2,
+          },
+        ],
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "publisher",
+        "format": "shorthand",
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $..j 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "DescendantSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "j",
+        "format": "shorthand",
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $..o 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "DescendantSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "o",
+        "format": "shorthand",
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $.a 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "a",
+        "format": "shorthand",
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $.a..[0, 1] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "a",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "DescendantSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "IndexSelector",
+            "value": 0,
+          },
+          {
+            "type": "IndexSelector",
+            "value": 1,
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $.a.d 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "a",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "d",
+        "format": "shorthand",
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $.a[*] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "a",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "WildcardSelector",
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $.a[?(@.b == 'kilo')] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "a",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "FilterSelector",
+            "expression": {
+              "type": "ComparisonExpr",
+              "left": {
+                "type": "RelSingularQuery",
+                "segments": [
+                  {
+                    "type": "SingularQuerySegment",
+                    "selector": {
+                      "type": "NameSelector",
+                      "value": "b",
+                      "format": "shorthand",
+                    },
+                  },
+                ],
+              },
+              "op": "==",
+              "right": {
+                "type": "Literal",
+                "value": "kilo",
+              },
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $.a[?@ == @] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "a",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "FilterSelector",
+            "expression": {
+              "type": "ComparisonExpr",
+              "left": {
+                "type": "RelSingularQuery",
+                "segments": [],
+              },
+              "op": "==",
+              "right": {
+                "type": "RelSingularQuery",
+                "segments": [],
+              },
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $.a[?@.b == $.x] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "a",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "FilterSelector",
+            "expression": {
+              "type": "ComparisonExpr",
+              "left": {
+                "type": "RelSingularQuery",
+                "segments": [
+                  {
+                    "type": "SingularQuerySegment",
+                    "selector": {
+                      "type": "NameSelector",
+                      "value": "b",
+                      "format": "shorthand",
+                    },
+                  },
+                ],
+              },
+              "op": "==",
+              "right": {
+                "type": "AbsSingularQuery",
+                "segments": [
+                  {
+                    "type": "SingularQuerySegment",
+                    "selector": {
+                      "type": "NameSelector",
+                      "value": "x",
+                      "format": "shorthand",
+                    },
+                  },
+                ],
+              },
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $.a[?@.b == 'kilo'] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "a",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "FilterSelector",
+            "expression": {
+              "type": "ComparisonExpr",
+              "left": {
+                "type": "RelSingularQuery",
+                "segments": [
+                  {
+                    "type": "SingularQuerySegment",
+                    "selector": {
+                      "type": "NameSelector",
+                      "value": "b",
+                      "format": "shorthand",
+                    },
+                  },
+                ],
+              },
+              "op": "==",
+              "right": {
+                "type": "Literal",
+                "value": "kilo",
+              },
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $.a[?@.b] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "a",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "FilterSelector",
+            "expression": {
+              "type": "TestExpr",
+              "expression": {
+                "type": "FilterQuery",
+                "query": {
+                  "type": "RelQuery",
+                  "segments": [
+                    {
+                      "type": "ChildSegment",
+                      "selector": {
+                        "type": "NameSelector",
+                        "value": "b",
+                        "format": "shorthand",
+                      },
+                    },
+                  ],
+                },
+              },
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $.a[?@<2 || @.b == "k"] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "a",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "FilterSelector",
+            "expression": undefined,
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $.a[?@>3.5] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "a",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "FilterSelector",
+            "expression": {
+              "type": "ComparisonExpr",
+              "left": {
+                "type": "RelSingularQuery",
+                "segments": [],
+              },
+              "op": ">",
+              "right": {
+                "type": "Literal",
+                "value": 3.5,
+              },
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $.a[?match(@.b, "[jk]")] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "a",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "FilterSelector",
+            "expression": {
+              "type": "TestExpr",
+              "expression": {
+                "type": "FunctionExpr",
+                "name": "match",
+                "arguments": [
+                  {
+                    "type": "TestExpr",
+                    "expression": {
+                      "type": "FilterQuery",
+                      "query": {
+                        "type": "RelQuery",
+                        "segments": [
+                          {
+                            "type": "ChildSegment",
+                            "selector": {
+                              "type": "NameSelector",
+                              "value": "b",
+                              "format": "shorthand",
+                            },
+                          },
+                        ],
+                      },
+                    },
+                  },
+                  {
+                    "type": "Literal",
+                    "value": "[jk]",
+                  },
+                ],
+              },
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $.a[?search(@.b, "[jk]")] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "a",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "FilterSelector",
+            "expression": {
+              "type": "TestExpr",
+              "expression": {
+                "type": "FunctionExpr",
+                "name": "search",
+                "arguments": [
+                  {
+                    "type": "TestExpr",
+                    "expression": {
+                      "type": "FilterQuery",
+                      "query": {
+                        "type": "RelQuery",
+                        "segments": [
+                          {
+                            "type": "ChildSegment",
+                            "selector": {
+                              "type": "NameSelector",
+                              "value": "b",
+                              "format": "shorthand",
+                            },
+                          },
+                        ],
+                      },
+                    },
+                  },
+                  {
+                    "type": "Literal",
+                    "value": "[jk]",
+                  },
+                ],
+              },
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $.a[0] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "a",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "IndexSelector",
+            "value": 0,
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $.b[*] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "b",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "WildcardSelector",
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $.b[?@==null] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "b",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "FilterSelector",
+            "expression": {
+              "type": "ComparisonExpr",
+              "left": {
+                "type": "RelSingularQuery",
+                "segments": [],
+              },
+              "op": "==",
+              "right": {
+                "type": "Literal",
+                "value": null,
+              },
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $.b[?@] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "b",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "FilterSelector",
+            "expression": {
+              "type": "TestExpr",
+              "expression": {
+                "type": "FilterQuery",
+                "query": {
+                  "type": "RelQuery",
+                  "segments": [],
+                },
+              },
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $.b[0] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "b",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "IndexSelector",
+            "value": 0,
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $.c[?@.d==null] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "c",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "FilterSelector",
+            "expression": {
+              "type": "ComparisonExpr",
+              "left": {
+                "type": "RelSingularQuery",
+                "segments": [
+                  {
+                    "type": "SingularQuerySegment",
+                    "selector": {
+                      "type": "NameSelector",
+                      "value": "d",
+                      "format": "shorthand",
+                    },
+                  },
+                ],
+              },
+              "op": "==",
+              "right": {
+                "type": "Literal",
+                "value": null,
+              },
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $.null 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "null",
+        "format": "shorthand",
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $.o..[*, *] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "o",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "DescendantSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "WildcardSelector",
+          },
+          {
+            "type": "WildcardSelector",
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $.o["j j"]["k.k"] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "o",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "NameSelector",
+            "value": "j j",
+            "format": "double-quoted",
+          },
+        ],
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "NameSelector",
+            "value": "k.k",
+            "format": "double-quoted",
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $.o['j j'] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "o",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "NameSelector",
+            "value": "j j",
+            "format": "single-quoted",
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $.o['j j']['k.k'] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "o",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "NameSelector",
+            "value": "j j",
+            "format": "single-quoted",
+          },
+        ],
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "NameSelector",
+            "value": "k.k",
+            "format": "single-quoted",
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $.o[*, *] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "o",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "WildcardSelector",
+          },
+          {
+            "type": "WildcardSelector",
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $.o[*] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "o",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "WildcardSelector",
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $.o[*] 2`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "o",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "WildcardSelector",
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $.o[?@.u || @.x] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "o",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "FilterSelector",
+            "expression": undefined,
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $.o[?@<3, ?@<3] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "o",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "FilterSelector",
+            "expression": {
+              "type": "ComparisonExpr",
+              "left": {
+                "type": "RelSingularQuery",
+                "segments": [],
+              },
+              "op": "<",
+              "right": {
+                "type": "Literal",
+                "value": 3,
+              },
+            },
+          },
+          {
+            "type": "FilterSelector",
+            "expression": {
+              "type": "ComparisonExpr",
+              "left": {
+                "type": "RelSingularQuery",
+                "segments": [],
+              },
+              "op": "<",
+              "right": {
+                "type": "Literal",
+                "value": 3,
+              },
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $.o[?@>1 && @<4] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "o",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "FilterSelector",
+            "expression": {
+              "type": "LogicalAndExpr",
+              "left": {
+                "type": "ComparisonExpr",
+                "left": {
+                  "type": "RelSingularQuery",
+                  "segments": [],
+                },
+                "op": ">",
+                "right": {
+                  "type": "Literal",
+                  "value": 1,
+                },
+              },
+              "right": {
+                "type": "ComparisonExpr",
+                "left": {
+                  "type": "RelSingularQuery",
+                  "segments": [],
+                },
+                "op": "<",
+                "right": {
+                  "type": "Literal",
+                  "value": 4,
+                },
+              },
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $.o[?@>1 && @<4] 2`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "o",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "FilterSelector",
+            "expression": {
+              "type": "LogicalAndExpr",
+              "left": {
+                "type": "ComparisonExpr",
+                "left": {
+                  "type": "RelSingularQuery",
+                  "segments": [],
+                },
+                "op": ">",
+                "right": {
+                  "type": "Literal",
+                  "value": 1,
+                },
+              },
+              "right": {
+                "type": "ComparisonExpr",
+                "left": {
+                  "type": "RelSingularQuery",
+                  "segments": [],
+                },
+                "op": "<",
+                "right": {
+                  "type": "Literal",
+                  "value": 4,
+                },
+              },
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $.store.* 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "store",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "WildcardSelector",
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $.store..price 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "store",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "DescendantSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "price",
+        "format": "shorthand",
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $.store.book[*].author 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "store",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "book",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "WildcardSelector",
+          },
+        ],
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "author",
+        "format": "shorthand",
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $.store.book[?@.price < 10].title 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "store",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "book",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "FilterSelector",
+            "expression": {
+              "type": "ComparisonExpr",
+              "left": {
+                "type": "RelSingularQuery",
+                "segments": [
+                  {
+                    "type": "SingularQuerySegment",
+                    "selector": {
+                      "type": "NameSelector",
+                      "value": "price",
+                      "format": "shorthand",
+                    },
+                  },
+                ],
+              },
+              "op": "<",
+              "right": {
+                "type": "Literal",
+                "value": 10,
+              },
+            },
+          },
+        ],
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "title",
+        "format": "shorthand",
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $.store.book[0].title 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "store",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "book",
+        "format": "shorthand",
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "IndexSelector",
+            "value": 0,
+          },
+        ],
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "title",
+        "format": "shorthand",
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $["'"]["@"] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "NameSelector",
+            "value": "'",
+            "format": "double-quoted",
+          },
+        ],
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "NameSelector",
+            "value": "@",
+            "format": "double-quoted",
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $['\\u000b'] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "NameSelector",
+            "value": "\\u000b",
+            "format": "single-quoted",
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $['a'] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "NameSelector",
+            "value": "a",
+            "format": "single-quoted",
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $['a']['b'][1] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "NameSelector",
+            "value": "a",
+            "format": "single-quoted",
+          },
+        ],
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "NameSelector",
+            "value": "b",
+            "format": "single-quoted",
+          },
+        ],
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "IndexSelector",
+            "value": 1,
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $['store']['book'][0]['title'] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "NameSelector",
+            "value": "store",
+            "format": "single-quoted",
+          },
+        ],
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "NameSelector",
+            "value": "book",
+            "format": "single-quoted",
+          },
+        ],
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "IndexSelector",
+            "value": 0,
+          },
+        ],
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "NameSelector",
+            "value": "title",
+            "format": "single-quoted",
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $[*] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "WildcardSelector",
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $[::-1] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "SliceSelector",
+            "start": null,
+            "end": null,
+            "step": -1,
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $[?@.*] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "FilterSelector",
+            "expression": {
+              "type": "TestExpr",
+              "expression": {
+                "type": "FilterQuery",
+                "query": {
+                  "type": "RelQuery",
+                  "segments": [
+                    {
+                      "type": "ChildSegment",
+                      "selector": {
+                        "type": "WildcardSelector",
+                      },
+                    },
+                  ],
+                },
+              },
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $[?@[?@.b]] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "FilterSelector",
+            "expression": {
+              "type": "TestExpr",
+              "expression": {
+                "type": "FilterQuery",
+                "query": {
+                  "type": "RelQuery",
+                  "segments": [
+                    {
+                      "type": "ChildSegment",
+                      "selector": {
+                        "type": "BracketedSelection",
+                        "selectors": [
+                          {
+                            "type": "FilterSelector",
+                            "expression": {
+                              "type": "TestExpr",
+                              "expression": {
+                                "type": "FilterQuery",
+                                "query": {
+                                  "type": "RelQuery",
+                                  "segments": [
+                                    {
+                                      "type": "ChildSegment",
+                                      "selector": {
+                                        "type": "NameSelector",
+                                        "value": "b",
+                                        "format": "shorthand",
+                                      },
+                                    },
+                                  ],
+                                },
+                              },
+                            },
+                          },
+                        ],
+                      },
+                    },
+                  ],
+                },
+              },
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $[?bal(1)] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "FilterSelector",
+            "expression": {
+              "type": "TestExpr",
+              "expression": {
+                "type": "FunctionExpr",
+                "name": "bal",
+                "arguments": [
+                  {
+                    "type": "Literal",
+                    "value": 1,
+                  },
+                ],
+              },
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $[?bar(@.a)] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "FilterSelector",
+            "expression": {
+              "type": "TestExpr",
+              "expression": {
+                "type": "FunctionExpr",
+                "name": "bar",
+                "arguments": [
+                  {
+                    "type": "TestExpr",
+                    "expression": {
+                      "type": "FilterQuery",
+                      "query": {
+                        "type": "RelQuery",
+                        "segments": [
+                          {
+                            "type": "ChildSegment",
+                            "selector": {
+                              "type": "NameSelector",
+                              "value": "a",
+                              "format": "shorthand",
+                            },
+                          },
+                        ],
+                      },
+                    },
+                  },
+                ],
+              },
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $[?blt(1)] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "FilterSelector",
+            "expression": {
+              "type": "TestExpr",
+              "expression": {
+                "type": "FunctionExpr",
+                "name": "blt",
+                "arguments": [
+                  {
+                    "type": "Literal",
+                    "value": 1,
+                  },
+                ],
+              },
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $[?blt(1==1)] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "FilterSelector",
+            "expression": {
+              "type": "TestExpr",
+              "expression": {
+                "type": "FunctionExpr",
+                "name": "blt",
+                "arguments": [
+                  {
+                    "type": "ComparisonExpr",
+                    "left": {
+                      "type": "Literal",
+                      "value": 1,
+                    },
+                    "op": "==",
+                    "right": {
+                      "type": "Literal",
+                      "value": 1,
+                    },
+                  },
+                ],
+              },
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $[?bnl(@.*)] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "FilterSelector",
+            "expression": {
+              "type": "TestExpr",
+              "expression": {
+                "type": "FunctionExpr",
+                "name": "bnl",
+                "arguments": [
+                  {
+                    "type": "TestExpr",
+                    "expression": {
+                      "type": "FilterQuery",
+                      "query": {
+                        "type": "RelQuery",
+                        "segments": [
+                          {
+                            "type": "ChildSegment",
+                            "selector": {
+                              "type": "WildcardSelector",
+                            },
+                          },
+                        ],
+                      },
+                    },
+                  },
+                ],
+              },
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $[?count(@.*) == 1] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "FilterSelector",
+            "expression": {
+              "type": "ComparisonExpr",
+              "left": {
+                "type": "FunctionExpr",
+                "name": "count",
+                "arguments": [
+                  {
+                    "type": "TestExpr",
+                    "expression": {
+                      "type": "FilterQuery",
+                      "query": {
+                        "type": "RelQuery",
+                        "segments": [
+                          {
+                            "type": "ChildSegment",
+                            "selector": {
+                              "type": "WildcardSelector",
+                            },
+                          },
+                        ],
+                      },
+                    },
+                  },
+                ],
+              },
+              "op": "==",
+              "right": {
+                "type": "Literal",
+                "value": 1,
+              },
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $[?count(@.*.author) >= 5] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "FilterSelector",
+            "expression": {
+              "type": "ComparisonExpr",
+              "left": {
+                "type": "FunctionExpr",
+                "name": "count",
+                "arguments": [
+                  {
+                    "type": "TestExpr",
+                    "expression": {
+                      "type": "FilterQuery",
+                      "query": {
+                        "type": "RelQuery",
+                        "segments": [
+                          {
+                            "type": "ChildSegment",
+                            "selector": {
+                              "type": "WildcardSelector",
+                            },
+                          },
+                          {
+                            "type": "ChildSegment",
+                            "selector": {
+                              "type": "NameSelector",
+                              "value": "author",
+                              "format": "shorthand",
+                            },
+                          },
+                        ],
+                      },
+                    },
+                  },
+                ],
+              },
+              "op": ">=",
+              "right": {
+                "type": "Literal",
+                "value": 5,
+              },
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $[?count(1) == 1] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "FilterSelector",
+            "expression": {
+              "type": "ComparisonExpr",
+              "left": {
+                "type": "FunctionExpr",
+                "name": "count",
+                "arguments": [
+                  {
+                    "type": "Literal",
+                    "value": 1,
+                  },
+                ],
+              },
+              "op": "==",
+              "right": {
+                "type": "Literal",
+                "value": 1,
+              },
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $[?count(foo(@.*)) == 1] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "FilterSelector",
+            "expression": {
+              "type": "ComparisonExpr",
+              "left": {
+                "type": "FunctionExpr",
+                "name": "count",
+                "arguments": [
+                  {
+                    "type": "TestExpr",
+                    "expression": {
+                      "type": "FunctionExpr",
+                      "name": "foo",
+                      "arguments": [
+                        {
+                          "type": "TestExpr",
+                          "expression": {
+                            "type": "FilterQuery",
+                            "query": {
+                              "type": "RelQuery",
+                              "segments": [
+                                {
+                                  "type": "ChildSegment",
+                                  "selector": {
+                                    "type": "WildcardSelector",
+                                  },
+                                },
+                              ],
+                            },
+                          },
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+              "op": "==",
+              "right": {
+                "type": "Literal",
+                "value": 1,
+              },
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $[?foo(1==2)] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "FilterSelector",
+            "expression": {
+              "type": "TestExpr",
+              "expression": {
+                "type": "FunctionExpr",
+                "name": "foo",
+                "arguments": [
+                  {
+                    "type": "ComparisonExpr",
+                    "left": {
+                      "type": "Literal",
+                      "value": 1,
+                    },
+                    "op": "==",
+                    "right": {
+                      "type": "Literal",
+                      "value": 2,
+                    },
+                  },
+                ],
+              },
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $[?length(@) < 3] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "FilterSelector",
+            "expression": {
+              "type": "ComparisonExpr",
+              "left": {
+                "type": "FunctionExpr",
+                "name": "length",
+                "arguments": [
+                  {
+                    "type": "TestExpr",
+                    "expression": {
+                      "type": "FilterQuery",
+                      "query": {
+                        "type": "RelQuery",
+                        "segments": [],
+                      },
+                    },
+                  },
+                ],
+              },
+              "op": "<",
+              "right": {
+                "type": "Literal",
+                "value": 3,
+              },
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $[?length(@.*) < 3] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "FilterSelector",
+            "expression": {
+              "type": "ComparisonExpr",
+              "left": {
+                "type": "FunctionExpr",
+                "name": "length",
+                "arguments": [
+                  {
+                    "type": "TestExpr",
+                    "expression": {
+                      "type": "FilterQuery",
+                      "query": {
+                        "type": "RelQuery",
+                        "segments": [
+                          {
+                            "type": "ChildSegment",
+                            "selector": {
+                              "type": "WildcardSelector",
+                            },
+                          },
+                        ],
+                      },
+                    },
+                  },
+                ],
+              },
+              "op": "<",
+              "right": {
+                "type": "Literal",
+                "value": 3,
+              },
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $[?length(@.authors) >= 5] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "FilterSelector",
+            "expression": {
+              "type": "ComparisonExpr",
+              "left": {
+                "type": "FunctionExpr",
+                "name": "length",
+                "arguments": [
+                  {
+                    "type": "TestExpr",
+                    "expression": {
+                      "type": "FilterQuery",
+                      "query": {
+                        "type": "RelQuery",
+                        "segments": [
+                          {
+                            "type": "ChildSegment",
+                            "selector": {
+                              "type": "NameSelector",
+                              "value": "authors",
+                              "format": "shorthand",
+                            },
+                          },
+                        ],
+                      },
+                    },
+                  },
+                ],
+              },
+              "op": ">=",
+              "right": {
+                "type": "Literal",
+                "value": 5,
+              },
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $[?match(@.date, "1974-05-..")] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "FilterSelector",
+            "expression": {
+              "type": "TestExpr",
+              "expression": {
+                "type": "FunctionExpr",
+                "name": "match",
+                "arguments": [
+                  {
+                    "type": "TestExpr",
+                    "expression": {
+                      "type": "FilterQuery",
+                      "query": {
+                        "type": "RelQuery",
+                        "segments": [
+                          {
+                            "type": "ChildSegment",
+                            "selector": {
+                              "type": "NameSelector",
+                              "value": "date",
+                              "format": "shorthand",
+                            },
+                          },
+                        ],
+                      },
+                    },
+                  },
+                  {
+                    "type": "Literal",
+                    "value": "1974-05-..",
+                  },
+                ],
+              },
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $[?match(@.timezone, 'Europe/.*') == true] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "FilterSelector",
+            "expression": {
+              "type": "ComparisonExpr",
+              "left": {
+                "type": "FunctionExpr",
+                "name": "match",
+                "arguments": [
+                  {
+                    "type": "TestExpr",
+                    "expression": {
+                      "type": "FilterQuery",
+                      "query": {
+                        "type": "RelQuery",
+                        "segments": [
+                          {
+                            "type": "ChildSegment",
+                            "selector": {
+                              "type": "NameSelector",
+                              "value": "timezone",
+                              "format": "shorthand",
+                            },
+                          },
+                        ],
+                      },
+                    },
+                  },
+                  {
+                    "type": "Literal",
+                    "value": "Europe/.*",
+                  },
+                ],
+              },
+              "op": "==",
+              "right": {
+                "type": "Literal",
+                "value": true,
+              },
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $[?match(@.timezone, 'Europe/.*')] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "FilterSelector",
+            "expression": {
+              "type": "TestExpr",
+              "expression": {
+                "type": "FunctionExpr",
+                "name": "match",
+                "arguments": [
+                  {
+                    "type": "TestExpr",
+                    "expression": {
+                      "type": "FilterQuery",
+                      "query": {
+                        "type": "RelQuery",
+                        "segments": [
+                          {
+                            "type": "ChildSegment",
+                            "selector": {
+                              "type": "NameSelector",
+                              "value": "timezone",
+                              "format": "shorthand",
+                            },
+                          },
+                        ],
+                      },
+                    },
+                  },
+                  {
+                    "type": "Literal",
+                    "value": "Europe/.*",
+                  },
+                ],
+              },
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $[?search(@.author, "[BR]ob")] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "FilterSelector",
+            "expression": {
+              "type": "TestExpr",
+              "expression": {
+                "type": "FunctionExpr",
+                "name": "search",
+                "arguments": [
+                  {
+                    "type": "TestExpr",
+                    "expression": {
+                      "type": "FilterQuery",
+                      "query": {
+                        "type": "RelQuery",
+                        "segments": [
+                          {
+                            "type": "ChildSegment",
+                            "selector": {
+                              "type": "NameSelector",
+                              "value": "author",
+                              "format": "shorthand",
+                            },
+                          },
+                        ],
+                      },
+                    },
+                  },
+                  {
+                    "type": "Literal",
+                    "value": "[BR]ob",
+                  },
+                ],
+              },
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $[?true(1)==0] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "FilterSelector",
+            "expression": {
+              "type": "ComparisonExpr",
+              "left": {
+                "type": "FunctionExpr",
+                "name": "true",
+                "arguments": [
+                  {
+                    "type": "Literal",
+                    "value": 1,
+                  },
+                ],
+              },
+              "op": "==",
+              "right": {
+                "type": "Literal",
+                "value": 0,
+              },
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $[?true(1)==false(0)] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "FilterSelector",
+            "expression": {
+              "type": "ComparisonExpr",
+              "left": {
+                "type": "FunctionExpr",
+                "name": "true",
+                "arguments": [
+                  {
+                    "type": "Literal",
+                    "value": 1,
+                  },
+                ],
+              },
+              "op": "==",
+              "right": {
+                "type": "FunctionExpr",
+                "name": "false",
+                "arguments": [
+                  {
+                    "type": "Literal",
+                    "value": 0,
+                  },
+                ],
+              },
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $[?value(@..color) == "red"] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "FilterSelector",
+            "expression": {
+              "type": "ComparisonExpr",
+              "left": {
+                "type": "FunctionExpr",
+                "name": "value",
+                "arguments": [
+                  {
+                    "type": "TestExpr",
+                    "expression": {
+                      "type": "FilterQuery",
+                      "query": {
+                        "type": "RelQuery",
+                        "segments": [
+                          {
+                            "type": "DescendantSegment",
+                            "selector": {
+                              "type": "NameSelector",
+                              "value": "color",
+                              "format": "shorthand",
+                            },
+                          },
+                        ],
+                      },
+                    },
+                  },
+                ],
+              },
+              "op": "==",
+              "right": {
+                "type": "Literal",
+                "value": "red",
+              },
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $[?value(@..color) == "red"] 2`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "FilterSelector",
+            "expression": {
+              "type": "ComparisonExpr",
+              "left": {
+                "type": "FunctionExpr",
+                "name": "value",
+                "arguments": [
+                  {
+                    "type": "TestExpr",
+                    "expression": {
+                      "type": "FilterQuery",
+                      "query": {
+                        "type": "RelQuery",
+                        "segments": [
+                          {
+                            "type": "DescendantSegment",
+                            "selector": {
+                              "type": "NameSelector",
+                              "value": "color",
+                              "format": "shorthand",
+                            },
+                          },
+                        ],
+                      },
+                    },
+                  },
+                ],
+              },
+              "op": "==",
+              "right": {
+                "type": "Literal",
+                "value": "red",
+              },
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $[?value(@..color)] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "FilterSelector",
+            "expression": {
+              "type": "TestExpr",
+              "expression": {
+                "type": "FunctionExpr",
+                "name": "value",
+                "arguments": [
+                  {
+                    "type": "TestExpr",
+                    "expression": {
+                      "type": "FilterQuery",
+                      "query": {
+                        "type": "RelQuery",
+                        "segments": [
+                          {
+                            "type": "DescendantSegment",
+                            "selector": {
+                              "type": "NameSelector",
+                              "value": "color",
+                              "format": "shorthand",
+                            },
+                          },
+                        ],
+                      },
+                    },
+                  },
+                ],
+              },
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $[-2] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "IndexSelector",
+            "value": -2,
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $[0, 0] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "IndexSelector",
+            "value": 0,
+          },
+          {
+            "type": "IndexSelector",
+            "value": 0,
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $[0, 3] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "IndexSelector",
+            "value": 0,
+          },
+          {
+            "type": "IndexSelector",
+            "value": 3,
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $[0:2, 5] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "SliceSelector",
+            "start": 0,
+            "end": 2,
+            "step": null,
+          },
+          {
+            "type": "IndexSelector",
+            "value": 5,
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $[1:3] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "SliceSelector",
+            "start": 1,
+            "end": 3,
+            "step": null,
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $[1:5:2] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "SliceSelector",
+            "start": 1,
+            "end": 5,
+            "step": 2,
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $[1] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "IndexSelector",
+            "value": 1,
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $[1] 2`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "IndexSelector",
+            "value": 1,
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $[2] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "IndexSelector",
+            "value": 2,
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $[5:] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "SliceSelector",
+            "start": 5,
+            "end": null,
+            "step": null,
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus $[5:1:-2] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "SliceSelector",
+            "start": 5,
+            "end": 1,
+            "step": -2,
+          },
+        ],
+      },
+    },
+  ],
+}
+`;

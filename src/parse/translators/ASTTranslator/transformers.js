@@ -1,5 +1,5 @@
 import JSONPathParseError from '../../../errors/JSONPathParseError.js';
-import { decodeString, decodeInteger } from './decoders.js';
+import { decodeString } from './decoders.js';
 
 export const transformCSTtoAST = (node, transformerMap, ctx = { parent: null, path: [] }) => {
   const transformer = transformerMap[node.type];
@@ -13,12 +13,12 @@ export const transformCSTtoAST = (node, transformerMap, ctx = { parent: null, pa
 
 const transformers = {
   ['jsonpath-query'](node, ctx) {
-    const segmentsNode = node.children.find((c) => c.type === 'segments');
+    const segmentCSTNode = node.children.find((c) => c.type === 'segments');
 
     return {
       type: 'JsonPathQuery',
-      segments: segmentsNode
-        ? segmentsNode.children
+      segments: segmentCSTNode
+        ? segmentCSTNode.children
             .filter(({ type }) => type === 'segment')
             .map((segNode) => transformCSTtoAST(segNode, transformers, ctx))
             .filter(Boolean)
@@ -97,13 +97,13 @@ const transformers = {
 
     return {
       type: 'SliceSelector',
-      start: start ? decodeInteger(start.text) : null,
-      end: end ? decodeInteger(end.text) : null,
-      step: step ? decodeInteger(step.text) : null,
+      start: start ? JSON.parse(start.text) : null,
+      end: end ? JSON.parse(end.text) : null,
+      step: step ? JSON.parse(step.text) : null,
     };
   },
   ['index-selector'](node) {
-    return { type: 'IndexSelector', value: decodeInteger(node.text) };
+    return { type: 'IndexSelector', value: JSON.parse(node.text) };
   },
   ['filter-selector'](node, ctx) {
     const logicalExprCSTNode = node.children.find(({ type }) => type === 'logical-expr');
@@ -185,8 +185,137 @@ const transformers = {
       right: transformCSTtoAST(rightNode, transformers, ctx),
     };
   },
-  ['comparable']() {
-    return { type: 'Comparable' };
+  ['comparable'](node, ctx) {
+    const child = node.children.find(({ type }) =>
+      ['singular-query', 'function-expr', 'literal'].includes(type),
+    );
+
+    return transformCSTtoAST(child, transformers, ctx);
+  },
+  ['singular-query'](node, ctx) {
+    const child = node.children.find(({ type }) =>
+      ['rel-singular-query', 'abs-singular-query'].includes(type),
+    );
+
+    return transformCSTtoAST(child, transformers, ctx);
+  },
+  ['rel-singular-query'](node, ctx) {
+    const segmentsNode = node.children.find(({ type }) => type === 'singular-query-segments');
+
+    const segments = segmentsNode
+      ? segmentsNode.children
+          .filter(({ type }) => type === 'name-segment' || type === 'index-segment')
+          .map((segNode) => ({
+            type: 'SingularQuerySegment',
+            selector: transformCSTtoAST(segNode, transformers, ctx),
+          }))
+      : [];
+
+    return {
+      type: 'RelSingularQuery',
+      segments,
+    };
+  },
+  ['abs-singular-query'](node, ctx) {
+    const segmentsNode = node.children.find(({ type }) => type === 'singular-query-segments');
+
+    const segments = segmentsNode
+      ? segmentsNode.children
+          .filter(({ type }) => type === 'name-segment' || type === 'index-segment')
+          .map((segNode) => ({
+            type: 'SingularQuerySegment',
+            selector: transformCSTtoAST(segNode, transformers, ctx),
+          }))
+      : [];
+
+    return {
+      type: 'AbsSingularQuery',
+      segments,
+    };
+  },
+  ['name-segment'](node, ctx) {
+    const child = node.children.find(({ type }) =>
+      ['name-selector', 'member-name-shorthand'].includes(type),
+    );
+
+    return transformCSTtoAST(child, transformers, ctx);
+  },
+  ['index-segment'](node, ctx) {
+    const child = node.children.find(({ type }) => type === 'index-selector');
+
+    return transformCSTtoAST(child, transformers, ctx);
+  },
+  ['function-expr'](node, ctx) {
+    const nameCSTNode = node.children.find(({ type }) => type === 'function-name');
+    const argCSTNodes = node.children.filter(({ type }) => type === 'function-argument');
+    const argASTNodes = argCSTNodes.map((arg) => transformCSTtoAST(arg, transformers, ctx));
+
+    return {
+      type: 'FunctionExpr',
+      name: nameCSTNode.text,
+      arguments: argASTNodes,
+    };
+  },
+  ['function-argument'](node, ctx) {
+    const child = node.children.find(({ type }) =>
+      ['logical-expr', 'function-expr', 'filter-query', 'literal'].includes(type),
+    );
+
+    return transformCSTtoAST(child, transformers, ctx);
+  },
+  ['test-expr'](node, ctx) {
+    const isNegated = node.children.some(({ type }) => type === 'logical-not-op');
+    const expressionCSTNode = node.children.find(({ type }) =>
+      ['filter-query', 'function-expr'].includes(type),
+    );
+    const expressionASTNode = transformCSTtoAST(expressionCSTNode, transformers, ctx);
+
+    const testExpr = {
+      type: 'TestExpr',
+      expression: expressionASTNode,
+    };
+
+    return isNegated ? { type: 'LogicalNotExpr', expression: testExpr } : testExpr;
+  },
+  ['filter-query'](node, ctx) {
+    const child = node.children.find(({ type }) => ['rel-query', 'jsonpath-query'].includes(type));
+
+    return {
+      type: 'FilterQuery',
+      query: transformCSTtoAST(child, transformers, ctx),
+    };
+  },
+  ['rel-query'](node, ctx) {
+    const segmentCSTNode = node.children.find((c) => c.type === 'segments');
+
+    const segments = segmentCSTNode
+      ? segmentCSTNode.children
+          .filter((n) => n.type === 'segment')
+          .map((segNode) => transformCSTtoAST(segNode, transformers, ctx))
+      : [];
+
+    return {
+      type: 'RelQuery',
+      segments,
+    };
+  },
+  ['literal'](node, ctx) {
+    const child = node.children.find(({ type }) =>
+      ['number', 'string-literal', 'true', 'false', 'null'].includes(type),
+    );
+
+    if (child.type === 'string-literal') {
+      const ast = transformCSTtoAST(child, transformers, ctx);
+      return {
+        type: 'Literal',
+        value: ast.value,
+      };
+    }
+
+    return {
+      type: 'Literal',
+      value: JSON.parse(child.text),
+    };
   },
   ['member-name-shorthand'](node) {
     return { type: 'NameSelector', value: node.text, format: 'shorthand' };
