@@ -1810,7 +1810,7 @@ exports[`parse ast-corpus $['\\u000b'] 1`] = `
         "selectors": [
           {
             "type": "NameSelector",
-            "value": "\\u000b",
+            "value": "",
             "format": "single-quoted",
           },
         ],

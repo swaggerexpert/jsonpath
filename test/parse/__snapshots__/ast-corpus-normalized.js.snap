@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`parse ast-corpus-normalized $['\\u000b'] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "",
+        "format": "single-quoted",
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus-normalized $['a'] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "a",
+        "format": "single-quoted",
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus-normalized $['a']['b'][1] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "a",
+        "format": "single-quoted",
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "NameSelector",
+        "value": "b",
+        "format": "single-quoted",
+      },
+    },
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "IndexSelector",
+        "value": 1,
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus-normalized $[1] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "IndexSelector",
+        "value": 1,
+      },
+    },
+  ],
+}
+`;
+
+exports[`parse ast-corpus-normalized $[2] 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "IndexSelector",
+        "value": 2,
+      },
+    },
+  ],
+}
+`;

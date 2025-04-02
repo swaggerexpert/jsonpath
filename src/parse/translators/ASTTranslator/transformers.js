@@ -1,5 +1,5 @@
 import JSONPathParseError from '../../../errors/JSONPathParseError.js';
-import { decodeString } from './decoders.js';
+import { decodeString, decodeInteger, decodeJSONValue } from './decoders.js';
 
 export const transformCSTtoAST = (node, transformerMap, ctx = { parent: null, path: [] }) => {
   const transformer = transformerMap[node.type];
@@ -12,53 +12,36 @@ export const transformCSTtoAST = (node, transformerMap, ctx = { parent: null, pa
 };
 
 const transformers = {
+  /**
+   * https://www.rfc-editor.org/rfc/rfc9535#section-2.1.1
+   */
   ['jsonpath-query'](node, ctx) {
-    const segmentCSTNode = node.children.find((c) => c.type === 'segments');
+    const segments = node.children.find((c) => c.type === 'segments');
 
     return {
       type: 'JsonPathQuery',
-      segments: segmentCSTNode
-        ? segmentCSTNode.children
+      segments: segments
+        ? segments.children
             .filter(({ type }) => type === 'segment')
             .map((segNode) => transformCSTtoAST(segNode, transformers, ctx))
-            .filter(Boolean)
         : [],
     };
   },
+  /**
+   * https://www.rfc-editor.org/rfc/rfc9535#section-2.5
+   */
   segment(node, ctx) {
-    const child = node.children.find(
-      ({ type }) => type === 'child-segment' || type === 'descendant-segment',
+    const child = node.children.find(({ type }) =>
+      ['child-segment', 'descendant-segment'].includes(type),
     );
 
     return transformCSTtoAST(child, transformers, ctx);
   },
-  ['child-segment'](node, ctx) {
-    const selectorNode = node.children.find(({ type }) =>
-      ['bracketed-selection', 'wildcard-selector', 'member-name-shorthand'].includes(type),
-    );
-    const selector = transformCSTtoAST(selectorNode, transformers, ctx);
-
-    return { type: 'ChildSegment', selector };
-  },
-  ['descendant-segment'](node, ctx) {
-    const selectorNode = node.children.find(({ type }) =>
-      ['bracketed-selection', 'wildcard-selector', 'member-name-shorthand'].includes(type),
-    );
-    const selector = transformCSTtoAST(selectorNode, transformers, ctx);
-
-    return { type: 'DescendantSegment', selector };
-  },
-  ['bracketed-selection'](node, ctx) {
-    return {
-      type: 'BracketedSelection',
-      selectors: node.children
-        .filter(({ type }) => type === 'selector')
-        .map((selectorNode) => transformCSTtoAST(selectorNode, transformers, ctx))
-        .filter(Boolean),
-    };
-  },
+  /**
+   * https://www.rfc-editor.org/rfc/rfc9535#section-2.3
+   */
   selector(node, ctx) {
-    const selectorNode = node.children.find(({ type }) =>
+    const child = node.children.find(({ type }) =>
       [
         'name-selector',
         'wildcard-selector',
@@ -68,8 +51,11 @@ const transformers = {
       ].includes(type),
     );
 
-    return transformCSTtoAST(selectorNode, transformers, ctx);
+    return transformCSTtoAST(child, transformers, ctx);
   },
+  /**
+   * https://www.rfc-editor.org/rfc/rfc9535#section-2.3.1.1
+   */
   ['name-selector'](node, ctx) {
     const stringLiteralCSTNode = node.children.find(({ type }) => type === 'string-literal');
     const stringLiteralASTNode = transformCSTtoAST(stringLiteralCSTNode, transformers, ctx);
@@ -81,15 +67,35 @@ const transformers = {
     };
   },
   ['string-literal'](node) {
+    const isSingleQuoted = node.children.find(({ type, text }) => type === 'text' && text === "'");
     const quoted = node.children.find(({ type }) =>
       ['double-quoted', 'single-quoted'].includes(type),
     );
 
-    return { type: 'StringLiteral', value: decodeString(quoted.text), format: quoted.type };
+    return {
+      type: 'StringLiteral',
+      value: quoted ? decodeString(quoted.text) : '',
+      format: isSingleQuoted ? 'single-quoted' : 'double-quoted',
+    };
   },
+  /**
+   * https://www.rfc-editor.org/rfc/rfc9535#section-2.3.2.1
+   */
   ['wildcard-selector']() {
     return { type: 'WildcardSelector' };
   },
+  /**
+   * https://www.rfc-editor.org/rfc/rfc9535#section-2.3.3.1
+   */
+  ['index-selector'](node) {
+    return {
+      type: 'IndexSelector',
+      value: decodeInteger(node.text),
+    };
+  },
+  /**
+   * https://www.rfc-editor.org/rfc/rfc9535#section-2.3.4.1
+   */
   ['slice-selector'](node) {
     const start = node.children.find(({ type }) => type === 'start');
     const end = node.children.find(({ type }) => type === 'end');
@@ -97,19 +103,21 @@ const transformers = {
 
     return {
       type: 'SliceSelector',
-      start: start ? JSON.parse(start.text) : null,
-      end: end ? JSON.parse(end.text) : null,
-      step: step ? JSON.parse(step.text) : null,
+      start: start ? decodeInteger(start.text) : null,
+      end: end ? decodeInteger(end.text) : null,
+      step: step ? decodeInteger(step.text) : null,
     };
   },
-  ['index-selector'](node) {
-    return { type: 'IndexSelector', value: JSON.parse(node.text) };
-  },
+  /**
+   * https://www.rfc-editor.org/rfc/rfc9535#section-2.3.5.1
+   */
   ['filter-selector'](node, ctx) {
-    const logicalExprCSTNode = node.children.find(({ type }) => type === 'logical-expr');
-    const logicalExprASTNode = transformCSTtoAST(logicalExprCSTNode, transformers, ctx);
+    const child = node.children.find(({ type }) => type === 'logical-expr');
 
-    return { type: 'FilterSelector', expression: logicalExprASTNode };
+    return {
+      type: 'FilterSelector',
+      expression: transformCSTtoAST(child, transformers, ctx),
+    };
   },
   ['logical-expr'](node, ctx) {
     const logicalOrExpr = node.children.find(({ type }) => type === 'logical-or-expr');
@@ -165,24 +173,76 @@ const transformers = {
     const logicalExpressionASTNode = transformCSTtoAST(logicalExprCSTNode, transformers, ctx);
 
     if (isNegated) {
-      return { type: 'LogicalNotExpr', expression: logicalExpressionASTNode };
+      return {
+        type: 'LogicalNotExpr',
+        expression: logicalExpressionASTNode,
+      };
     }
 
     return logicalExpressionASTNode;
+  },
+  ['test-expr'](node, ctx) {
+    const isNegated = node.children.some(({ type }) => type === 'logical-not-op');
+    const expression = node.children.find(({ type }) =>
+      ['filter-query', 'function-expr'].includes(type),
+    );
+
+    const testExpr = {
+      type: 'TestExpr',
+      expression: transformCSTtoAST(expression, transformers, ctx),
+    };
+
+    return isNegated ? { type: 'LogicalNotExpr', expression: testExpr } : testExpr;
+  },
+  ['filter-query'](node, ctx) {
+    const child = node.children.find(({ type }) => ['rel-query', 'jsonpath-query'].includes(type));
+
+    return {
+      type: 'FilterQuery',
+      query: transformCSTtoAST(child, transformers, ctx),
+    };
+  },
+  ['rel-query'](node, ctx) {
+    const segments = node.children.find((c) => c.type === 'segments');
+
+    return {
+      type: 'RelQuery',
+      segments: segments
+        ? segments.children
+            .filter((n) => n.type === 'segment')
+            .map((segNode) => transformCSTtoAST(segNode, transformers, ctx))
+        : [],
+    };
   },
   ['comparison-expr'](node, ctx) {
     const children = node.children.filter(({ type }) =>
       ['comparable', 'comparison-op'].includes(type),
     );
-    const leftNode = children[0];
-    const opNode = children[1];
-    const rightNode = children[2];
+    const [left, op, right] = children;
 
     return {
       type: 'ComparisonExpr',
-      left: transformCSTtoAST(leftNode, transformers, ctx),
-      op: opNode.text,
-      right: transformCSTtoAST(rightNode, transformers, ctx),
+      left: transformCSTtoAST(left, transformers, ctx),
+      op: op.text,
+      right: transformCSTtoAST(right, transformers, ctx),
+    };
+  },
+  ['literal'](node, ctx) {
+    const child = node.children.find(({ type }) =>
+      ['number', 'string-literal', 'true', 'false', 'null'].includes(type),
+    );
+
+    if (child.type === 'string-literal') {
+      const stringLiteralASTNode = transformCSTtoAST(child, transformers, ctx);
+      return {
+        type: 'Literal',
+        value: stringLiteralASTNode.value,
+      };
+    }
+
+    return {
+      type: 'Literal',
+      value: decodeJSONValue(child.text),
     };
   },
   ['comparable'](node, ctx) {
@@ -204,7 +264,7 @@ const transformers = {
 
     const segments = segmentsNode
       ? segmentsNode.children
-          .filter(({ type }) => type === 'name-segment' || type === 'index-segment')
+          .filter(({ type }) => ['name-segment', 'index-segment'].includes(type))
           .map((segNode) => ({
             type: 'SingularQuerySegment',
             selector: transformCSTtoAST(segNode, transformers, ctx),
@@ -221,7 +281,7 @@ const transformers = {
 
     const segments = segmentsNode
       ? segmentsNode.children
-          .filter(({ type }) => type === 'name-segment' || type === 'index-segment')
+          .filter(({ type }) => ['name-segment', 'index-segment'].includes(type))
           .map((segNode) => ({
             type: 'SingularQuerySegment',
             selector: transformCSTtoAST(segNode, transformers, ctx),
@@ -245,15 +305,17 @@ const transformers = {
 
     return transformCSTtoAST(child, transformers, ctx);
   },
+  /**
+   * https://www.rfc-editor.org/rfc/rfc9535#section-2.4
+   */
   ['function-expr'](node, ctx) {
-    const nameCSTNode = node.children.find(({ type }) => type === 'function-name');
-    const argCSTNodes = node.children.filter(({ type }) => type === 'function-argument');
-    const argASTNodes = argCSTNodes.map((arg) => transformCSTtoAST(arg, transformers, ctx));
+    const name = node.children.find(({ type }) => type === 'function-name');
+    const args = node.children.filter(({ type }) => type === 'function-argument');
 
     return {
       type: 'FunctionExpr',
-      name: nameCSTNode.text,
-      arguments: argASTNodes,
+      name: name.text,
+      arguments: args.map((arg) => transformCSTtoAST(arg, transformers, ctx)),
     };
   },
   ['function-argument'](node, ctx) {
@@ -263,62 +325,87 @@ const transformers = {
 
     return transformCSTtoAST(child, transformers, ctx);
   },
-  ['test-expr'](node, ctx) {
-    const isNegated = node.children.some(({ type }) => type === 'logical-not-op');
-    const expressionCSTNode = node.children.find(({ type }) =>
-      ['filter-query', 'function-expr'].includes(type),
-    );
-    const expressionASTNode = transformCSTtoAST(expressionCSTNode, transformers, ctx);
-
-    const testExpr = {
-      type: 'TestExpr',
-      expression: expressionASTNode,
-    };
-
-    return isNegated ? { type: 'LogicalNotExpr', expression: testExpr } : testExpr;
-  },
-  ['filter-query'](node, ctx) {
-    const child = node.children.find(({ type }) => ['rel-query', 'jsonpath-query'].includes(type));
-
-    return {
-      type: 'FilterQuery',
-      query: transformCSTtoAST(child, transformers, ctx),
-    };
-  },
-  ['rel-query'](node, ctx) {
-    const segmentCSTNode = node.children.find((c) => c.type === 'segments');
-
-    const segments = segmentCSTNode
-      ? segmentCSTNode.children
-          .filter((n) => n.type === 'segment')
-          .map((segNode) => transformCSTtoAST(segNode, transformers, ctx))
-      : [];
-
-    return {
-      type: 'RelQuery',
-      segments,
-    };
-  },
-  ['literal'](node, ctx) {
+  /**
+   * https://www.rfc-editor.org/rfc/rfc9535#section-2.5.1.1
+   */
+  ['child-segment'](node, ctx) {
     const child = node.children.find(({ type }) =>
-      ['number', 'string-literal', 'true', 'false', 'null'].includes(type),
+      ['bracketed-selection', 'wildcard-selector', 'member-name-shorthand'].includes(type),
     );
 
-    if (child.type === 'string-literal') {
-      const ast = transformCSTtoAST(child, transformers, ctx);
-      return {
-        type: 'Literal',
-        value: ast.value,
-      };
-    }
-
     return {
-      type: 'Literal',
-      value: JSON.parse(child.text),
+      type: 'ChildSegment',
+      selector: transformCSTtoAST(child, transformers, ctx),
+    };
+  },
+  ['bracketed-selection'](node, ctx) {
+    return {
+      type: 'BracketedSelection',
+      selectors: node.children
+        .filter(({ type }) => type === 'selector')
+        .map((selectorNode) => transformCSTtoAST(selectorNode, transformers, ctx)),
     };
   },
   ['member-name-shorthand'](node) {
-    return { type: 'NameSelector', value: node.text, format: 'shorthand' };
+    return {
+      type: 'NameSelector',
+      value: node.text,
+      format: 'shorthand',
+    };
+  },
+  /**
+   * https://www.rfc-editor.org/rfc/rfc9535#section-2.5.2.1
+   */
+  ['descendant-segment'](node, ctx) {
+    const child = node.children.find(({ type }) =>
+      ['bracketed-selection', 'wildcard-selector', 'member-name-shorthand'].includes(type),
+    );
+
+    return {
+      type: 'DescendantSegment',
+      selector: transformCSTtoAST(child, transformers, ctx),
+    };
+  },
+  /**
+   * https://www.rfc-editor.org/rfc/rfc9535#name-normalized-paths
+   */
+  ['normalized-path'](node, ctx) {
+    return {
+      type: 'JsonPathQuery',
+      segments: node.children
+        .filter(({ type }) => type === 'normal-index-segment')
+        .map((segNode) => transformCSTtoAST(segNode, transformers, ctx)),
+    };
+  },
+  ['normal-index-segment'](node, ctx) {
+    const child = node.children.find(({ type }) => type === 'normal-selector');
+
+    return {
+      type: 'ChildSegment',
+      selector: transformCSTtoAST(child, transformers, ctx),
+    };
+  },
+  ['normal-selector'](node, ctx) {
+    const child = node.children.find(({ type }) =>
+      ['normal-name-selector', 'normal-index-selector'].includes(type),
+    );
+
+    return transformCSTtoAST(child, transformers, ctx);
+  },
+  ['normal-name-selector'](node) {
+    const child = node.children.find(({ type }) => type === 'normal-single-quoted');
+
+    return {
+      type: 'NameSelector',
+      value: child ? decodeString(child.text) : '',
+      format: 'single-quoted',
+    };
+  },
+  ['normal-index-selector'](node) {
+    return {
+      type: 'IndexSelector',
+      value: decodeInteger(node.text),
+    };
   },
 };
 
