@@ -1,14 +1,14 @@
 import { Parser, Stats, Trace } from 'apg-lite';
 
 import Grammar from '../grammar.js';
-import CSTTranslator from './translators/CSTTranslator.js';
+import ASTTranslator from './translators/ASTTranslator/index.js';
 import JSONPathParseError from '../errors/JSONPathParseError.js';
 
 const grammar = new Grammar();
 
 const parse = (
   jsonPath,
-  { normalized = false, stats = false, trace = false, translator = new CSTTranslator() } = {},
+  { normalized = false, stats = false, trace = false, translator = new ASTTranslator() } = {},
 ) => {
   if (typeof jsonPath !== 'string') {
     throw new TypeError('JSONPath must be a string');

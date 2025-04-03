@@ -120,8 +120,8 @@ const transformers = {
     };
   },
   ['logical-expr'](node, ctx) {
-    const logicalOrExpr = node.children.find(({ type }) => type === 'logical-or-expr');
-    return transformCSTtoAST(logicalOrExpr, transformers, ctx);
+    const child = node.children.find(({ type }) => type === 'logical-or-expr');
+    return transformCSTtoAST(child, transformers, ctx);
   },
   ['logical-or-expr'](node, ctx) {
     const logicalAndExprs = node.children.filter(({ type }) => type === 'logical-and-expr');

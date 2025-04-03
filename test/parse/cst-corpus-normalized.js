@@ -1,7 +1,7 @@
 import { assert } from 'chai';
 import { jestExpect as expect } from 'mocha-expect-snapshot';
 
-import { parse } from '../../src/index.js';
+import { parse, CSTTranslator } from '../../src/index.js';
 
 describe('parse', function () {
   context('cst-corpus-normalized', function () {
@@ -16,7 +16,10 @@ describe('parse', function () {
 
     normalizedPaths.forEach((normalizedPath) => {
       specify(normalizedPath, function () {
-        const parseResult = parse(normalizedPath, { normalized: true });
+        const parseResult = parse(normalizedPath, {
+          normalized: true,
+          translator: new CSTTranslator(),
+        });
 
         assert.isTrue(parseResult.result.success);
         expect(parseResult.tree).toMatchSnapshot();
@@ -25,7 +28,10 @@ describe('parse', function () {
   });
 
   specify('should not parse in normalized path mode', function () {
-    const parseResult = parse('$["\\u0061"]', { normalized: true });
+    const parseResult = parse('$["\\u0061"]', {
+      normalized: true,
+      translator: new CSTTranslator(),
+    });
 
     assert.isFalse(parseResult.result.success);
   });

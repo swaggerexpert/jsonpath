@@ -38,6 +38,7 @@ The development of this library contributed to the identification and formal sub
       - [Translators](#translators)
         - [CST](#cst-translator)
         - [CST Optimized](#cst-optimized-translator)
+        - [AST](#ast-translator)
         - [XML](#xml-translator)
       - [Statistics](#statistics)
       - [Tracing](#tracing)
@@ -118,16 +119,8 @@ parse("$['\\u000b']", { normalized: true });
 ###### CST translator
 
 [Concrete Syntax Tree](https://en.wikipedia.org/wiki/Parse_tree) (Parse tree) representation is available on parse result
-by default or when instance of `CSTTranslator` is provided via a `translator` option to the `parse` function.
+when instance of `CSTTranslator` is provided via a `translator` option to the `parse` function.
 CST is suitable to be consumed by other tools like IDEs, editors, etc...
-
-```js
-import { parse } from '@swaggerexpert/jsonpath';
-
-const { tree: CST } = parse('$.store.book[0].title');
-```
-
-or
 
 ```js
 import { parse, CSTTranslator } from '@swaggerexpert/jsonpath';
@@ -135,20 +128,7 @@ import { parse, CSTTranslator } from '@swaggerexpert/jsonpath';
 const { tree: CST } = parse('$.store.book[0].title', { translator: new CSTTranslator() });
 ```
 
-CST tree has the following shape:
-
-```ts
-interface CSTTree {
-  readonly root: CSTNode;
-}
-interface CSTNode {
-  readonly type: string,
-  readonly text: string,
-  readonly start: number,
-  readonly length: number,
-  readonly children: CSTNode[],
-}
-```
+CST tree has a shape documented by [TypeScript typings (CSTTree)](https://github.com/swaggerexpert/jsonpath/blob/main/types/index.d.ts).
 
 ###### CST Optimized translator
 
@@ -161,6 +141,29 @@ import { parse, CSTOptimizedTranslator } from '@swaggerexpert/jsonpath';
 
 const { tree: CST } = parse('$.store.book[0].title', { translator: new CSTOptimizedTranslator() });
 ```
+
+###### AST translator
+
+**Default translator**. [Abstract Syntax Tree](https://en.wikipedia.org/wiki/Abstract_syntax_tree) representation is available on parse result
+by default or when instance of `ASTTranslator` is provided via a `translator` option to the `parse` function.
+AST is suitable to be consumed by implementations that need to analyze the structure of the JSONPath expression
+or for building a custom JSONPath evaluation engine.
+
+```js
+import { parse } from '@swaggerexpert/jsonpath';
+
+const { tree: AST } = parse('$.store.book[0].title');
+```
+
+or
+
+```js
+import { parse, ASTTranslator } from '@swaggerexpert/jsonpath';
+
+const { tree: AST } = parse('$.store.book[0].title', { translator: new ASTTranslator() });
+```
+
+AST tree has a shape documented by [TypeScript typings (ASTTree)](https://github.com/swaggerexpert/jsonpath/blob/main/types/index.d.ts).
 
 ###### XML translator
 
@@ -214,7 +217,7 @@ test('$.store.book[0].title'); // => true
 test('$$'); // => false
 ```
 
-Normalized paths can be validated by setting `normalized` option to `true`.
+**Normalized paths** can be validated by setting `normalized` option to `true`.
 
 ```js
 import { test } from '@swaggerexpert/jsonpath';
