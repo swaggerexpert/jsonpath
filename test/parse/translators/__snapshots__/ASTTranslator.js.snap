@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`parse translators ASTTranslator should translate a JSONPath to an AST 1`] = `
+{
+  "type": "JsonPathQuery",
+  "segments": [
+    {
+      "type": "ChildSegment",
+      "selector": {
+        "type": "BracketedSelection",
+        "selectors": [
+          {
+            "type": "NameSelector",
+            "value": "a",
+            "format": "double-quoted",
+          },
+        ],
+      },
+    },
+  ],
+}
+`;
