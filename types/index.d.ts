@@ -20,6 +20,9 @@ export declare class CSTOptimizedTranslator implements CSTTranslator {
   constructor(options?: { collapsibleTypes?: string[] });
   getTree(): CSTTree;
 }
+export declare class ASTTranslator implements Translator<ASTTree> {
+  getTree(): ASTTree;
+}
 export declare class XMLTranslator implements Translator<XMLTree> {
   getTree(): XMLTree;
 }
@@ -35,7 +38,7 @@ export interface ParseResult<TTree = ASTTree> {
     readonly maxTreeDepth: number
     readonly nodeHits: number;
   };
-  readonly tree: TTree;
+  readonly tree?: TTree;
   readonly stats?: Stats;
   readonly trace?: Trace;
 }
