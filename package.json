@@ -3,7 +3,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "2.5.0",
+  "version": "3.0.0",
   "description": "RCF 9535 implementation of JSONPath",
   "main": "./cjs/index.cjs",
   "types": "./types/index.d.ts",
