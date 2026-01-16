@@ -1,5 +1,10 @@
 import JSONPathParseError from '../../../errors/JSONPathParseError.js';
-import { decodeString, decodeInteger, decodeJSONValue } from './decoders.js';
+import {
+  decodeSingleQuotedString,
+  decodeDoubleQuotedString,
+  decodeInteger,
+  decodeJSONValue,
+} from './decoders.js';
 
 export const transformCSTtoAST = (node, transformerMap, ctx = { parent: null, path: [] }) => {
   const transformer = transformerMap[node.type];
@@ -71,6 +76,7 @@ const transformers = {
     const quoted = node.children.find(({ type }) =>
       ['double-quoted', 'single-quoted'].includes(type),
     );
+    const decodeString = isSingleQuoted ? decodeSingleQuotedString : decodeDoubleQuotedString;
 
     return {
       type: 'StringLiteral',
@@ -397,7 +403,7 @@ const transformers = {
 
     return {
       type: 'NameSelector',
-      value: child ? decodeString(child.text) : '',
+      value: child ? decodeSingleQuotedString(child.text) : '',
       format: 'single-quoted',
     };
   },
