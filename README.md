@@ -43,6 +43,8 @@ The development of this library contributed to the identification and formal sub
       - [Statistics](#statistics)
       - [Tracing](#tracing)
     - [Validation](#validation)
+    - [Compilation](#compilation)
+    - [Escaping](#escaping)
     - [Errors](#errors)
     - [Grammar](#grammar)
 - [More about JSONPath](#more-about-jsonpath)
@@ -227,13 +229,39 @@ test("$['a']", { normalized: true }); // => true
 test('$.store.book[0].title', { normalized: true }); // => false
 ```
 
+#### Compilation
+
+Compilation is the process of transforming a list of selectors into a [Normalized Path](https://www.rfc-editor.org/rfc/rfc9535#name-normalized-paths).
+During compilation, name selectors are automatically escaped before being compiled.
+
+```js
+import { compile } from '@swaggerexpert/jsonpath';
+
+compile(['store', 'book', 0, 'title']); // => "$['store']['book'][0]['title']"
+```
+
+#### Escaping
+
+Certain characters within name selectors in Normalized Paths require escaping.
+The apostrophe (`'`) and backslash (`\`) characters must be escaped.
+Control characters (U+0000 through U+001F) are escaped using specific escape sequences
+(`\b`, `\t`, `\n`, `\f`, `\r`) or Unicode escape sequences (`\uXXXX`).
+
+```js
+import { escape } from '@swaggerexpert/jsonpath';
+
+escape("it's"); // => "it\\'s"
+escape('back\\slash'); // => "back\\\\slash"
+escape('line\nfeed'); // => "line\\nfeed"
+```
+
 #### Errors
 
 `@swaggerexpert/jsonpath` provides a structured error class hierarchy,
-enabling precise error handling across JSONPath operations, including parsing.
+enabling precise error handling across JSONPath operations, including parsing and compilation.
 
 ```js
-import { JSONPathError, JSONPathParseError } from '@swaggerexpert/jsonpath';
+import { JSONPathError, JSONPathParseError, JSONPathCompileError } from '@swaggerexpert/jsonpath';
 ```
 
 **JSONPathError** is the base class for all JSONPath errors.
