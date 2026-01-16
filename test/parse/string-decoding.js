@@ -102,7 +102,7 @@ describe('parse', function () {
         const parseResult = parse("$['\\\\\\'\\'\\\\']", { translator: new ASTTranslator() });
         assert.isTrue(parseResult.result.success);
         const selector = getNameSelector(parseResult);
-        assert.strictEqual(selector.value, "\\''\\" );
+        assert.strictEqual(selector.value, "\\''\\");
       });
 
       specify('should decode multiple backslashes', function () {
