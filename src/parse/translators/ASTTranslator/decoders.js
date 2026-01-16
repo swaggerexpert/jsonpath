@@ -3,9 +3,11 @@ export const decodeDoubleQuotedString = (str) => {
 };
 
 export const decodeSingleQuotedString = (str) => {
+  // Handle \\ and \' in one pass to correctly process \\' as backslash + quote
+  // Other escapes (\n, \t, \uXXXX, etc.) pass through for JSON.parse
   const jsonCompatible = str
-    .replace(/\\'/g, "'") // Convert \' to '
-    .replace(/"/g, '\\"'); // Escape literal " for JSON
+    .replace(/\\([\\'])/g, (match, char) => (char === '\\' ? '\\\\' : "'"))
+    .replace(/"/g, '\\"');
   return decodeDoubleQuotedString(jsonCompatible);
 };
 

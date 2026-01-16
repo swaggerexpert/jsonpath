@@ -62,6 +62,55 @@ describe('parse', function () {
         const selector = getNameSelector(parseResult);
         assert.strictEqual(selector.value, 'helloAworld');
       });
+
+      specify('should decode escaped backslash followed by double quote', function () {
+        const parseResult = parse("$['hello\\\\\"world']", { translator: new ASTTranslator() });
+        assert.isTrue(parseResult.result.success);
+        const selector = getNameSelector(parseResult);
+        assert.strictEqual(selector.value, 'hello\\"world');
+      });
+
+      specify('should decode carriage return escape', function () {
+        const parseResult = parse("$['hello\\rworld']", { translator: new ASTTranslator() });
+        assert.isTrue(parseResult.result.success);
+        const selector = getNameSelector(parseResult);
+        assert.strictEqual(selector.value, 'hello\rworld');
+      });
+
+      specify('should decode form feed escape', function () {
+        const parseResult = parse("$['hello\\fworld']", { translator: new ASTTranslator() });
+        assert.isTrue(parseResult.result.success);
+        const selector = getNameSelector(parseResult);
+        assert.strictEqual(selector.value, 'hello\fworld');
+      });
+
+      specify('should decode backspace escape', function () {
+        const parseResult = parse("$['hello\\bworld']", { translator: new ASTTranslator() });
+        assert.isTrue(parseResult.result.success);
+        const selector = getNameSelector(parseResult);
+        assert.strictEqual(selector.value, 'hello\bworld');
+      });
+
+      specify('should decode forward slash escape', function () {
+        const parseResult = parse("$['hello\\/world']", { translator: new ASTTranslator() });
+        assert.isTrue(parseResult.result.success);
+        const selector = getNameSelector(parseResult);
+        assert.strictEqual(selector.value, 'hello/world');
+      });
+
+      specify('should decode multiple consecutive escapes', function () {
+        const parseResult = parse("$['\\\\\\'\\'\\\\']", { translator: new ASTTranslator() });
+        assert.isTrue(parseResult.result.success);
+        const selector = getNameSelector(parseResult);
+        assert.strictEqual(selector.value, "\\''\\" );
+      });
+
+      specify('should decode multiple backslashes', function () {
+        const parseResult = parse("$['\\\\\\\\']", { translator: new ASTTranslator() });
+        assert.isTrue(parseResult.result.success);
+        const selector = getNameSelector(parseResult);
+        assert.strictEqual(selector.value, '\\\\');
+      });
     });
 
     context('double-quoted strings', function () {
