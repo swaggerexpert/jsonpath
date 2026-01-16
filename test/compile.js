@@ -5,23 +5,23 @@ import { compile, test, JSONPathCompileError } from '../src/index.js';
 describe('compile', function () {
   context('given invalid input', function () {
     specify('should throw JSONPathCompileError for string input', function () {
-      assert.throws(() => compile('foo'), JSONPathCompileError, 'Selectors must be an array');
+      assert.throws(() => compile('foo'), JSONPathCompileError, 'Selectors must be an array, got: string');
     });
 
     specify('should throw JSONPathCompileError for number input', function () {
-      assert.throws(() => compile(123), JSONPathCompileError, 'Selectors must be an array');
+      assert.throws(() => compile(123), JSONPathCompileError, 'Selectors must be an array, got: number');
     });
 
     specify('should throw JSONPathCompileError for null', function () {
-      assert.throws(() => compile(null), JSONPathCompileError, 'Selectors must be an array');
+      assert.throws(() => compile(null), JSONPathCompileError, 'Selectors must be an array, got: object');
     });
 
     specify('should throw JSONPathCompileError for undefined', function () {
-      assert.throws(() => compile(undefined), JSONPathCompileError, 'Selectors must be an array');
+      assert.throws(() => compile(undefined), JSONPathCompileError, 'Selectors must be an array, got: undefined');
     });
 
     specify('should throw JSONPathCompileError for object', function () {
-      assert.throws(() => compile({}), JSONPathCompileError, 'Selectors must be an array');
+      assert.throws(() => compile({}), JSONPathCompileError, 'Selectors must be an array, got: object');
     });
 
     specify('should throw JSONPathCompileError for boolean selector', function () {

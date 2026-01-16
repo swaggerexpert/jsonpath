@@ -16,7 +16,7 @@ import JSONPathCompileError from './errors/JSONPathCompileError.js';
  */
 const compile = (selectors) => {
   if (!Array.isArray(selectors)) {
-    throw new JSONPathCompileError('Selectors must be an array', { selectors });
+    throw new JSONPathCompileError(`Selectors must be an array, got: ${typeof selectors}`, { selectors });
   }
 
   try {
