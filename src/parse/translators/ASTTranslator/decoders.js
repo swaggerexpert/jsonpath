@@ -3,7 +3,13 @@ export const decodeString = (str) => {
 };
 
 export const decodeInteger = (str) => {
-  return parseInt(str, 10);
+  const value = parseInt(str, 10);
+  if (!Number.isSafeInteger(value)) {
+    throw new RangeError(
+      `Integer value out of safe range [-(2^53)+1, (2^53)-1], got: ${str}`,
+    );
+  }
+  return value;
 };
 
 export const decodeJSONValue = (str) => {
