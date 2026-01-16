@@ -95,6 +95,8 @@ export interface NameSelectorASTNode extends ASTNode {
   value: string;
   format: 'single-quoted' | 'double-quoted' | 'shorthand';
 }
+type NameSelectorShorthandASTNode = NameSelectorASTNode & { format: 'shorthand' };
+type NameSelectorQuotedASTNode   = NameSelectorASTNode & { format: 'single-quoted' | 'double-quoted' };
 // https://www.rfc-editor.org/rfc/rfc9535#section-2.3.2.1
 export interface WildcardSelectorASTNode extends ASTNode {
   type: 'WildcardSelector';
@@ -169,7 +171,7 @@ export interface FunctionExprASTNode extends ASTNode {
 // https://www.rfc-editor.org/rfc/rfc9535#section-2.5.1.1
 export interface ChildSegmentASTNode extends ASTNode {
   type: 'ChildSegment';
-  selector: BracketedSelectionASTNode | WildcardSelectorASTNode | NameSelectorASTNode;
+  selector: BracketedSelectionASTNode | WildcardSelectorASTNode | NameSelectorShorthandASTNode;
 }
 export interface BracketedSelectionASTNode extends ASTNode {
   type: 'BracketedSelection';
@@ -177,11 +179,11 @@ export interface BracketedSelectionASTNode extends ASTNode {
 }
 export interface DescendantSegmentASTNode extends ASTNode {
   type: 'DescendantSegment';
-  selector: BracketedSelectionASTNode | WildcardSelectorASTNode | NameSelectorASTNode;
+  selector: BracketedSelectionASTNode | WildcardSelectorASTNode | NameSelectorShorthandASTNode;
 }
 // union types
 export type SelectorASTNode =
-  | NameSelectorASTNode
+  | NameSelectorQuotedASTNode
   | WildcardSelectorASTNode
   | SliceSelectorASTNode
   | IndexSelectorASTNode
