@@ -8,3 +8,10 @@ export { default as XMLTranslator } from './parse/translators/XMLTranslator.js';
 export { default as Trace } from './parse/trace/Trace.js';
 
 export { default as test } from './test/index.js';
+
+export { default as compile } from './compile.js';
+export { default as escape } from './escape.js';
+
+export { default as JSONPathError } from './errors/JSONPathError.js';
+export { default as JSONPathParseError } from './errors/JSONPathParseError.js';
+export { default as JSONPathCompileError } from './errors/JSONPathCompileError.js';
