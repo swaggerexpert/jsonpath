@@ -200,10 +200,11 @@ const { result, trace } = parse('$fdfadfd', { trace: true });
 
 result.success; // returns false
 trace.displayTrace(); // returns trace information
+trace.inferExpectations(); // returns parser expectations
 ```
 
-By combining information from `result` and `trace`, it is possible to analyze the parsing process in detail
-and generate a messages like this: `'Syntax error at position 1, expected "[", ".", ".."'`. Please see this
+By combining information from `result` and `trace`, you can analyze the parsing process in detail
+and generate messages like: `'Syntax error at position 1, expected "[", ".", ".."'`. Please see this
 [test file](https://github.com/swaggerexpert/jsonpath/blob/main/test/parse/trace.js) for more information how to achieve that.
 
 #### Validation

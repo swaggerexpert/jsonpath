@@ -1,4 +1,6 @@
-import { Parser, Stats, Trace } from 'apg-lite';
+import { Parser, Stats } from 'apg-lite';
+
+import Trace from './trace/Trace.js';
 
 import Grammar from '../grammar.js';
 import ASTTranslator from './translators/ASTTranslator/index.js';
