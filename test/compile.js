@@ -67,6 +67,14 @@ describe('compile', function () {
     specify('should throw JSONPathCompileError for -Infinity', function () {
       assert.throws(() => compile([-Infinity]), JSONPathCompileError);
     });
+
+    specify('should throw JSONPathCompileError for integer greater than MAX_SAFE_INTEGER', function () {
+      assert.throws(() => compile([Number.MAX_SAFE_INTEGER + 1]), JSONPathCompileError);
+    });
+
+    specify('should throw JSONPathCompileError for integer less than MIN_SAFE_INTEGER', function () {
+      assert.throws(() => compile([Number.MIN_SAFE_INTEGER - 1]), JSONPathCompileError);
+    });
   });
 
   context('given empty array', function () {
@@ -93,6 +101,12 @@ describe('compile', function () {
     specify('should compile large index', function () {
       const result = compile([999999]);
       assert.strictEqual(result, '$[999999]');
+      assert.isTrue(test(result, { normalized: true }));
+    });
+
+    specify('should compile MAX_SAFE_INTEGER', function () {
+      const result = compile([Number.MAX_SAFE_INTEGER]);
+      assert.strictEqual(result, `$[${Number.MAX_SAFE_INTEGER}]`);
       assert.isTrue(test(result, { normalized: true }));
     });
 

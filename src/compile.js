@@ -26,10 +26,10 @@ const compile = (selectors) => {
         return `['${escape(selector)}']`;
       }
       if (typeof selector === 'number') {
-        // Index selector: must be a non-negative integer
-        if (!Number.isInteger(selector) || selector < 0) {
+        // Index selector: must be a non-negative safe integer (RFC 9535 Section 2.1)
+        if (!Number.isSafeInteger(selector) || selector < 0) {
           throw new TypeError(
-            `Index selector must be a non-negative integer, got: ${selector}`,
+            `Index selector must be a non-negative safe integer, got: ${selector}`,
           );
         }
         return `[${selector}]`;
