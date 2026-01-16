@@ -46,7 +46,7 @@ export const decodeSingleQuotedString = (str) => {
           break;
         case 'u':
           // Unicode escape \uXXXX
-          if (i + 4 < str.length) {
+          if (i + 5 <= str.length) {
             const hex = str.slice(i + 1, i + 5);
             if (/^[0-9a-fA-F]{4}$/.test(hex)) {
               decoded += String.fromCharCode(parseInt(hex, 16));

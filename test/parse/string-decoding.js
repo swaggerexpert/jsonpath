@@ -63,6 +63,20 @@ describe('parse', function () {
         assert.strictEqual(selector.value, 'helloAworld');
       });
 
+      specify('should decode unicode escape at end of string', function () {
+        const parseResult = parse("$['test\\u0041']", { translator: new ASTTranslator() });
+        assert.isTrue(parseResult.result.success);
+        const selector = getNameSelector(parseResult);
+        assert.strictEqual(selector.value, 'testA');
+      });
+
+      specify('should decode string that is only unicode escape', function () {
+        const parseResult = parse("$['\\u0041']", { translator: new ASTTranslator() });
+        assert.isTrue(parseResult.result.success);
+        const selector = getNameSelector(parseResult);
+        assert.strictEqual(selector.value, 'A');
+      });
+
       specify('should decode escaped backslash followed by double quote', function () {
         const parseResult = parse("$['hello\\\\\"world']", { translator: new ASTTranslator() });
         assert.isTrue(parseResult.result.success);
