@@ -36,6 +36,7 @@ jobs:
           semantic_version: 25.0.2
           dry_run: false
           extra_plugins: |
+            @semantic-release/npm@13
             @semantic-release/git
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
