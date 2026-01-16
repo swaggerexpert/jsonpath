@@ -1,7 +1,6 @@
 import { assert } from 'chai';
-import { Trace } from 'apg-lite';
 
-import { parse } from '../../src/index.js';
+import { parse, Trace } from '../../src/index.js';
 
 describe('parse', function () {
   context('trace', function () {
@@ -37,40 +36,8 @@ describe('parse', function () {
     });
 
     specify('should be able to create human-readable trace message', function () {
-      function inferExpectations(traceText) {
-        const lines = traceText.split('\n');
-        const expectations = new Set();
-        let collecting = false;
-        let lastMatchedIndex = -1;
-
-        for (let i = 0; i < lines.length; i++) {
-          const line = lines[i];
-
-          // capture the max match line (first one that ends in a single character match)
-          if (!collecting && line.includes('M|')) {
-            const textMatch = line.match(/]'(.*)'$/);
-            if (textMatch && textMatch[1]) {
-              lastMatchedIndex = i;
-            }
-          }
-
-          // begin collecting after the deepest successful match
-          if (i > lastMatchedIndex) {
-            const terminalFailMatch = line.match(/N\|\[TLS\(([^)]+)\)\]/);
-            if (terminalFailMatch) {
-              expectations.add(terminalFailMatch[1]);
-            }
-          }
-        }
-
-        return Array.from(expectations);
-      }
-
       const { result, trace } = parse('$fdfadfd', { trace: true });
-      const expectations = inferExpectations(trace.displayTrace())
-        .map((c) => `"${c}"`)
-        .join(', ');
-      const errorMessage = `Syntax error at position ${result.maxMatched}, expected ${expectations}`;
+      const errorMessage = `Syntax error at position ${result.maxMatched}, expected ${trace.inferExpectations()}`;
 
       assert.isFalse(result.success);
       assert.strictEqual(errorMessage, 'Syntax error at position 1, expected "[", ".", ".."');
