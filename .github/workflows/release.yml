@@ -24,7 +24,6 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: 24
-          registry-url: 'https://registry.npmjs.org'
       - name: Install dependencies
         run: npm ci
       - name: Execute tests
@@ -33,7 +32,6 @@ jobs:
         id: semantic
         uses: cycjimmy/semantic-release-action@c894d87299c322eb0a24719ed7dc36cb60a5646a
         with:
-          semantic_version: 25.0.2
           dry_run: false
           extra_plugins: |
             @semantic-release/npm
