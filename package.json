@@ -1,10 +1,12 @@
 {
   "name": "@swaggerexpert/jsonpath",
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://registry.npmjs.org",
+    "provenance": true
   },
   "version": "3.0.1",
-  "description": "RCF 9535 implementation of JSONPath",
+  "description": "RFC 9535 implementation of JSONPath",
   "main": "./cjs/index.cjs",
   "types": "./types/index.d.ts",
   "exports": {
