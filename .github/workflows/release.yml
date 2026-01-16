@@ -34,7 +34,7 @@ jobs:
         with:
           dry_run: false
           extra_plugins: |
-            @semantic-release/npm
+            @semantic-release/npm@^13.1.0
             @semantic-release/git
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
