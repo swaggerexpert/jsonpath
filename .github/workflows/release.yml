@@ -33,7 +33,7 @@ jobs:
         id: semantic
         uses: cycjimmy/semantic-release-action@v6
         with:
-          semantic_version: 25
+          semantic_version: 25.0.2
           dry_run: false
           extra_plugins: |
             @semantic-release/git
