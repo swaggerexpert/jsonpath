@@ -60,7 +60,7 @@
     "SECURITY.md"
   ],
   "dependencies": {
-    "apg-lite": "^1.0.4"
+    "apg-lite": "^1.0.5"
   },
   "devDependencies": {
     "@babel/cli": "=7.28.6",
