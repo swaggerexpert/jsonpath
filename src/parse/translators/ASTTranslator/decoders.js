@@ -3,12 +3,75 @@ export const decodeDoubleQuotedString = (str) => {
 };
 
 export const decodeSingleQuotedString = (str) => {
-  // Handle \\ and \' in one pass to correctly process \\' as backslash + quote
-  // Other escapes (\n, \t, \uXXXX, etc.) pass through for JSON.parse
-  const jsonCompatible = str
-    .replace(/\\([\\'])/g, (match, char) => (char === '\\' ? '\\\\' : "'"))
-    .replace(/"/g, '\\"');
-  return decodeDoubleQuotedString(jsonCompatible);
+  // Decode single-quoted string escape sequences into raw text, then let JSON.stringify
+  // produce a correctly escaped double-quoted JSON string.
+  let decoded = '';
+  for (let i = 0; i < str.length; i++) {
+    const ch = str[i];
+    if (ch === '\\') {
+      i++;
+      if (i >= str.length) {
+        // Trailing backslash, treat it as a literal backslash
+        decoded += '\\';
+        break;
+      }
+      const esc = str[i];
+      switch (esc) {
+        case 'n':
+          decoded += '\n';
+          break;
+        case 'r':
+          decoded += '\r';
+          break;
+        case 't':
+          decoded += '\t';
+          break;
+        case 'b':
+          decoded += '\b';
+          break;
+        case 'f':
+          decoded += '\f';
+          break;
+        case '/':
+          decoded += '/';
+          break;
+        case '\\':
+          decoded += '\\';
+          break;
+        case "'":
+          decoded += "'";
+          break;
+        case '"':
+          decoded += '"';
+          break;
+        case 'u':
+          // Unicode escape \uXXXX
+          if (i + 4 < str.length) {
+            const hex = str.slice(i + 1, i + 5);
+            if (/^[0-9a-fA-F]{4}$/.test(hex)) {
+              decoded += String.fromCharCode(parseInt(hex, 16));
+              i += 4;
+            } else {
+              // Invalid unicode escape, keep it as literal
+              decoded += '\\u' + hex;
+              i += 4;
+            }
+          } else {
+            // Incomplete unicode escape, keep literally
+            decoded += '\\u';
+          }
+          break;
+        default:
+          // Unrecognized escape, keep the escaped character literally
+          decoded += esc;
+          break;
+      }
+    } else {
+      decoded += ch;
+    }
+  }
+  // Use JSON.stringify to produce a valid JSON string literal
+  return decodeJSONValue(JSON.stringify(decoded));
 };
 
 export const decodeInteger = (str) => {
