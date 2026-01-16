@@ -31,12 +31,12 @@ jobs:
         run: npm test
       - name: Semantic Release
         id: semantic
-        uses: cycjimmy/semantic-release-action@v6
+        uses: cycjimmy/semantic-release-action@c894d87299c322eb0a24719ed7dc36cb60a5646a
         with:
           semantic_version: 25.0.2
           dry_run: false
           extra_plugins: |
-            @semantic-release/npm@13
+            @semantic-release/npm
             @semantic-release/git
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
