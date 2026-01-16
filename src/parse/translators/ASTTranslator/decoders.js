@@ -45,14 +45,8 @@ export const decodeSingleQuotedString = (str) => {
           decoded += '"';
           break;
         case 'u': {
-          // Unicode escape \uXXXX (RFC 9535 requires exactly 4 hex digits)
-          if (i + 5 > str.length) {
-            throw new SyntaxError(`Incomplete unicode escape sequence at position ${i - 1}`);
-          }
+          // Unicode escape \uXXXX - grammar guarantees exactly 4 hex digits
           const hex = str.slice(i + 1, i + 5);
-          if (!/^[0-9a-fA-F]{4}$/.test(hex)) {
-            throw new SyntaxError(`Invalid unicode escape sequence \\u${hex} at position ${i - 1}`);
-          }
           decoded += String.fromCharCode(parseInt(hex, 16));
           i += 4;
           break;

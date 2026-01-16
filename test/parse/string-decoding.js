@@ -186,5 +186,6 @@ describe('parse', function () {
         assert.strictEqual(selector.value, 'back\\slash');
       });
     });
+
   });
 });
