@@ -231,6 +231,30 @@ export interface TestOptions {
 }
 
 /**
+ * Compiling
+ */
+export function compile(selectors: (string | number)[]): string;
+
+/**
+ * Errors
+ */
+export declare class JSONPathError extends Error {
+  constructor(message?: string, options?: JSONPathErrorOptions);
+  cause?: Error;
+}
+
+export interface JSONPathErrorOptions {
+  cause?: Error;
+  [key: string]: unknown;
+}
+
+export declare class JSONPathCompileError extends JSONPathError {
+  selectors?: (string | number)[];
+}
+
+export declare class JSONPathParseError extends JSONPathError {}
+
+/**
  * Grammar
  */
 export function Grammar(): Grammar;
