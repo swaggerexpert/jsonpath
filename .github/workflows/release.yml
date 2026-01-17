@@ -13,6 +13,7 @@ jobs:
       issues: write
       pull-requests: write
       id-token: write
+      attestations: write
     environment:
       name: npm-release
       url: https://www.npmjs.com/package/@swaggerexpert/jsonpath
@@ -40,5 +41,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
         run: npx semantic-release
 
-      - name: Publish to npm (OIDC)
-        run: npm publish --provenance
+      - name: Attest npm tarball (GitHub)
+        uses: actions/attest-build-provenance@v3
+        with:
+          subject-path: "dist/*.tgz"
+
+      - name: Publish tarball to npm (OIDC)
+        run: npm publish dist/*.tgz --provenance
