@@ -47,4 +47,7 @@ jobs:
           subject-path: "dist/*.tgz"
 
       - name: Publish tarball to npm (OIDC)
-        run: npm publish dist/*.tgz --provenance
+        run: |
+          TARBALL="$(ls -1 dist/*.tgz | head -n 1)"
+          echo "Publishing $TARBALL"
+          npm publish "$TARBALL" --provenance
