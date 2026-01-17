@@ -10,7 +10,11 @@
        "npmPublish": false,
        "tarballDir": "dist"
     }],
-    "@semantic-release/github",
+    ["@semantic-release/github", {
+      "assets": [
+        { "path": "dist/*.tgz" }
+      ]
+    }],
     ["@semantic-release/git", {
       "assets": [
         "package.json",
