@@ -32,7 +32,7 @@
     "watch": "npm-watch"
   },
   "engines": {
-    "node": ">=12.20.0"
+    "node": ">=16.14.0"
   },
   "type": "module",
   "repository": {
@@ -43,6 +43,8 @@
     "jsonpath",
     "parser",
     "validator",
+    "compiler",
+    "evaluator",
     "rfc9535"
   ],
   "author": "Vladimír Gorej <vladimir.gorej@gmail.com>",

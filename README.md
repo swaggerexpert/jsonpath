@@ -7,7 +7,7 @@
 [![try on RunKit](https://img.shields.io/badge/try%20on-RunKit-brightgreen.svg?style=flat)](https://npm.runkit.com/@swaggerexpert/jsonpath)
 [![Tidelift](https://tidelift.com/badges/package/npm/@swaggerexpert%2Fjsonpath)](https://tidelift.com/subscription/pkg/npm-.swaggerexpert-jsonpath?utm_source=npm-swaggerexpert-jsonpath&utm_medium=referral&utm_campaign=readme)
 
-`@swaggerexpert/jsonpath` is a **parser** and **validator** for [RFC 9535](https://www.rfc-editor.org/rfc/rfc9535) Query Expressions for JSON - **JSONPath**.
+`@swaggerexpert/jsonpath` is a **parser**, **validator**, **compiler**, and **evaluator** for [RFC 9535](https://www.rfc-editor.org/rfc/rfc9535) Query Expressions for JSON - **JSONPath**.
 
 The development of this library contributed to the identification and formal submission of following **erratas** against the RFC 9535:
 - [Errata ID: 8343](https://www.rfc-editor.org/errata/eid8343)
@@ -43,11 +43,16 @@ The development of this library contributed to the identification and formal sub
       - [Statistics](#statistics)
       - [Tracing](#tracing)
     - [Validation](#validation)
-    - [Compilation](#compilation)
-    - [Escaping](#escaping)
+    - [Normalized paths](#normalized-paths-1)
+    - [Evaluation](#evaluation)
+      - [Collecting normalized paths](#collecting-normalized-paths)
+      - [Built-in functions](#built-in-functions)
+      - [Custom functions](#custom-functions)
+      - [Evaluation realms](#evaluation-realms)
     - [Errors](#errors)
     - [Grammar](#grammar)
 - [More about JSONPath](#more-about-jsonpath)
+- [Setting up for development](#setting-up-for-development)
 - [License](#license)
 
 ## Getting started
@@ -62,8 +67,8 @@ You can install `@swaggerexpert/jsonpath` using `npm`:
 
 ### Usage
 
-`@swaggerexpert/jsonpath` currently supports **parsing** and **validation**.
-Both parser and validator are based on a superset of [ABNF](https://www.rfc-editor.org/rfc/rfc5234) ([SABNF](https://cs.github.com/ldthomas/apg-js2/blob/master/SABNF.md))
+`@swaggerexpert/jsonpath` supports **parsing**, **validation**, **compilation**, and **evaluation** of JSONPath expressions.
+The parser and validator are based on a superset of [ABNF](https://www.rfc-editor.org/rfc/rfc5234) ([SABNF](https://cs.github.com/ldthomas/apg-js2/blob/master/SABNF.md))
 and use [apg-lite](https://github.com/ldthomas/apg-lite) parser generator.
 
 #### Parsing
@@ -229,39 +234,209 @@ test("$['a']", { normalized: true }); // => true
 test('$.store.book[0].title', { normalized: true }); // => false
 ```
 
-#### Compilation
-
-Compilation is the process of transforming a list of selectors into a [Normalized Path](https://www.rfc-editor.org/rfc/rfc9535#name-normalized-paths).
-During compilation, name selectors are automatically escaped before being compiled.
+**Well-typedness validation** is enabled by default and validates the JSONPath expression against [RFC 9535 type system rules](https://www.rfc-editor.org/rfc/rfc9535#section-2.4.9)
+(e.g., function argument types, return type usage). Set `wellTyped` option to `false` to perform syntax-only validation.
 
 ```js
-import { compile } from '@swaggerexpert/jsonpath';
+import { test } from '@swaggerexpert/jsonpath';
 
-compile(['store', 'book', 0, 'title']); // => "$['store']['book'][0]['title']"
+test('$[?length(@.*) < 3]'); // => false (non-singular query for ValueType parameter)
+test('$[?length(@.*) < 3]', { wellTyped: false }); // => true (syntax is valid)
 ```
 
-#### Escaping
+#### Normalized paths
 
-Certain characters within name selectors in Normalized Paths require escaping.
+The `NormalizedPath` namespace provides utilities for working with [Normalized Paths](https://www.rfc-editor.org/rfc/rfc9535#name-normalized-paths).
+
+##### NormalizedPath.from
+
+Creates a normalized path string from a list of selectors. Name selectors are automatically escaped.
+
+```js
+import { NormalizedPath } from '@swaggerexpert/jsonpath';
+
+NormalizedPath.from(['store', 'book', 0, 'title']); // => "$['store']['book'][0]['title']"
+NormalizedPath.from(["it's"]); // => "$['it\\'s']"
+```
+
+##### NormalizedPath.to
+
+Parses a normalized path string and returns a list of selectors.
+
+```js
+import { NormalizedPath } from '@swaggerexpert/jsonpath';
+
+NormalizedPath.to("$['store']['book'][0]['title']"); // => ['store', 'book', 0, 'title']
+NormalizedPath.to("$['it\\'s']"); // => ["it's"]
+```
+
+##### NormalizedPath.escape
+
+Escapes special characters in name selectors for use in normalized paths.
 The apostrophe (`'`) and backslash (`\`) characters must be escaped.
 Control characters (U+0000 through U+001F) are escaped using specific escape sequences
 (`\b`, `\t`, `\n`, `\f`, `\r`) or Unicode escape sequences (`\uXXXX`).
 
 ```js
-import { escape } from '@swaggerexpert/jsonpath';
+import { NormalizedPath } from '@swaggerexpert/jsonpath';
 
-escape("it's"); // => "it\\'s"
-escape('back\\slash'); // => "back\\\\slash"
-escape('line\nfeed'); // => "line\\nfeed"
+NormalizedPath.escape("it's"); // => "it\\'s"
+NormalizedPath.escape('back\\slash'); // => "back\\\\slash"
+NormalizedPath.escape('line\nfeed'); // => "line\\nfeed"
+```
+
+#### Evaluation
+
+Evaluation is the process of applying a JSONPath expression against a JSON value to produce a nodelist (array of matched values).
+Per [RFC 9535](https://www.rfc-editor.org/rfc/rfc9535#section-2.1), evaluation begins with the root value (`$`) and processes each
+segment sequentially, producing a nodelist of all matching values.
+
+```js
+import { evaluate } from '@swaggerexpert/jsonpath';
+
+const value = {
+  store: {
+    book: [
+      { title: 'A', price: 10 },
+      { title: 'B', price: 20 }
+    ]
+  }
+};
+
+evaluate(value, '$.store.book[*].title'); // => ['A', 'B']
+evaluate(value, '$.store.book[0]'); // => [{ title: 'A', price: 10 }]
+evaluate(value, '$.store.book[?@.price > 15]'); // => [{ title: 'B', price: 20 }]
+```
+
+##### Collecting normalized paths
+
+Use the `callback` option to collect [normalized paths](https://www.rfc-editor.org/rfc/rfc9535#name-normalized-paths) alongside matched values:
+
+```js
+import { evaluate } from '@swaggerexpert/jsonpath';
+
+const value = { store: { book: [{ title: 'A' }, { title: 'B' }] } };
+const paths = [];
+
+evaluate(value, '$.store.book[*].title', {
+  callback: (v, path) => paths.push(path)
+});
+// paths => ["$['store']['book'][0]['title']", "$['store']['book'][1]['title']"]
+```
+
+##### Built-in functions
+
+The evaluation engine includes all [RFC 9535 Section 2.4](https://www.rfc-editor.org/rfc/rfc9535#section-2.4) functions:
+
+| Function | Description |
+|----------|-------------|
+| `length(value)` | Returns the length of a string, array, or object |
+| `count(nodelist)` | Returns the number of nodes in a nodelist |
+| `match(string, regex)` | Tests if a string matches an I-Regexp pattern (full match) |
+| `search(string, regex)` | Tests if a string contains an I-Regexp pattern |
+| `value(nodelist)` | Extracts a single value from a nodelist |
+
+```js
+import { evaluate } from '@swaggerexpert/jsonpath';
+
+const value = { items: ['short', 'very long string', 'medium'] };
+
+evaluate(value, '$.items[?length(@) > 5]'); // => ['very long string', 'medium']
+evaluate(value, '$.items[?match(@, "^v.*")]'); // => ['very long string']
+```
+
+##### Custom functions
+
+Extend or override built-in functions via the `functions` option:
+
+```js
+import { evaluate, functions } from '@swaggerexpert/jsonpath';
+
+const customFunctions = {
+  ...functions,
+  min: (ctx, args) => {
+    const values = args[0];
+    if (!Array.isArray(values)) return undefined;
+    return Math.min(...values);
+  }
+};
+
+const value = { numbers: [3, 1, 4, 1, 5] };
+evaluate(value, '$[?min($.numbers) == 1]', { functions: customFunctions });
+```
+
+##### Evaluation realms
+
+Evaluation realms provide an abstraction layer for accessing different data structures during JSONPath evaluation.
+By default, the evaluation engine uses the **JSON Evaluation Realm** which works with plain JavaScript objects and arrays.
+
+###### JSON Evaluation Realm
+
+By default, the evaluation operates under the **JSON realm**, which assumes that:
+
+- **Arrays** are indexed numerically
+- **Objects** (plain JavaScript objects) are accessed by string keys
+
+```js
+import { evaluate } from '@swaggerexpert/jsonpath';
+
+const value = { store: { book: [{ title: 'A' }] } };
+evaluate(value, '$.store.book[*].title'); // => ['A']
+```
+
+The default realm can also be specified explicitly:
+
+```js
+import { evaluate, JSONEvaluationRealm } from '@swaggerexpert/jsonpath';
+
+const value = { store: { book: [{ title: 'A' }] } };
+evaluate(value, '$.store.book[*].title', { realm: new JSONEvaluationRealm() }); // => ['A']
+```
+
+###### Custom Evaluation Realms
+
+You can create custom evaluation realms to work with different data structures (e.g., Immutable.js, ApiDOM elements).
+Extend the `EvaluationRealm` base class and implement the required methods:
+
+| Method | Description |
+|--------|-------------|
+| `isObject(value)` | Check if value is an object (has named properties) |
+| `isArray(value)` | Check if value is an array (has indexed elements) |
+| `isString(value)` | Check if value is a string |
+| `isNumber(value)` | Check if value is a number |
+| `isBoolean(value)` | Check if value is a boolean |
+| `isNull(value)` | Check if value is null |
+| `getString(value)` | Get raw string value for regex operations |
+| `getProperty(value, key)` | Get property by name from object |
+| `hasProperty(value, key)` | Check if object has property |
+| `getElement(value, index)` | Get element by index from array |
+| `getKeys(value)` | Get all keys of object |
+| `getLength(value)` | Get length of string, array, or object |
+| `entries(value)` | Iterate over [key/index, value] pairs |
+| `compare(left, op, right)` | Compare two values using operator (==, !=, <, <=, >, >=) |
+
+```js
+import { evaluate, EvaluationRealm } from '@swaggerexpert/jsonpath';
+
+class CustomRealm extends EvaluationRealm {
+  name = 'custom';
+
+  isObject(value) { /* ... */ }
+  isArray(value) { /* ... */ }
+  // ... implement all required methods
+}
+
+const value = { /* ... */ };
+evaluate(value, '$.path', { realm: new CustomRealm() });
 ```
 
 #### Errors
 
 `@swaggerexpert/jsonpath` provides a structured error class hierarchy,
-enabling precise error handling across JSONPath operations, including parsing and compilation.
+enabling precise error handling across JSONPath operations, including parsing, compilation, and evaluation.
 
 ```js
-import { JSONPathError, JSONPathParseError, JSONPathCompileError } from '@swaggerexpert/jsonpath';
+import { JSONPathError, JSONPathParseError, JSONNormalizedPathError, JSONPathEvaluateError } from '@swaggerexpert/jsonpath';
 ```
 
 **JSONPathError** is the base class for all JSONPath errors.
@@ -529,6 +704,21 @@ questionmark        = "?"
 disjunction         = "||"
 conjunction         = "&&"
 ```
+
+## Setting up for development
+
+```sh
+ # Clone with submodules (recommended)
+ $ git clone --recurse-submodules https://github.com/swaggerexpert/jsonpath.git
+
+ # Or initialize submodules after cloning
+ $ git submodule update --init
+
+ # Install dependencies
+ $ npm install
+```
+
+The project uses the [JSONPath Compliance Test Suite](https://github.com/jsonpath-standard/jsonpath-compliance-test-suite) as a git submodule for testing.
 
 ## License
 

@@ -9,9 +9,14 @@ export { default as Trace } from './parse/trace/Trace.js';
 
 export { default as test } from './test/index.js';
 
-export { default as compile } from './compile.js';
-export { default as escape } from './escape.js';
+export * as NormalizedPath from './normalized-path.js';
+
+export { default as evaluate } from './evaluate/index.js';
+export * as functions from './evaluate/functions/index.js';
+export { default as EvaluationRealm } from './evaluate/realms/EvaluationRealm.js';
+export { default as JSONEvaluationRealm } from './evaluate/realms/json/index.js';
 
 export { default as JSONPathError } from './errors/JSONPathError.js';
 export { default as JSONPathParseError } from './errors/JSONPathParseError.js';
-export { default as JSONPathCompileError } from './errors/JSONPathCompileError.js';
+export { default as JSONNormalizedPathError } from './errors/JSONNormalizedPathError.js';
+export { default as JSONPathEvaluateError } from './errors/JSONPathEvaluateError.js';

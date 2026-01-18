@@ -6,6 +6,204 @@ import {
   decodeJSONValue,
 } from './decoders.js';
 
+/**
+ * RFC 9535 function type signatures.
+ * @see https://www.rfc-editor.org/rfc/rfc9535#section-2.4
+ */
+const FUNCTION_SIGNATURES = {
+  // count(NodesType) -> ValueType
+  count: {
+    params: [{ type: 'NodesType' }],
+    returns: 'ValueType',
+  },
+  // length(ValueType) -> ValueType
+  length: {
+    params: [{ type: 'ValueType' }],
+    returns: 'ValueType',
+  },
+  // value(NodesType) -> ValueType
+  value: {
+    params: [{ type: 'NodesType' }],
+    returns: 'ValueType',
+  },
+  // match(ValueType, ValueType) -> LogicalType
+  match: {
+    params: [{ type: 'ValueType' }, { type: 'ValueType' }],
+    returns: 'LogicalType',
+  },
+  // search(ValueType, ValueType) -> LogicalType
+  search: {
+    params: [{ type: 'ValueType' }, { type: 'ValueType' }],
+    returns: 'LogicalType',
+  },
+};
+
+/**
+ * Check if an AST node represents a singular query.
+ * Singular queries use only name selectors and index selectors.
+ */
+const isSingularQueryAST = (node) => {
+  if (node.type !== 'FilterQuery') return false;
+  const { query } = node;
+  if (!query || !query.segments) return false;
+
+  for (const segment of query.segments) {
+    if (segment.type !== 'ChildSegment') return false;
+    const { selector } = segment;
+    if (selector.type !== 'NameSelector' && selector.type !== 'IndexSelector') {
+      // Check for BracketedSelection with single NameSelector or IndexSelector
+      if (selector.type === 'BracketedSelection') {
+        if (selector.selectors.length !== 1) return false;
+        const inner = selector.selectors[0];
+        if (inner.type !== 'NameSelector' && inner.type !== 'IndexSelector') {
+          return false;
+        }
+      } else {
+        return false;
+      }
+    }
+  }
+  return true;
+};
+
+/**
+ * Check if argument type matches expected parameter type.
+ */
+const checkArgumentType = (argAST, expectedType, funcName) => {
+  if (expectedType === 'NodesType') {
+    // NodesType requires a filter-query (non-singular)
+    // Literals and singular queries are NOT NodesType
+    if (argAST.type === 'Literal') {
+      throw new RangeError(`Function ${funcName}() requires NodesType argument, got literal`);
+    }
+    if (argAST.type === 'TestExpr' && argAST.expression?.type === 'FilterQuery') {
+      // This is a filter query wrapped in TestExpr - valid NodesType
+      return;
+    }
+    if (argAST.type === 'FilterQuery') {
+      // Direct filter query - valid NodesType
+      return;
+    }
+    // Other types are not valid NodesType
+    throw new RangeError(`Function ${funcName}() requires NodesType argument`);
+  }
+
+  if (expectedType === 'ValueType') {
+    // ValueType accepts: literals, singular queries, function expressions
+    if (argAST.type === 'Literal') return;
+    if (argAST.type === 'FunctionExpr') return;
+
+    // TestExpr containing FunctionExpr - valid if function returns ValueType
+    if (argAST.type === 'TestExpr' && argAST.expression?.type === 'FunctionExpr') {
+      // Function expressions that return ValueType are valid
+      // Unknown functions are allowed (they return Nothing at runtime)
+      return;
+    }
+
+    // TestExpr containing FilterQuery - check if singular
+    if (argAST.type === 'TestExpr' && argAST.expression?.type === 'FilterQuery') {
+      if (!isSingularQueryAST(argAST.expression)) {
+        throw new RangeError(
+          `Function ${funcName}() requires ValueType argument, got non-singular query`,
+        );
+      }
+      return;
+    }
+
+    // FilterQuery - check if singular
+    if (argAST.type === 'FilterQuery') {
+      if (!isSingularQueryAST(argAST)) {
+        throw new RangeError(
+          `Function ${funcName}() requires ValueType argument, got non-singular query`,
+        );
+      }
+      return;
+    }
+
+    // LogicalExpr types are not ValueType
+    throw new RangeError(`Function ${funcName}() requires ValueType argument`);
+  }
+};
+
+/**
+ * Get the return type of an expression AST node.
+ *
+ * @param {object} node - AST node
+ * @returns {string | null} - 'LogicalType', 'ValueType', 'NodesType', or null for unknown
+ */
+const getExpressionReturnType = (node) => {
+  if (!node) return null;
+
+  // Function expressions return based on signature
+  if (node.type === 'FunctionExpr') {
+    const signature = FUNCTION_SIGNATURES[node.name];
+    return signature ? signature.returns : null;
+  }
+
+  // Literals are ValueType
+  if (node.type === 'Literal') {
+    return 'ValueType';
+  }
+
+  // Singular queries return ValueType
+  if (node.type === 'RelSingularQuery' || node.type === 'AbsSingularQuery') {
+    return 'ValueType';
+  }
+
+  // Filter queries return NodesType
+  if (node.type === 'FilterQuery') {
+    return 'NodesType';
+  }
+
+  // Logical expressions return LogicalType
+  if (
+    node.type === 'LogicalOrExpr' ||
+    node.type === 'LogicalAndExpr' ||
+    node.type === 'LogicalNotExpr' ||
+    node.type === 'ComparisonExpr'
+  ) {
+    return 'LogicalType';
+  }
+
+  // TestExpr: depends on what it wraps
+  if (node.type === 'TestExpr') {
+    return getExpressionReturnType(node.expression);
+  }
+
+  return null;
+};
+
+/**
+ * Validate function call against its type signature.
+ */
+const validateFunctionCall = (funcName, argASTs) => {
+  const signature = FUNCTION_SIGNATURES[funcName];
+  if (!signature) {
+    // Unknown function - no validation (will return Nothing at runtime)
+    return;
+  }
+
+  // Check argument count
+  const expectedCount = signature.params.length;
+  const actualCount = argASTs.length;
+
+  if (actualCount < expectedCount) {
+    throw new RangeError(
+      `Function ${funcName}() requires ${expectedCount} argument(s), got ${actualCount}`,
+    );
+  }
+  if (actualCount > expectedCount) {
+    throw new RangeError(
+      `Function ${funcName}() requires ${expectedCount} argument(s), got ${actualCount}`,
+    );
+  }
+
+  // Check argument types
+  for (let i = 0; i < expectedCount; i++) {
+    checkArgumentType(argASTs[i], signature.params[i].type, funcName);
+  }
+};
+
 export const transformCSTtoAST = (node, transformerMap, ctx = { parent: null, path: [] }) => {
   const transformer = transformerMap[node.type];
   if (!transformer) {
@@ -119,10 +317,42 @@ const transformers = {
    */
   ['filter-selector'](node, ctx) {
     const child = node.children.find(({ type }) => type === 'logical-expr');
+    const expressionAST = transformCSTtoAST(child, transformers, ctx);
+
+    // Validate: ValueType functions cannot be used as existence tests
+    // Per RFC 9535 Section 2.4.9: "Type error: ValueType not TestExpr"
+    // This only applies when the top-level expression is a TestExpr
+    // containing a function that returns ValueType
+    if (expressionAST.type === 'TestExpr') {
+      const innerType = getExpressionReturnType(expressionAST.expression);
+      if (innerType === 'ValueType') {
+        const funcName =
+          expressionAST.expression.type === 'FunctionExpr'
+            ? expressionAST.expression.name
+            : 'expression';
+        throw new RangeError(
+          `Function ${funcName}() returns ValueType which cannot be used as existence test; result must be compared`,
+        );
+      }
+    }
+    // Also check for LogicalNotExpr wrapping TestExpr (for negated existence tests)
+    if (
+      expressionAST.type === 'LogicalNotExpr' &&
+      expressionAST.expression?.type === 'TestExpr'
+    ) {
+      const innerExpr = expressionAST.expression.expression;
+      const innerType = getExpressionReturnType(innerExpr);
+      if (innerType === 'ValueType') {
+        const funcName = innerExpr.type === 'FunctionExpr' ? innerExpr.name : 'expression';
+        throw new RangeError(
+          `Function ${funcName}() returns ValueType which cannot be used as existence test; result must be compared`,
+        );
+      }
+    }
 
     return {
       type: 'FilterSelector',
-      expression: transformCSTtoAST(child, transformers, ctx),
+      expression: expressionAST,
     };
   },
   ['logical-expr'](node, ctx) {
@@ -146,6 +376,8 @@ const transformers = {
         right,
       };
     }
+
+    return left;
   },
   ['logical-and-expr'](node, ctx) {
     const basicExprs = node.children.filter(({ type }) => type === 'basic-expr');
@@ -193,9 +425,11 @@ const transformers = {
       ['filter-query', 'function-expr'].includes(type),
     );
 
+    const expressionAST = transformCSTtoAST(expression, transformers, ctx);
+
     const testExpr = {
       type: 'TestExpr',
-      expression: transformCSTtoAST(expression, transformers, ctx),
+      expression: expressionAST,
     };
 
     return isNegated ? { type: 'LogicalNotExpr', expression: testExpr } : testExpr;
@@ -226,11 +460,32 @@ const transformers = {
     );
     const [left, op, right] = children;
 
+    const leftAST = transformCSTtoAST(left, transformers, ctx);
+    const rightAST = transformCSTtoAST(right, transformers, ctx);
+
+    // Validate: LogicalType functions cannot be used in comparisons
+    // Per RFC 9535 Section 2.4.9: "Type error: no compare to LogicalType"
+    const leftType = getExpressionReturnType(leftAST);
+    const rightType = getExpressionReturnType(rightAST);
+
+    if (leftType === 'LogicalType') {
+      const funcName = leftAST.type === 'FunctionExpr' ? leftAST.name : 'expression';
+      throw new RangeError(
+        `Function ${funcName}() returns LogicalType which cannot be compared`,
+      );
+    }
+    if (rightType === 'LogicalType') {
+      const funcName = rightAST.type === 'FunctionExpr' ? rightAST.name : 'expression';
+      throw new RangeError(
+        `Function ${funcName}() returns LogicalType which cannot be compared`,
+      );
+    }
+
     return {
       type: 'ComparisonExpr',
-      left: transformCSTtoAST(left, transformers, ctx),
+      left: leftAST,
       op: op.text,
-      right: transformCSTtoAST(right, transformers, ctx),
+      right: rightAST,
     };
   },
   ['literal'](node, ctx) {
@@ -317,11 +572,15 @@ const transformers = {
   ['function-expr'](node, ctx) {
     const name = node.children.find(({ type }) => type === 'function-name');
     const args = node.children.filter(({ type }) => type === 'function-argument');
+    const argASTs = args.map((arg) => transformCSTtoAST(arg, transformers, ctx));
+
+    // Validate function call against type signature
+    validateFunctionCall(name.text, argASTs);
 
     return {
       type: 'FunctionExpr',
       name: name.text,
-      arguments: args.map((arg) => transformCSTtoAST(arg, transformers, ctx)),
+      arguments: argASTs,
     };
   },
   ['function-argument'](node, ctx) {

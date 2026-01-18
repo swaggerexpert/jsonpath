@@ -16,8 +16,8 @@ export interface Translator<TTree = unknown> {
 export declare class CSTTranslator implements Translator<CSTTree> {
   getTree(): CSTTree;
 }
-export declare class CSTOptimizedTranslator implements CSTTranslator {
-  constructor(options?: { collapsibleTypes?: string[] });
+export declare class CSTOptimizedTranslator extends CSTTranslator {
+  constructor(options?: { collapsibleTypes?: string[]; droppableTypes?: string[] });
   getTree(): CSTTree;
 }
 export declare class ASTTranslator implements Translator<ASTTree> {
@@ -51,16 +51,13 @@ export interface CSTNode {
   readonly children: CSTNode[],
 }
 
-export interface CSTTree {
-  readonly root: CSTNode;
-}
+export type CSTTree = CSTNode;
 
 export type XMLTree = string;
 
 /* AST Tree start */
-export interface ASTTree {
-  readonly root: JSONPathQueryASTNode;
-}
+export type ASTTree = JSONPathQueryASTNode;
+
 export interface ASTNode {
   readonly type:
     | 'JSONPathQuery'
@@ -231,9 +228,105 @@ export interface TestOptions {
 }
 
 /**
- * Compiling
+ * Normalized Paths
  */
-export function compile(selectors: (string | number)[]): string;
+export namespace NormalizedPath {
+  /**
+   * Creates a normalized path string from a list of selectors.
+   * Name selectors are automatically escaped.
+   */
+  function from(selectors: (string | number)[]): string;
+
+  /**
+   * Parses a normalized path string and returns a list of selectors.
+   */
+  function to(normalizedPath: string): (string | number)[];
+
+  /**
+   * Escapes special characters in name selectors for use in normalized paths.
+   */
+  function escape(value: string): string;
+}
+
+/**
+ * Evaluation
+ */
+export function evaluate<T = unknown>(data: unknown, expression: string, options?: EvaluateOptions): T[];
+
+export interface EvaluateOptions {
+  /**
+   * Callback function called for each match.
+   * Receives the matched value and its normalized path.
+   */
+  readonly callback?: (value: unknown, normalizedPath: string) => void;
+  /**
+   * Custom evaluation realm for different data structures.
+   * Default is JSON realm for plain objects/arrays.
+   */
+  readonly realm?: EvaluationRealmInterface;
+  /**
+   * Custom function registry.
+   * Can extend or override built-in functions.
+   */
+  readonly functions?: Record<string, Function>;
+}
+
+/**
+ * Evaluation realm interface for custom data structures.
+ * Implement this to evaluate JSONPath on Immutable.js, ApiDOM, etc.
+ */
+export interface EvaluationRealmInterface {
+  name?: string;
+  isObject(value: unknown): boolean;
+  isArray(value: unknown): boolean;
+  isString(value: unknown): boolean;
+  isNumber(value: unknown): boolean;
+  isBoolean(value: unknown): boolean;
+  isNull(value: unknown): boolean;
+  getString(value: unknown): string | undefined;
+  getProperty(value: unknown, key: string): unknown;
+  hasProperty(value: unknown, key: string): boolean;
+  getElement(value: unknown, index: number): unknown;
+  getKeys(value: unknown): string[];
+  getLength(value: unknown): number;
+  entries(value: unknown): Iterable<[string | number, unknown]>;
+  compare(left: unknown, operator: '==' | '!=' | '<' | '<=' | '>' | '>=', right: unknown): boolean;
+}
+
+/**
+ * Built-in evaluation functions.
+ */
+export const functions: Record<string, Function>;
+
+/**
+ * Base class for evaluation realms.
+ * Extend this class to create custom evaluation realms.
+ */
+export declare class EvaluationRealm implements EvaluationRealmInterface {
+  name: string;
+  isObject(value: unknown): boolean;
+  isArray(value: unknown): boolean;
+  isString(value: unknown): boolean;
+  isNumber(value: unknown): boolean;
+  isBoolean(value: unknown): boolean;
+  isNull(value: unknown): boolean;
+  getString(value: unknown): string | undefined;
+  getProperty(value: unknown, key: string): unknown;
+  hasProperty(value: unknown, key: string): boolean;
+  getElement(value: unknown, index: number): unknown;
+  getKeys(value: unknown): string[];
+  getLength(value: unknown): number;
+  entries(value: unknown): Iterable<[string | number, unknown]>;
+  compare(left: unknown, operator: '==' | '!=' | '<' | '<=' | '>' | '>=', right: unknown): boolean;
+}
+
+/**
+ * JSON Evaluation Realm for plain JavaScript objects and arrays.
+ * This is the default realm used by the evaluate function.
+ */
+export declare class JSONEvaluationRealm extends EvaluationRealm {
+  name: 'json';
+}
 
 /**
  * Errors
@@ -248,11 +341,16 @@ export interface JSONPathErrorOptions {
   [key: string]: unknown;
 }
 
-export declare class JSONPathCompileError extends JSONPathError {
+export declare class JSONNormalizedPathError extends JSONPathError {
   selectors?: (string | number)[];
+  normalizedPath?: string;
 }
 
 export declare class JSONPathParseError extends JSONPathError {}
+
+export declare class JSONPathEvaluateError extends JSONPathError {
+  expression?: string;
+}
 
 /**
  * Grammar

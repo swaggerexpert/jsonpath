@@ -69,15 +69,12 @@ export default [
   // https://www.rfc-editor.org/rfc/rfc9535#section-2.4.8
   '$[?value(@..color) == "red"]',
   // https://www.rfc-editor.org/rfc/rfc9535#section-2.4.9
+  // Well-typed function expressions
   '$[?length(@) < 3]',
-  '$[?length(@.*) < 3]',
   '$[?count(@.*) == 1]',
-  '$[?count(1) == 1]',
-  '$[?count(foo(@.*)) == 1]',
   "$[?match(@.timezone, 'Europe/.*')]",
-  "$[?match(@.timezone, 'Europe/.*') == true]",
   '$[?value(@..color) == "red"]',
-  '$[?value(@..color)]',
+  // Unknown functions (valid syntax, type checking deferred to runtime)
   '$[?bar(@.a)]',
   '$[?bnl(@.*)]',
   '$[?blt(1==1)]', // https://www.rfc-editor.org/errata/eid8343
