@@ -13,7 +13,7 @@
  *   The number of nodes in the nodelist.
  */
 
-import { isArray } from '../utils/guards.js';
+import { isNodelist } from '../utils/guards.js';
 
 /**
  * Count the number of nodes in a nodelist.
@@ -23,11 +23,11 @@ import { isArray } from '../utils/guards.js';
  * @returns {number} - Number of nodes
  */
 const count = (realm, nodelist) => {
-  if (isArray(nodelist)) {
+  if (isNodelist(nodelist)) {
     return nodelist.length;
   }
-  // If not a nodelist, treat as single value
-  return 1;
+  // Not a nodelist (NodesType): return Nothing per RFC 9535
+  return undefined;
 };
 
 export default count;

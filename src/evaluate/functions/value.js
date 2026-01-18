@@ -14,7 +14,7 @@
  *   - Otherwise: Nothing (undefined)
  */
 
-import { isArray } from '../utils/guards.js';
+import { isNodelist } from '../utils/guards.js';
 
 /**
  * Extract the single value from a nodelist.
@@ -24,7 +24,7 @@ import { isArray } from '../utils/guards.js';
  * @returns {unknown} - The single value or Nothing (undefined)
  */
 const value = (realm, nodelist) => {
-  if (isArray(nodelist) && nodelist.length === 1) {
+  if (isNodelist(nodelist) && nodelist.length === 1) {
     return nodelist[0];
   }
   // Nothing for empty nodelist, multiple values, or non-nodelist
