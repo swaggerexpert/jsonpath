@@ -232,6 +232,11 @@ export interface TestOptions {
  */
 export namespace NormalizedPath {
   /**
+   * Tests if a string is a valid normalized JSONPath.
+   */
+  function test(normalizedPath: string): boolean;
+
+  /**
    * Creates a normalized path string from a list of selectors.
    * Name selectors are automatically escaped.
    */

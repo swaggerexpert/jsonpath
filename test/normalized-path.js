@@ -850,3 +850,119 @@ describe('NormalizedPath.to', function () {
     });
   });
 });
+
+describe('NormalizedPath.test', function () {
+  context('given valid normalized paths', function () {
+    specify('should return true for root only', function () {
+      assert.isTrue(NormalizedPath.test('$'));
+    });
+
+    specify('should return true for single name selector', function () {
+      assert.isTrue(NormalizedPath.test("$['a']"));
+    });
+
+    specify('should return true for single index selector', function () {
+      assert.isTrue(NormalizedPath.test('$[0]'));
+    });
+
+    specify('should return true for multiple segments', function () {
+      assert.isTrue(NormalizedPath.test("$['store']['book'][0]['title']"));
+    });
+
+    specify('should return true for empty string name selector', function () {
+      assert.isTrue(NormalizedPath.test("$['']"));
+    });
+
+    specify('should return true for escaped characters', function () {
+      assert.isTrue(NormalizedPath.test("$['it\\'s']"));
+      assert.isTrue(NormalizedPath.test("$['back\\\\slash']"));
+      assert.isTrue(NormalizedPath.test("$['\\t']"));
+      assert.isTrue(NormalizedPath.test("$['\\n']"));
+    });
+
+    specify('should return true for unicode characters', function () {
+      assert.isTrue(NormalizedPath.test("$['日本語']"));
+      assert.isTrue(NormalizedPath.test("$['👋']"));
+    });
+  });
+
+  context('given invalid normalized paths', function () {
+    specify('should return false for non-string input', function () {
+      assert.isFalse(NormalizedPath.test(null));
+      assert.isFalse(NormalizedPath.test(undefined));
+      assert.isFalse(NormalizedPath.test(123));
+      assert.isFalse(NormalizedPath.test([]));
+      assert.isFalse(NormalizedPath.test({}));
+    });
+
+    specify('should return false for empty string', function () {
+      assert.isFalse(NormalizedPath.test(''));
+    });
+
+    specify('should return false for dot notation', function () {
+      assert.isFalse(NormalizedPath.test('$.a'));
+      assert.isFalse(NormalizedPath.test('$.store.book'));
+    });
+
+    specify('should return false for double-quoted strings', function () {
+      assert.isFalse(NormalizedPath.test('$["a"]'));
+    });
+
+    specify('should return false for negative index', function () {
+      assert.isFalse(NormalizedPath.test('$[-1]'));
+    });
+
+    specify('should return false for slice selector', function () {
+      assert.isFalse(NormalizedPath.test('$[0:1]'));
+    });
+
+    specify('should return false for wildcard', function () {
+      assert.isFalse(NormalizedPath.test('$[*]'));
+      assert.isFalse(NormalizedPath.test('$.*'));
+    });
+
+    specify('should return false for filter', function () {
+      assert.isFalse(NormalizedPath.test('$[?@.price>10]'));
+    });
+
+    specify('should return false for descendant', function () {
+      assert.isFalse(NormalizedPath.test('$..a'));
+    });
+
+    specify('should return false for uppercase Unicode escape', function () {
+      assert.isFalse(NormalizedPath.test("$['\\u000B']"));
+    });
+  });
+
+  context('consistency with test(path, { normalized: true })', function () {
+    const validPaths = [
+      '$',
+      "$['a']",
+      '$[0]',
+      "$['store']['book'][0]['title']",
+      "$['']",
+      "$['it\\'s']",
+    ];
+
+    const invalidPaths = [
+      '',
+      '$.a',
+      '$["a"]',
+      '$[-1]',
+      '$[*]',
+      '$[0:1]',
+    ];
+
+    validPaths.forEach((path) => {
+      specify(`should match test() for valid path: ${path}`, function () {
+        assert.strictEqual(NormalizedPath.test(path), test(path, { normalized: true }));
+      });
+    });
+
+    invalidPaths.forEach((path) => {
+      specify(`should match test() for invalid path: ${path}`, function () {
+        assert.strictEqual(NormalizedPath.test(path), test(path, { normalized: true }));
+      });
+    });
+  });
+});
