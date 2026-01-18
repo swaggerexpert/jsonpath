@@ -25,10 +25,7 @@ class CSTOptimizedTranslator extends CSTTranslator {
 
     this.translate(data);
 
-    delete data.stack;
-    delete data.options;
-
-    return data;
+    return data.root;
   }
 }
 

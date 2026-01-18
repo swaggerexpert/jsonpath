@@ -106,8 +106,7 @@ class CSTTranslator extends AST {
   getTree() {
     const data = { stack: [], root: null };
     this.translate(data);
-    delete data.stack;
-    return data;
+    return data.root;
   }
 }
 

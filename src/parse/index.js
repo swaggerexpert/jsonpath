@@ -33,7 +33,12 @@ const parse = (
       trace: parser.trace,
     };
   } catch (error) {
-    throw new JSONPathParseError('Unexpected error during JSONPath parsing', {
+    // Provide specific error message for semantic validation errors
+    const message =
+      error instanceof RangeError
+        ? `Invalid JSONPath expression: ${error.message}`
+        : 'Unexpected error during JSONPath parsing';
+    throw new JSONPathParseError(message, {
       cause: error,
       jsonPath,
     });

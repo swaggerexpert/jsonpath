@@ -2,447 +2,437 @@
 
 exports[`parse cst-corpus-normalized $['\\u000b'] 1`] = `
 {
-  "root": {
-    "type": "normalized-path",
-    "text": "$['\\u000b']",
-    "start": 0,
-    "length": 11,
-    "children": [
-      {
-        "type": "root-identifier",
-        "text": "$",
-        "start": 0,
-        "length": 1,
-        "children": [],
-      },
-      {
-        "type": "normal-index-segment",
-        "text": "['\\u000b']",
-        "start": 1,
-        "length": 10,
-        "children": [
-          {
-            "type": "text",
-            "text": "[",
-            "start": 1,
-            "length": 1,
-            "children": [],
-          },
-          {
-            "type": "normal-selector",
-            "text": "'\\u000b'",
-            "start": 2,
-            "length": 8,
-            "children": [
-              {
-                "type": "normal-name-selector",
-                "text": "'\\u000b'",
-                "start": 2,
-                "length": 8,
-                "children": [
-                  {
-                    "type": "text",
-                    "text": "'",
-                    "start": 2,
-                    "length": 1,
-                    "children": [],
-                  },
-                  {
-                    "type": "normal-single-quoted",
-                    "text": "\\u000b",
-                    "start": 3,
-                    "length": 6,
-                    "children": [],
-                  },
-                  {
-                    "type": "text",
-                    "text": "'",
-                    "start": 9,
-                    "length": 1,
-                    "children": [],
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            "type": "text",
-            "text": "]",
-            "start": 10,
-            "length": 1,
-            "children": [],
-          },
-        ],
-      },
-    ],
-  },
+  "type": "normalized-path",
+  "text": "$['\\u000b']",
+  "start": 0,
+  "length": 11,
+  "children": [
+    {
+      "type": "root-identifier",
+      "text": "$",
+      "start": 0,
+      "length": 1,
+      "children": [],
+    },
+    {
+      "type": "normal-index-segment",
+      "text": "['\\u000b']",
+      "start": 1,
+      "length": 10,
+      "children": [
+        {
+          "type": "text",
+          "text": "[",
+          "start": 1,
+          "length": 1,
+          "children": [],
+        },
+        {
+          "type": "normal-selector",
+          "text": "'\\u000b'",
+          "start": 2,
+          "length": 8,
+          "children": [
+            {
+              "type": "normal-name-selector",
+              "text": "'\\u000b'",
+              "start": 2,
+              "length": 8,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "'",
+                  "start": 2,
+                  "length": 1,
+                  "children": [],
+                },
+                {
+                  "type": "normal-single-quoted",
+                  "text": "\\u000b",
+                  "start": 3,
+                  "length": 6,
+                  "children": [],
+                },
+                {
+                  "type": "text",
+                  "text": "'",
+                  "start": 9,
+                  "length": 1,
+                  "children": [],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          "type": "text",
+          "text": "]",
+          "start": 10,
+          "length": 1,
+          "children": [],
+        },
+      ],
+    },
+  ],
 }
 `;
 
 exports[`parse cst-corpus-normalized $['a'] 1`] = `
 {
-  "root": {
-    "type": "normalized-path",
-    "text": "$['a']",
-    "start": 0,
-    "length": 6,
-    "children": [
-      {
-        "type": "root-identifier",
-        "text": "$",
-        "start": 0,
-        "length": 1,
-        "children": [],
-      },
-      {
-        "type": "normal-index-segment",
-        "text": "['a']",
-        "start": 1,
-        "length": 5,
-        "children": [
-          {
-            "type": "text",
-            "text": "[",
-            "start": 1,
-            "length": 1,
-            "children": [],
-          },
-          {
-            "type": "normal-selector",
-            "text": "'a'",
-            "start": 2,
-            "length": 3,
-            "children": [
-              {
-                "type": "normal-name-selector",
-                "text": "'a'",
-                "start": 2,
-                "length": 3,
-                "children": [
-                  {
-                    "type": "text",
-                    "text": "'",
-                    "start": 2,
-                    "length": 1,
-                    "children": [],
-                  },
-                  {
-                    "type": "normal-single-quoted",
-                    "text": "a",
-                    "start": 3,
-                    "length": 1,
-                    "children": [],
-                  },
-                  {
-                    "type": "text",
-                    "text": "'",
-                    "start": 4,
-                    "length": 1,
-                    "children": [],
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            "type": "text",
-            "text": "]",
-            "start": 5,
-            "length": 1,
-            "children": [],
-          },
-        ],
-      },
-    ],
-  },
+  "type": "normalized-path",
+  "text": "$['a']",
+  "start": 0,
+  "length": 6,
+  "children": [
+    {
+      "type": "root-identifier",
+      "text": "$",
+      "start": 0,
+      "length": 1,
+      "children": [],
+    },
+    {
+      "type": "normal-index-segment",
+      "text": "['a']",
+      "start": 1,
+      "length": 5,
+      "children": [
+        {
+          "type": "text",
+          "text": "[",
+          "start": 1,
+          "length": 1,
+          "children": [],
+        },
+        {
+          "type": "normal-selector",
+          "text": "'a'",
+          "start": 2,
+          "length": 3,
+          "children": [
+            {
+              "type": "normal-name-selector",
+              "text": "'a'",
+              "start": 2,
+              "length": 3,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "'",
+                  "start": 2,
+                  "length": 1,
+                  "children": [],
+                },
+                {
+                  "type": "normal-single-quoted",
+                  "text": "a",
+                  "start": 3,
+                  "length": 1,
+                  "children": [],
+                },
+                {
+                  "type": "text",
+                  "text": "'",
+                  "start": 4,
+                  "length": 1,
+                  "children": [],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          "type": "text",
+          "text": "]",
+          "start": 5,
+          "length": 1,
+          "children": [],
+        },
+      ],
+    },
+  ],
 }
 `;
 
 exports[`parse cst-corpus-normalized $['a']['b'][1] 1`] = `
 {
-  "root": {
-    "type": "normalized-path",
-    "text": "$['a']['b'][1]",
-    "start": 0,
-    "length": 14,
-    "children": [
-      {
-        "type": "root-identifier",
-        "text": "$",
-        "start": 0,
-        "length": 1,
-        "children": [],
-      },
-      {
-        "type": "normal-index-segment",
-        "text": "['a']",
-        "start": 1,
-        "length": 5,
-        "children": [
-          {
-            "type": "text",
-            "text": "[",
-            "start": 1,
-            "length": 1,
-            "children": [],
-          },
-          {
-            "type": "normal-selector",
-            "text": "'a'",
-            "start": 2,
-            "length": 3,
-            "children": [
-              {
-                "type": "normal-name-selector",
-                "text": "'a'",
-                "start": 2,
-                "length": 3,
-                "children": [
-                  {
-                    "type": "text",
-                    "text": "'",
-                    "start": 2,
-                    "length": 1,
-                    "children": [],
-                  },
-                  {
-                    "type": "normal-single-quoted",
-                    "text": "a",
-                    "start": 3,
-                    "length": 1,
-                    "children": [],
-                  },
-                  {
-                    "type": "text",
-                    "text": "'",
-                    "start": 4,
-                    "length": 1,
-                    "children": [],
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            "type": "text",
-            "text": "]",
-            "start": 5,
-            "length": 1,
-            "children": [],
-          },
-        ],
-      },
-      {
-        "type": "normal-index-segment",
-        "text": "['b']",
-        "start": 6,
-        "length": 5,
-        "children": [
-          {
-            "type": "text",
-            "text": "[",
-            "start": 6,
-            "length": 1,
-            "children": [],
-          },
-          {
-            "type": "normal-selector",
-            "text": "'b'",
-            "start": 7,
-            "length": 3,
-            "children": [
-              {
-                "type": "normal-name-selector",
-                "text": "'b'",
-                "start": 7,
-                "length": 3,
-                "children": [
-                  {
-                    "type": "text",
-                    "text": "'",
-                    "start": 7,
-                    "length": 1,
-                    "children": [],
-                  },
-                  {
-                    "type": "normal-single-quoted",
-                    "text": "b",
-                    "start": 8,
-                    "length": 1,
-                    "children": [],
-                  },
-                  {
-                    "type": "text",
-                    "text": "'",
-                    "start": 9,
-                    "length": 1,
-                    "children": [],
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            "type": "text",
-            "text": "]",
-            "start": 10,
-            "length": 1,
-            "children": [],
-          },
-        ],
-      },
-      {
-        "type": "normal-index-segment",
-        "text": "[1]",
-        "start": 11,
-        "length": 3,
-        "children": [
-          {
-            "type": "text",
-            "text": "[",
-            "start": 11,
-            "length": 1,
-            "children": [],
-          },
-          {
-            "type": "normal-selector",
-            "text": "1",
-            "start": 12,
-            "length": 1,
-            "children": [
-              {
-                "type": "normal-index-selector",
-                "text": "1",
-                "start": 12,
-                "length": 1,
-                "children": [],
-              },
-            ],
-          },
-          {
-            "type": "text",
-            "text": "]",
-            "start": 13,
-            "length": 1,
-            "children": [],
-          },
-        ],
-      },
-    ],
-  },
+  "type": "normalized-path",
+  "text": "$['a']['b'][1]",
+  "start": 0,
+  "length": 14,
+  "children": [
+    {
+      "type": "root-identifier",
+      "text": "$",
+      "start": 0,
+      "length": 1,
+      "children": [],
+    },
+    {
+      "type": "normal-index-segment",
+      "text": "['a']",
+      "start": 1,
+      "length": 5,
+      "children": [
+        {
+          "type": "text",
+          "text": "[",
+          "start": 1,
+          "length": 1,
+          "children": [],
+        },
+        {
+          "type": "normal-selector",
+          "text": "'a'",
+          "start": 2,
+          "length": 3,
+          "children": [
+            {
+              "type": "normal-name-selector",
+              "text": "'a'",
+              "start": 2,
+              "length": 3,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "'",
+                  "start": 2,
+                  "length": 1,
+                  "children": [],
+                },
+                {
+                  "type": "normal-single-quoted",
+                  "text": "a",
+                  "start": 3,
+                  "length": 1,
+                  "children": [],
+                },
+                {
+                  "type": "text",
+                  "text": "'",
+                  "start": 4,
+                  "length": 1,
+                  "children": [],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          "type": "text",
+          "text": "]",
+          "start": 5,
+          "length": 1,
+          "children": [],
+        },
+      ],
+    },
+    {
+      "type": "normal-index-segment",
+      "text": "['b']",
+      "start": 6,
+      "length": 5,
+      "children": [
+        {
+          "type": "text",
+          "text": "[",
+          "start": 6,
+          "length": 1,
+          "children": [],
+        },
+        {
+          "type": "normal-selector",
+          "text": "'b'",
+          "start": 7,
+          "length": 3,
+          "children": [
+            {
+              "type": "normal-name-selector",
+              "text": "'b'",
+              "start": 7,
+              "length": 3,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "'",
+                  "start": 7,
+                  "length": 1,
+                  "children": [],
+                },
+                {
+                  "type": "normal-single-quoted",
+                  "text": "b",
+                  "start": 8,
+                  "length": 1,
+                  "children": [],
+                },
+                {
+                  "type": "text",
+                  "text": "'",
+                  "start": 9,
+                  "length": 1,
+                  "children": [],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          "type": "text",
+          "text": "]",
+          "start": 10,
+          "length": 1,
+          "children": [],
+        },
+      ],
+    },
+    {
+      "type": "normal-index-segment",
+      "text": "[1]",
+      "start": 11,
+      "length": 3,
+      "children": [
+        {
+          "type": "text",
+          "text": "[",
+          "start": 11,
+          "length": 1,
+          "children": [],
+        },
+        {
+          "type": "normal-selector",
+          "text": "1",
+          "start": 12,
+          "length": 1,
+          "children": [
+            {
+              "type": "normal-index-selector",
+              "text": "1",
+              "start": 12,
+              "length": 1,
+              "children": [],
+            },
+          ],
+        },
+        {
+          "type": "text",
+          "text": "]",
+          "start": 13,
+          "length": 1,
+          "children": [],
+        },
+      ],
+    },
+  ],
 }
 `;
 
 exports[`parse cst-corpus-normalized $[1] 1`] = `
 {
-  "root": {
-    "type": "normalized-path",
-    "text": "$[1]",
-    "start": 0,
-    "length": 4,
-    "children": [
-      {
-        "type": "root-identifier",
-        "text": "$",
-        "start": 0,
-        "length": 1,
-        "children": [],
-      },
-      {
-        "type": "normal-index-segment",
-        "text": "[1]",
-        "start": 1,
-        "length": 3,
-        "children": [
-          {
-            "type": "text",
-            "text": "[",
-            "start": 1,
-            "length": 1,
-            "children": [],
-          },
-          {
-            "type": "normal-selector",
-            "text": "1",
-            "start": 2,
-            "length": 1,
-            "children": [
-              {
-                "type": "normal-index-selector",
-                "text": "1",
-                "start": 2,
-                "length": 1,
-                "children": [],
-              },
-            ],
-          },
-          {
-            "type": "text",
-            "text": "]",
-            "start": 3,
-            "length": 1,
-            "children": [],
-          },
-        ],
-      },
-    ],
-  },
+  "type": "normalized-path",
+  "text": "$[1]",
+  "start": 0,
+  "length": 4,
+  "children": [
+    {
+      "type": "root-identifier",
+      "text": "$",
+      "start": 0,
+      "length": 1,
+      "children": [],
+    },
+    {
+      "type": "normal-index-segment",
+      "text": "[1]",
+      "start": 1,
+      "length": 3,
+      "children": [
+        {
+          "type": "text",
+          "text": "[",
+          "start": 1,
+          "length": 1,
+          "children": [],
+        },
+        {
+          "type": "normal-selector",
+          "text": "1",
+          "start": 2,
+          "length": 1,
+          "children": [
+            {
+              "type": "normal-index-selector",
+              "text": "1",
+              "start": 2,
+              "length": 1,
+              "children": [],
+            },
+          ],
+        },
+        {
+          "type": "text",
+          "text": "]",
+          "start": 3,
+          "length": 1,
+          "children": [],
+        },
+      ],
+    },
+  ],
 }
 `;
 
 exports[`parse cst-corpus-normalized $[2] 1`] = `
 {
-  "root": {
-    "type": "normalized-path",
-    "text": "$[2]",
-    "start": 0,
-    "length": 4,
-    "children": [
-      {
-        "type": "root-identifier",
-        "text": "$",
-        "start": 0,
-        "length": 1,
-        "children": [],
-      },
-      {
-        "type": "normal-index-segment",
-        "text": "[2]",
-        "start": 1,
-        "length": 3,
-        "children": [
-          {
-            "type": "text",
-            "text": "[",
-            "start": 1,
-            "length": 1,
-            "children": [],
-          },
-          {
-            "type": "normal-selector",
-            "text": "2",
-            "start": 2,
-            "length": 1,
-            "children": [
-              {
-                "type": "normal-index-selector",
-                "text": "2",
-                "start": 2,
-                "length": 1,
-                "children": [],
-              },
-            ],
-          },
-          {
-            "type": "text",
-            "text": "]",
-            "start": 3,
-            "length": 1,
-            "children": [],
-          },
-        ],
-      },
-    ],
-  },
+  "type": "normalized-path",
+  "text": "$[2]",
+  "start": 0,
+  "length": 4,
+  "children": [
+    {
+      "type": "root-identifier",
+      "text": "$",
+      "start": 0,
+      "length": 1,
+      "children": [],
+    },
+    {
+      "type": "normal-index-segment",
+      "text": "[2]",
+      "start": 1,
+      "length": 3,
+      "children": [
+        {
+          "type": "text",
+          "text": "[",
+          "start": 1,
+          "length": 1,
+          "children": [],
+        },
+        {
+          "type": "normal-selector",
+          "text": "2",
+          "start": 2,
+          "length": 1,
+          "children": [
+            {
+              "type": "normal-index-selector",
+              "text": "2",
+              "start": 2,
+              "length": 1,
+              "children": [],
+            },
+          ],
+        },
+        {
+          "type": "text",
+          "text": "]",
+          "start": 3,
+          "length": 1,
+          "children": [],
+        },
+      ],
+    },
+  ],
 }
 `;

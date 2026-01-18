@@ -1,6 +1,7 @@
 import parse from '../parse/index.js';
+import ASTTranslator from '../parse/translators/ASTTranslator/index.js';
 
-const test = (jsonPath, { normalized = false } = {}) => {
+const test = (jsonPath, { normalized = false, wellTyped = true } = {}) => {
   if (typeof jsonPath !== 'string') return false;
 
   try {
@@ -8,7 +9,7 @@ const test = (jsonPath, { normalized = false } = {}) => {
       normalized,
       stats: false,
       trace: false,
-      translator: null,
+      translator: wellTyped ? new ASTTranslator() : null,
     });
 
     return result.success;

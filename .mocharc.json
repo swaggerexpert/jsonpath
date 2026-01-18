@@ -5,6 +5,7 @@
   "require": ["mocha-expect-snapshot"],
   "ignore": [
     "test/fixtures/**/*.js",
-    "test/mocha-bootstrap.mjs"
+    "test/mocha-bootstrap.mjs",
+    "test/jsonpath-compliance-test-suite/**/*.js"
   ]
 }

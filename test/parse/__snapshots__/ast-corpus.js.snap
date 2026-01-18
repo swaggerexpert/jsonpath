@@ -762,7 +762,42 @@ exports[`parse ast-corpus $.a[?@<2 || @.b == "k"] 1`] = `
         "selectors": [
           {
             "type": "FilterSelector",
-            "expression": undefined,
+            "expression": {
+              "type": "LogicalOrExpr",
+              "left": {
+                "type": "ComparisonExpr",
+                "left": {
+                  "type": "RelSingularQuery",
+                  "segments": [],
+                },
+                "op": "<",
+                "right": {
+                  "type": "Literal",
+                  "value": 2,
+                },
+              },
+              "right": {
+                "type": "ComparisonExpr",
+                "left": {
+                  "type": "RelSingularQuery",
+                  "segments": [
+                    {
+                      "type": "SingularQuerySegment",
+                      "selector": {
+                        "type": "NameSelector",
+                        "value": "b",
+                        "format": "shorthand",
+                      },
+                    },
+                  ],
+                },
+                "op": "==",
+                "right": {
+                  "type": "Literal",
+                  "value": "k",
+                },
+              },
+            },
           },
         ],
       },
@@ -1397,7 +1432,47 @@ exports[`parse ast-corpus $.o[?@.u || @.x] 1`] = `
         "selectors": [
           {
             "type": "FilterSelector",
-            "expression": undefined,
+            "expression": {
+              "type": "LogicalOrExpr",
+              "left": {
+                "type": "TestExpr",
+                "expression": {
+                  "type": "FilterQuery",
+                  "query": {
+                    "type": "RelQuery",
+                    "segments": [
+                      {
+                        "type": "ChildSegment",
+                        "selector": {
+                          "type": "NameSelector",
+                          "value": "u",
+                          "format": "shorthand",
+                        },
+                      },
+                    ],
+                  },
+                },
+              },
+              "right": {
+                "type": "TestExpr",
+                "expression": {
+                  "type": "FilterQuery",
+                  "query": {
+                    "type": "RelQuery",
+                    "segments": [
+                      {
+                        "type": "ChildSegment",
+                        "selector": {
+                          "type": "NameSelector",
+                          "value": "x",
+                          "format": "shorthand",
+                        },
+                      },
+                    ],
+                  },
+                },
+              },
+            },
           },
         ],
       },

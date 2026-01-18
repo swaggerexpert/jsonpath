@@ -19,7 +19,7 @@ class JSONPathError extends Error {
     if (
       options != null &&
       typeof options === 'object' &&
-      Object.prototype.hasOwnProperty.call(options, 'cause') &&
+      Object.hasOwn(options, 'cause') &&
       !('cause' in this)
     ) {
       const { cause } = options;
