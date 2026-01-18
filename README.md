@@ -15,6 +15,8 @@ The development of this library contributed to the identification and formal sub
 - [Errata ID: 8353](https://www.rfc-editor.org/errata/eid8353)
 - [Errata ID: 8354](https://www.rfc-editor.org/errata/eid8354)
 
+This library is **100% compliant** with the [JSONPath Compliance Test Suite](https://github.com/jsonpath-standard/jsonpath-compliance-test-suite).
+
 <table>
   <tr>
     <td align="right" valign="middle">
