@@ -1,5 +1,14 @@
 import parse from './parse/index.js';
+import testFn from './test/index.js';
 import JSONNormalizedPathError from './errors/JSONNormalizedPathError.js';
+
+/**
+ * Tests if a string is a valid normalized JSONPath.
+ *
+ * @param {string} normalizedPath - The string to test
+ * @returns {boolean} True if valid normalized path, false otherwise
+ */
+export const test = (normalizedPath) => testFn(normalizedPath, { normalized: true });
 
 /**
  * Escapes a string for use in a normalized JSONPath name selector.

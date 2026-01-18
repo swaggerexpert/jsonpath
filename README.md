@@ -250,6 +250,21 @@ test('$[?length(@.*) < 3]', { wellTyped: false }); // => true (syntax is valid)
 
 The `NormalizedPath` namespace provides utilities for working with [Normalized Paths](https://www.rfc-editor.org/rfc/rfc9535#name-normalized-paths).
 
+##### NormalizedPath.test
+
+Tests if a string is a valid normalized JSONPath. This is a convenience wrapper around `test(path, { normalized: true })`.
+
+```js
+import { NormalizedPath } from '@swaggerexpert/jsonpath';
+
+NormalizedPath.test("$['a']"); // => true
+NormalizedPath.test('$[0]'); // => true
+NormalizedPath.test("$['store']['book'][0]['title']"); // => true
+NormalizedPath.test('$.a'); // => false (dot notation not allowed)
+NormalizedPath.test('$["a"]'); // => false (double quotes not allowed)
+NormalizedPath.test('$[*]'); // => false (wildcard not allowed)
+```
+
 ##### NormalizedPath.from
 
 Creates a normalized path string from a list of selectors. Name selectors are automatically escaped.
