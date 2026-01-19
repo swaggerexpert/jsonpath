@@ -216,6 +216,11 @@ export interface Stats {
 
 export interface Trace {
   displayTrace(): string;
+  inferExpectations(): Expectations;
+}
+
+export interface Expectations extends Array<string> {
+  toString(): string;
 }
 
 /**
