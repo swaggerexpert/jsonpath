@@ -16,6 +16,8 @@ The development of this library contributed to the identification and formal sub
 - [Errata ID: 8354](https://www.rfc-editor.org/errata/eid8354)
 
 This library is **100% compliant** with the [JSONPath Compliance Test Suite](https://github.com/jsonpath-standard/jsonpath-compliance-test-suite).
+It is also included in the [JSONPath Comparison](https://cburgmer.github.io/json-path-comparison/) project,
+executing all queries without errors.
 
 <table>
   <tr>
