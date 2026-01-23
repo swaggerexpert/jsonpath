@@ -13,6 +13,7 @@ import parse from '../parse/index.js';
 import * as NormalizedPath from '../normalized-path.js';
 import visitSegment from './visitors/segment.js';
 import JSONEvaluationRealm from './realms/json/index.js';
+import JSONPathParseError from '../errors/JSONPathParseError.js';
 import JSONPathEvaluateError from '../errors/JSONPathEvaluateError.js';
 import * as defaultFunctions from './functions/index.js';
 
@@ -24,6 +25,8 @@ import * as defaultFunctions from './functions/index.js';
  *   Default is JSONEvaluationRealm for plain objects/arrays.
  * @property {Object} [functions] - Optional custom function registry.
  *   Can extend or override built-in functions (length, count, match, search, value).
+ * @property {boolean} [trace=true] - Enable parser tracing for detailed error messages.
+ *   When true, syntax errors include position and expected tokens.
  */
 
 /**
@@ -33,7 +36,8 @@ import * as defaultFunctions from './functions/index.js';
  * @param {string} expression - JSONPath expression
  * @param {EvaluateOptions} [options] - Evaluation options
  * @returns {unknown[]} - Array of matched values
- * @throws {JSONPathEvaluateError} If the expression is invalid
+ * @throws {JSONPathParseError} If the expression is invalid (syntax or semantic error)
+ * @throws {JSONPathEvaluateError} If an unexpected error occurs during evaluation
  *
  * @example
  * // Simple query
@@ -55,21 +59,23 @@ import * as defaultFunctions from './functions/index.js';
 const evaluate = (
   value,
   expression,
-  { callback, realm = new JSONEvaluationRealm(), functions = defaultFunctions } = {},
+  { callback, realm = new JSONEvaluationRealm(), functions = defaultFunctions, trace = true } = {},
 ) => {
-  // Parse the expression
-  const parseResult = parse(expression);
+  // Parse the expression with trace enabled for better error messages
+  const { result, trace: parseTrace, tree } = parse(expression, { trace: !!trace });
 
-  if (!parseResult.result.success) {
-    throw new JSONPathEvaluateError(`Invalid JSONPath expression: ${expression}`, {
-      expression,
+  if (!result.success) {
+    let message = `Invalid JSONPath expression: "${expression}". Syntax error at position ${result.maxMatched}`;
+    message += parseTrace ? `, expected ${parseTrace.inferExpectations()}` : '';
+
+    throw new JSONPathParseError(message, {
+      jsonPath: expression,
     });
   }
 
   try {
     // The tree is the AST root directly (JsonPathQuery node)
-    const ast = parseResult.tree;
-    const { segments } = ast;
+    const { segments } = tree;
     const results = [];
 
     // Handle empty query ($ with no segments)

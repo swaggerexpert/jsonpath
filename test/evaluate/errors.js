@@ -1,24 +1,24 @@
 import { strict as assert } from 'node:assert';
 
-import { evaluate, JSONPathEvaluateError, JSONPathError } from '../../src/index.js';
+import { evaluate, JSONPathParseError, JSONPathError } from '../../src/index.js';
 
 describe('evaluate', function () {
   context('errors', function () {
     context('given invalid JSONPath expression', function () {
-      specify('should throw JSONPathEvaluateError', function () {
+      specify('should throw JSONPathParseError', function () {
         assert.throws(
           () => evaluate({}, '$$'),
-          JSONPathEvaluateError
+          JSONPathParseError
         );
       });
 
-      specify('should include expression in error', function () {
+      specify('should include jsonPath in error', function () {
         try {
           evaluate({}, '$$');
           assert.fail('Expected error to be thrown');
         } catch (error) {
-          assert.ok(error instanceof JSONPathEvaluateError);
-          assert.strictEqual(error.expression, '$$');
+          assert.ok(error instanceof JSONPathParseError);
+          assert.strictEqual(error.jsonPath, '$$');
         }
       });
 
@@ -31,7 +31,7 @@ describe('evaluate', function () {
     });
 
     context('inheritance', function () {
-      specify('JSONPathEvaluateError should extend JSONPathError', function () {
+      specify('JSONPathParseError should extend JSONPathError', function () {
         try {
           evaluate({}, '$$');
           assert.fail('Expected error to be thrown');
