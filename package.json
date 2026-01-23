@@ -5,7 +5,7 @@
     "registry": "https://registry.npmjs.org",
     "provenance": true
   },
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "RFC 9535 implementation of JSONPath",
   "main": "./cjs/index.cjs",
   "types": "./types/index.d.ts",
