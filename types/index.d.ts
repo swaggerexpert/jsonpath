@@ -279,6 +279,12 @@ export interface EvaluateOptions {
    * Can extend or override built-in functions.
    */
   readonly functions?: Record<string, Function>;
+  /**
+   * Enable parser tracing for detailed error messages.
+   * When true, syntax errors include position and expected tokens.
+   * @default true
+   */
+  readonly trace?: boolean;
 }
 
 /**
