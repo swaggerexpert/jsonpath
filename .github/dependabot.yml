@@ -12,7 +12,12 @@ updates:
     commit-message:
       prefix: "chore"
       include: "scope"
-
+    ignore:
+      # mocha-expect-snapshot declares a peer range of mocha ^8.4.0 || ^9 || ^10 || ^11,
+      # so a fresh `npm i` fails with ERESOLVE on mocha 12. Drop this once
+      # https://github.com/mshima/mocha-expect-snapshot widens its peer range.
+      - dependency-name: "mocha"
+        update-types: ["version-update:semver-major"]
 
   - package-ecosystem: "github-actions"
     directory: "/"
