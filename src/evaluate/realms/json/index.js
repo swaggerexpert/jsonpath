@@ -229,7 +229,6 @@ class JSONEvaluationRealm extends EvaluationRealm {
         if (isString(left) && isString(right)) return left < right;
         return false;
       case '<=':
-        if (isNothing(left) || isNothing(right)) return false;
         if (isNumber(left) && isNumber(right)) return left <= right;
         if (isString(left) && isString(right)) return left <= right;
         return this.#deepEqual(left, right);
@@ -239,7 +238,6 @@ class JSONEvaluationRealm extends EvaluationRealm {
         if (isString(left) && isString(right)) return left > right;
         return false;
       case '>=':
-        if (isNothing(left) || isNothing(right)) return false;
         if (isNumber(left) && isNumber(right)) return left >= right;
         if (isString(left) && isString(right)) return left >= right;
         return this.#deepEqual(left, right);
