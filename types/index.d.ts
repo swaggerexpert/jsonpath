@@ -214,7 +214,8 @@ export interface Stats {
   displayHits(): string;
 }
 
-export interface Trace {
+export declare class Trace {
+  constructor();
   displayTrace(): string;
   inferExpectations(): Expectations;
 }
@@ -371,9 +372,8 @@ export declare class JSONPathEvaluateError extends JSONPathError {
 /**
  * Grammar
  */
-export function Grammar(): Grammar;
-
-export interface Grammar {
+export declare class Grammar {
+  constructor();
   grammarObject: string; // Internal identifier
   rules: Rule[]; // List of grammar rules
   udts: UDT[]; // User-defined terminals (empty in this grammar)
