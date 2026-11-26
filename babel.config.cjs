@@ -1,5 +1,28 @@
 const path = require("node:path");
 
+/**
+ * apg-lite is an ES module, so the CommonJS build (kept for backward compatibility)
+ * bundles its own copy at cjs/apg-lite.cjs. Imports of apg-lite are rewritten to a relative path
+ * to that copy, mirroring src/ layout in the output directory, independent of the current working
+ * directory and platform path separators.
+ */
+const resolveApgLite = (extension) => [
+  "module-resolver",
+  {
+    resolvePath(sourcePath, currentFile) {
+      if (sourcePath !== "apg-lite") return sourcePath;
+
+      const apgLite = path.join(__dirname, "src", `apg-lite.${extension}`);
+      const relativePath = path
+        .relative(path.dirname(currentFile), apgLite)
+        .split(path.sep)
+        .join("/");
+
+      return relativePath.startsWith(".") ? relativePath : `./${relativePath}`;
+    },
+  },
+];
+
 module.exports = {
   env: {
     cjs: {
@@ -24,19 +47,7 @@ module.exports = {
           ),
           { extension: "cjs" },
         ],
-        [
-          "module-resolver",
-          {
-            resolvePath(sourcePath, currentFile) {
-              if (sourcePath === "apg-lite") {
-                const apgLiteCJS = path.resolve("./src/apg-lite.cjs");
-                const currentDir = path.dirname(currentFile);
-                return path.relative(currentDir, apgLiteCJS);
-              }
-              return sourcePath;
-            },
-          },
-        ],
+        resolveApgLite("cjs"),
       ],
     },
     es: {
