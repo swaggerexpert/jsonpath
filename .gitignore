@@ -7,3 +7,4 @@ node_modules/
 /swaggerexpert-jsonpath-*.tgz
 /dist
 /types/**/*.d.cts
+/pack

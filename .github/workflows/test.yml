@@ -25,3 +25,58 @@ jobs:
         run: npm ci
       - name: Execute tests
         run: npm test
+      - name: Build artifacts
+        run: npm run build
+      - name: Test artifacts
+        run: npm run test:artifacts
+      - name: Test typings
+        run: npm run test:types
+      - name: Pack tarball
+        run: |
+          mkdir -p pack
+          npm pack --pack-destination ./pack
+      - name: Verify tarball contains generated files
+        run: |
+          # generated files are gitignored, so make sure they are published
+          contents="$(tar -tzf pack/*.tgz)"
+          for file in types/index.d.cts cjs/apg-lite.cjs dist/jsonpath.browser.js dist/jsonpath.browser.min.js; do
+            echo "$contents" | grep -qx "package/$file" || { echo "missing $file"; exit 1; }
+          done
+      - name: Upload tarball
+        uses: actions/upload-artifact@v7
+        with:
+          name: tarball
+          path: |
+            pack/*.tgz
+            test/artifacts/smoke.cjs
+
+  compatibility:
+    needs: test
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        # oldest supported version (engines in package.json) and maintained versions
+        node-version: [ 16.14.0, 18, 20, 22, 24, 26 ]
+
+    steps:
+      - name: Download tarball
+        uses: actions/download-artifact@v8
+        with:
+          name: tarball
+      - name: Use Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install tarball into a new project
+        run: |
+          mkdir consumer
+          cd consumer
+          npm init -y
+          npm install ../pack/*.tgz
+          # the package is resolved relative to the script, so the script must be inside the project
+          cp ../test/artifacts/smoke.cjs .
+      - name: Test installed package
+        working-directory: consumer
+        run: node smoke.cjs

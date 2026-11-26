@@ -29,6 +29,7 @@ npm test -- --grep "pattern" # Run specific tests matching pattern
 npm run build               # Build ES modules, CommonJS and UMD browser bundles (compiles grammar first)
 npm run grammar:compile     # Compile ABNF grammar to JavaScript
 npm run test:watch          # Watch mode for tests
+npm run test:artifacts      # Smoke test built artifacts (es/, cjs/, dist/), run after npm run build
 npm run test:types          # Type check typings as CommonJS and ES module consumers, run after npm run build
 ```
 
