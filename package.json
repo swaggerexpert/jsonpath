@@ -37,6 +37,7 @@
     "build:types": "node ./scripts/build-types.cjs",
     "build:umd:browser": "cross-env BABEL_ENV=browser webpack --config config/webpack/browser.config.js --progress",
     "test": "cross-env UPDATE_SNAPSHOT=new mocha",
+    "test:artifacts": "node ./test/artifacts/smoke.cjs",
     "test:types": "tsc --noEmit --strict --skipLibCheck false --module node16 --moduleResolution node16 --target es2020 test/artifacts/types/consumer.cts test/artifacts/types/consumer.mts && tsc --noEmit --strict --module esnext --moduleResolution bundler --target es2020 test/artifacts/types/consumer.mts",
     "test:watch": "npm-watch test",
     "watch": "npm-watch"

@@ -40,6 +40,12 @@ jobs:
       - name: Execute tests
         run: npm test
 
+      - name: Test artifacts
+        run: npm run test:artifacts
+
+      - name: Test typings
+        run: npm run test:types
+
       - name: Semantic Release
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
