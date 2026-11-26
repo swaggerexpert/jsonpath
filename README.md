@@ -69,6 +69,43 @@ You can install `@swaggerexpert/jsonpath` using `npm`:
  $ npm install @swaggerexpert/jsonpath
 ```
 
+---
+
+**[unpkg.com](https://unpkg.com/)**
+
+Include following script tag into your HTML file:
+
+```html
+<script src="https://unpkg.com/@swaggerexpert/jsonpath@latest/dist/jsonpath.browser.min.js"></script>
+```
+
+Global variable `JSONPath` will be available in the browser matching interface of `@swaggerexpert/jsonpath` npm package.
+`jsonpath.browser.min.js` is [UMD](https://github.com/umdjs/umd?tab=readme-ov-file#umd-universal-module-definition) minified build artifact.
+There is also unminified `jsonpath.browser.js` artifact, suitable for debugging.
+
+---
+
+**[jsDelivr](https://www.jsdelivr.com/)**
+
+Include following script tag into your HTML file (ESM mode):
+
+```html
+<script type="module">
+  import * as JSONPath from 'https://cdn.jsdelivr.net/npm/@swaggerexpert/jsonpath@latest/+esm'
+</script>
+```
+Local variable `JSONPath` will be available in scope of the `<script>` tag matching interface of `@swaggerexpert/jsonpath` package.
+
+Or include following script tag into your HTML file (UMD mode):
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/@swaggerexpert/jsonpath@latest/dist/jsonpath.browser.min.js"></script>
+```
+
+Global variable `JSONPath` will be available in the browser matching interface of `@swaggerexpert/jsonpath` npm package.
+`jsonpath.browser.min.js` is [UMD](https://github.com/umdjs/umd?tab=readme-ov-file#umd-universal-module-definition) minified build artifact.
+There is also unminified `jsonpath.browser.js` artifact, suitable for debugging.
+
 ### Usage
 
 `@swaggerexpert/jsonpath` supports **parsing**, **validation**, **compilation**, and **evaluation** of JSONPath expressions.

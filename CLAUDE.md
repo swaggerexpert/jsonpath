@@ -26,7 +26,7 @@ The project uses the [JSONPath Compliance Test Suite](https://github.com/jsonpat
 ```bash
 npm test                    # Run all tests with mocha
 npm test -- --grep "pattern" # Run specific tests matching pattern
-npm run build               # Build ES modules and CommonJS (compiles grammar first)
+npm run build               # Build ES modules, CommonJS and UMD browser bundles (compiles grammar first)
 npm run grammar:compile     # Compile ABNF grammar to JavaScript
 npm run test:watch          # Watch mode for tests
 ```
@@ -79,11 +79,12 @@ AST → Iterative Stack-based Evaluation → Callback Results
 
 **NodeList detection:** Arrays from filter queries are marked with a non-enumerable `_isNodelist` property to distinguish them from regular JSON arrays for correct comparison semantics.
 
-### Dual Module Support
+### Module Formats
 
-The library supports both ESM and CommonJS:
+The library supports ESM, CommonJS and UMD:
 - Source in `src/` (ES modules)
 - Built to `es/` (.mjs) and `cjs/` (.cjs) via Babel
+- Built to `dist/` UMD browser bundles (jsonpath.browser.js, jsonpath.browser.min.js) via webpack, exposing global `JSONPath`
 
 ## Design Decisions
 
