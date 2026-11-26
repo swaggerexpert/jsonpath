@@ -252,7 +252,7 @@ trace.inferExpectations(); // returns parser expectations
 ```
 
 By combining information from `result` and `trace`, you can analyze the parsing process in detail
-and generate messages like: `'Syntax error at position 1, expected "[", ".", ".."'`. Please see this
+and generate messages like: `'Syntax error at position 1, expected "\x20", "\x09", "\x0A", "\x0D", "[", ".", ".."'`. Please see this
 [test file](https://github.com/swaggerexpert/jsonpath/blob/main/test/parse/trace.js) for more information how to achieve that.
 
 #### Validation
