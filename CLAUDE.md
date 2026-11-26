@@ -29,6 +29,7 @@ npm test -- --grep "pattern" # Run specific tests matching pattern
 npm run build               # Build ES modules, CommonJS and UMD browser bundles (compiles grammar first)
 npm run grammar:compile     # Compile ABNF grammar to JavaScript
 npm run test:watch          # Watch mode for tests
+npm run test:types          # Type check typings as CommonJS and ES module consumers, run after npm run build
 ```
 
 ## Architecture
@@ -85,6 +86,8 @@ The library supports ESM, CommonJS and UMD:
 - Source in `src/` (ES modules)
 - Built to `es/` (.mjs) and `cjs/` (.cjs) via Babel
 - Built to `dist/` UMD browser bundles (jsonpath.browser.js, jsonpath.browser.min.js) via webpack, exposing global `JSONPath`
+
+TypeScript types are in `types/`; the build generates gitignored `.d.cts` copies for the `require` export condition.
 
 ## Design Decisions
 
