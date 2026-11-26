@@ -3,6 +3,11 @@
 exports[`parse translators XMLTranslator should translate a JSONPath to a XML 1`] = `
 "<?xml version="1.0" encoding="utf-8"?>
 <root nodes="3" characters="1">
+<!--
+  Caveat: AST node phrases may not be faithfully represented.
+          Invalid XML characters are replaced with 0xFFFD.
+          Special characters &<>"' are escaped with XML entities.
+-->
 <!-- input string -->
   $
  <node name="jsonpath-query" index="0" length="1">
