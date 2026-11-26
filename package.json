@@ -13,9 +13,14 @@
   "types": "./types/index.d.ts",
   "exports": {
     ".": {
-      "types": "./types/index.d.ts",
-      "import": "./es/index.mjs",
-      "require": "./cjs/index.cjs"
+      "import": {
+        "types": "./types/index.d.ts",
+        "default": "./es/index.mjs"
+      },
+      "require": {
+        "types": "./types/index.d.cts",
+        "default": "./cjs/index.cjs"
+      }
     },
     "./package.json": "./package.json"
   },
@@ -25,12 +30,14 @@
   "scripts": {
     "prepublishOnly": "npm run build",
     "grammar:compile": "node ./scripts/apg-js.js --lite --in=./src/grammar.bnf --out=./src/grammar.js && cd ./src",
-    "build": "npm run grammar:compile && npm run build:es && npm run build:cjs && npm run build:cjs:apg-lite && npm run build:umd:browser",
+    "build": "npm run grammar:compile && npm run build:es && npm run build:cjs && npm run build:cjs:apg-lite && npm run build:types && npm run build:umd:browser",
     "build:es": "cross-env BABEL_ENV=es babel src --out-dir es --extensions '.js' --out-file-extension '.mjs'",
     "build:cjs": "cross-env BABEL_ENV=cjs babel src --out-dir cjs --extensions '.js' --out-file-extension '.cjs'",
     "build:cjs:apg-lite": "cross-env BABEL_ENV=cjs babel node_modules/apg-lite/lib/parser.js --out-file ./cjs/apg-lite.cjs",
+    "build:types": "node ./scripts/build-types.cjs",
     "build:umd:browser": "cross-env BABEL_ENV=browser webpack --config config/webpack/browser.config.js --progress",
     "test": "cross-env UPDATE_SNAPSHOT=new mocha",
+    "test:types": "tsc --noEmit --strict --skipLibCheck false --module node16 --moduleResolution node16 --target es2020 test/artifacts/types/consumer.cts test/artifacts/types/consumer.mts && tsc --noEmit --strict --module esnext --moduleResolution bundler --target es2020 test/artifacts/types/consumer.mts",
     "test:watch": "npm-watch test",
     "watch": "npm-watch"
   },
@@ -93,6 +100,7 @@
     "prettier": "^3.5.2",
     "semantic-release": "^26.0.1",
     "terser-webpack-plugin": "^5.6.1",
+    "typescript": "^7.0.2",
     "webpack": "^5.113.0",
     "webpack-cli": "^7.3.1"
   }
