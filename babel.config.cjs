@@ -63,5 +63,20 @@ module.exports = {
         ],
       ],
     },
+    browser: {
+      browserslistEnv: "browser-production",
+      presets: [
+        [
+          "@babel/preset-env",
+          {
+            debug: false,
+            modules: "auto",
+            useBuiltIns: false,
+            forceAllTransforms: false,
+            ignoreBrowserslistConfig: false,
+          },
+        ],
+      ],
+    },
   },
 };
